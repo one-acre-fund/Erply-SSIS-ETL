@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="ERPLY_Staging"
+  DTS:DTSID="{9DE91C01-E81A-4BCE-94FD-0C83DA58AF33}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=newndizi.oneacrefund.org,6543;User ID=BOSSIS0001;Initial Catalog=ERPLY_Staging;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7t0Tx+lRSUGwXBLtFHvDIQAAAAACAAAAAAAQZgAAAAEAACAAAADX0TQHKE3XzwfNSgPYlCkMXkug4bc2Yi1fb+/mkzz6CgAAAAAOgAAAAAIAACAAAAANM0BbXJH1qQRxoWNco6lor1wrfSKUhC5IX8OHVrq0mYAAAAC9ONyXl/9CL3QuA6SFBG/LLSGk0CMMNyOtzq1MLIPYShKsuTpRfcwzbLSoBlHPe5gMVOdmlqTAOFFHHH++4FQ3l6ofvRl6B4otmuAc/JjTppecDK6/kwFKy16E+c9HmVxxGfZ17YnZtcqGo4H8t2bqfl1r7ysRvqU92IHrP/PwjkAAAAAnDKA0+UNGpeTNt/n0kj6d9QKvbmSCz63wZyuTQxIrg/RLe/yqSRSZQLBj/CEasfogCYO5VnGbueItd9eY/ARp</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
