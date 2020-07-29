@@ -11,29 +11,12 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="00_01_Extract-to-Staging"
   DTS:PackageType="5"
-  DTS:VersionBuild="12"
-  DTS:VersionGUID="{E89444C6-6803-44D5-B769-2785223F57EE}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{4811EEEE-B29A-4C3B-974B-638E5CAD409F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
-    <DTS:Executable
-      DTS:refId="Package\Execute SQL Task"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{10CE2530-7D1B-4F9D-A778-D3618CA7D58D}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Execute SQL Task"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{9DE91C01-E81A-4BCE-94FD-0C83DA58AF33}"
-          SQLTask:SqlStatementSource="Truncate Table [erp].[staging_InventoryTransferHeaders];&#xA;Truncate Table [erp].[staging_InventoryTransferLines];&#xA;Truncate Table [erp].[staging_Products];&#xA;Truncate Table [erp].[staging_SaleDetails];&#xA;Truncate Table [erp].[staging_SaleHeaders];&#xA;Truncate Table [erp].[staging_StockTakingDetails];&#xA;Truncate Table [erp].[staging_Warehouses];&#xA;Truncate Table [erp].[staging_StockTakingHeaders];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Load InventoryTransferHeaders"
       DTS:CreationName="Microsoft.Pipeline"
@@ -7777,21 +7760,38 @@
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{10CE2530-7D1B-4F9D-A778-D3618CA7D58D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9DE91C01-E81A-4BCE-94FD-0C83DA58AF33}"
+          SQLTask:SqlStatementSource="Truncate Table [erp].[staging_InventoryTransferHeaders];&#xA;Truncate Table [erp].[staging_InventoryTransferLines];&#xA;Truncate Table [erp].[staging_Products];&#xA;Truncate Table [erp].[staging_SaleDetails];&#xA;Truncate Table [erp].[staging_SaleHeaders];&#xA;Truncate Table [erp].[staging_StockTakingDetails];&#xA;Truncate Table [erp].[staging_Warehouses];&#xA;Truncate Table [erp].[staging_StockTakingHeaders];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{878681C8-86A4-4FAD-8CEC-AE2A17BD8868}"
-      DTS:From="Package\Execute SQL Task"
+      DTS:DTSID="{D3A1B899-B11A-4FA5-B5CF-A90D56F3D9A7}"
+      DTS:From="Package\Truncate Tables"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\Load SaleDetails" />
+      DTS:To="Package\Load Products" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
       DTS:DTSID="{CA91D583-E1F8-4103-AE9E-F367576D8A93}"
-      DTS:From="Package\Execute SQL Task"
+      DTS:From="Package\Truncate Tables"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\Load InventoryTransferHeaders" />
@@ -7799,50 +7799,50 @@
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
       DTS:DTSID="{0F65545E-AD1A-46FF-B5B4-66F7439BC6AD}"
-      DTS:From="Package\Execute SQL Task"
+      DTS:From="Package\Truncate Tables"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\Load SaleHeaders" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
-      DTS:DTSID="{7189DD4E-213E-428E-AD01-9AACE82F9B30}"
-      DTS:From="Package\Execute SQL Task"
+      DTS:DTSID="{6D876580-5490-4BD4-BD7E-9C3045E8FCD9}"
+      DTS:From="Package\Truncate Tables"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
-      DTS:To="Package\Load InventoryTransferLines" />
+      DTS:To="Package\Load StockTakingHeader" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
       DTS:CreationName=""
-      DTS:DTSID="{0827E48E-18AB-4581-BDC0-9D1D977E12D4}"
-      DTS:From="Package\Load SaleDetails"
+      DTS:DTSID="{1F9F7D15-0136-47F2-A0FA-A6EA7F32C07E}"
+      DTS:From="Package\Load Products"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
       DTS:To="Package\Load Warehouses" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
-      DTS:DTSID="{7BFD3C44-9E3E-4439-9F24-3517D2A22139}"
+      DTS:DTSID="{CEE391F5-0335-47C1-B41D-6941DB32B7E3}"
       DTS:From="Package\Load SaleHeaders"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 5"
-      DTS:To="Package\Load Products" />
+      DTS:To="Package\Load SaleDetails" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
       DTS:CreationName=""
-      DTS:DTSID="{8B20F0F2-252D-4CC7-9120-CB2F28AD5EFA}"
-      DTS:From="Package\Load InventoryTransferHeaders"
+      DTS:DTSID="{A871733C-136C-40EC-A4FC-462DE96A7CC5}"
+      DTS:From="Package\Load StockTakingHeader"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 6"
       DTS:To="Package\Load StockTakingDetails" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
       DTS:CreationName=""
-      DTS:DTSID="{FF248FE0-1DD3-46EB-B6EA-C84D31E1E670}"
-      DTS:From="Package\Load InventoryTransferLines"
+      DTS:DTSID="{A7911A02-2EFF-450E-9B9C-141B3A0211E0}"
+      DTS:From="Package\Load InventoryTransferHeaders"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 7"
-      DTS:To="Package\Load StockTakingHeader" />
+      DTS:To="Package\Load InventoryTransferLines" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -7859,99 +7859,65 @@
         <NodeLayout
           Size="157.333333333334,42.6666666666667"
           Id="Package\Load SaleDetails"
-          TopLeft="8.1666666666667,108.166666666667" />
+          TopLeft="293.5,210.833333333333" />
         <NodeLayout
           Size="164,42.6666666666667"
           Id="Package\Load SaleHeaders"
-          TopLeft="515.833333333333,108.166666666667" />
+          TopLeft="295.166666666667,108.166666666667" />
         <NodeLayout
           Size="229.333333333334,42.6666666666667"
           Id="Package\Load InventoryTransferHeaders"
-          TopLeft="226.166666666667,108.166666666667" />
+          TopLeft="5.49999999999996,108.166666666667" />
         <NodeLayout
           Size="214.666666666667,42.6666666666667"
           Id="Package\Load InventoryTransferLines"
-          TopLeft="740.5,108.166666666667" />
+          TopLeft="12.8333333333333,210.833333333334" />
         <NodeLayout
           Size="162.666666666667,42.6666666666667"
           Id="Package\Load Warehouses"
-          TopLeft="5.50000000000004,210.833333333334" />
+          TopLeft="511.833333333333,210.833333333333" />
         <NodeLayout
           Size="146.666666666667,42.6666666666667"
           Id="Package\Load Products"
-          TopLeft="524.5,210.833333333333" />
+          TopLeft="519.833333333333,108.166666666667" />
         <NodeLayout
           Size="194.666666666667,42.6666666666667"
           Id="Package\Load StockTakingDetails"
-          TopLeft="243.5,210.833333333334" />
+          TopLeft="734.833333333333,210.833333333333" />
         <NodeLayout
           Size="196.666666666667,42.6666666666667"
           Id="Package\Load StockTakingHeader"
-          TopLeft="749.5,210.833333333333" />
+          TopLeft="726.833333333333,108.166666666667" />
         <NodeLayout
-          Size="164,42.6666666666667"
-          Id="Package\Execute SQL Task"
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Truncate Tables"
           TopLeft="515.833333333333,5.49999999999993" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="551.033333333333,48.1666666666666">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-464.2,60.0000000000002"
-              Start="0,0"
-              End="-464.2,52.5000000000002">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,14.0204778156997" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,14.0204778156997"
-                    Point2="0,18.0204778156997"
-                    Point3="-4,18.0204778156997" />
-                  <mssgle:LineSegment
-                    End="-460.2,18.0204778156997" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-460.2,18.0204778156997"
-                    Point2="-464.2,18.0204778156997"
-                    Point3="-464.2,22.0204778156997" />
-                  <mssgle:LineSegment
-                    End="-464.2,52.5000000000002" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="582.233333333333,48.1666666666666">
+          TopLeft="549.166666666667,48.1666666666666">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-241.4,60.0000000000002"
+              EndConnector="-429,60.0000000000002"
               Start="0,0"
-              End="-241.4,52.5000000000002">
+              End="-429,52.5000000000002">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.8463611859839" />
+                    End="0,14.0722891566266" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,22.8463611859839"
-                    Point2="0,26.8463611859839"
-                    Point3="-4,26.8463611859839" />
+                    Point1="0,14.0722891566266"
+                    Point2="0,18.0722891566266"
+                    Point3="-4,18.0722891566266" />
                   <mssgle:LineSegment
-                    End="-237.4,26.8463611859839" />
+                    End="-425,18.0722891566266" />
                   <mssgle:CubicBezierSegment
-                    Point1="-237.4,26.8463611859839"
-                    Point2="-241.4,26.8463611859839"
-                    Point3="-241.4,30.8463611859839" />
+                    Point1="-425,18.0722891566266"
+                    Point2="-429,18.0722891566266"
+                    Point3="-429,22.0722891566266" />
                   <mssgle:LineSegment
-                    End="-241.4,52.5000000000002" />
+                    End="-429,52.5000000000002" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7962,30 +7928,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="613.433333333333,48.1666666666666">
+          TopLeft="578.5,48.1666666666666">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-15.6,60.0000000000001"
+              EndConnector="-201.333333333333,60.0000000000001"
               Start="0,0"
-              End="-15.6,52.5000000000001">
+              End="-201.333333333333,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.8463611859839" />
+                    End="0,22.8571428571429" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,22.8463611859839"
-                    Point2="0,26.8463611859839"
-                    Point3="-4,26.8463611859839" />
+                    Point1="0,22.8571428571429"
+                    Point2="0,26.8571428571429"
+                    Point3="-4,26.8571428571429" />
                   <mssgle:LineSegment
-                    End="-11.6,26.8463611859839" />
+                    End="-197.333333333333,26.8571428571429" />
                   <mssgle:CubicBezierSegment
-                    Point1="-11.6,26.8463611859839"
-                    Point2="-15.6,26.8463611859839"
-                    Point3="-15.6,30.8463611859839" />
+                    Point1="-197.333333333333,26.8571428571429"
+                    Point2="-201.333333333333,26.8571428571429"
+                    Point3="-201.333333333333,30.8571428571429" />
                   <mssgle:LineSegment
-                    End="-15.6,52.5000000000001" />
+                    End="-201.333333333333,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7995,53 +7961,31 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="644.633333333333,48.1666666666666">
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="607.833333333333,48.1666666666666">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="203.2,60.0000000000001"
+              EndConnector="-14.6666666666666,60.0000000000001"
               Start="0,0"
-              End="203.2,52.5000000000001">
+              End="-14.6666666666666,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14.0204778156997" />
+                    End="0,22.8571428571429" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,14.0204778156997"
-                    Point2="0,18.0204778156997"
-                    Point3="4,18.0204778156997" />
+                    Point1="0,22.8571428571429"
+                    Point2="0,26.8571428571429"
+                    Point3="-4,26.8571428571429" />
                   <mssgle:LineSegment
-                    End="199.2,18.0204778156997" />
+                    End="-10.6666666666666,26.8571428571429" />
                   <mssgle:CubicBezierSegment
-                    Point1="199.2,18.0204778156997"
-                    Point2="203.2,18.0204778156997"
-                    Point3="203.2,22.0204778156997" />
+                    Point1="-10.6666666666666,26.8571428571429"
+                    Point2="-14.6666666666666,26.8571428571429"
+                    Point3="-14.6666666666666,30.8571428571429" />
                   <mssgle:LineSegment
-                    End="203.2,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="86.8333333333334,150.833333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
-              Start="0,0"
-              End="0,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5000000000001" />
+                    End="-14.6666666666666,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8052,7 +7996,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="597.833333333333,150.833333333333">
+          TopLeft="374.666666666667,150.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -8073,8 +8017,64 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="593.166666666667,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="637.166666666667,48.1666666666666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="188,60.0000000000001"
+              Start="0,0"
+              End="188,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.0722891566265" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.0722891566265"
+                    Point2="0,18.0722891566265"
+                    Point3="4,18.0722891566265" />
+                  <mssgle:LineSegment
+                    End="184,18.0722891566265" />
+                  <mssgle:CubicBezierSegment
+                    Point1="184,18.0722891566265"
+                    Point2="188,18.0722891566265"
+                    Point3="188,22.0722891566265" />
+                  <mssgle:LineSegment
+                    End="188,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="340.833333333333,150.833333333333">
+          TopLeft="828.666666666667,150.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -8096,7 +8096,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="847.833333333333,150.833333333333">
+          TopLeft="120.166666666667,150.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
