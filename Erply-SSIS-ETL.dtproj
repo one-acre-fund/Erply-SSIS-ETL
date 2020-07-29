@@ -26,11 +26,12 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">GACHAGUA-PC</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7t0Tx+lRSUGwXBLtFHvDIQAAAAACAAAAAAAQZgAAAAEAACAAAAASgRUGRTtrHQgle6TKpYwJjoO1+TWd4NruuBmb85A6jAAAAAAOgAAAAAIAACAAAABBywNIVCBNLfYV2CMZQWJLUAH/DaJjADG8hrPNNjxqLpAAAAAXymtVhYWZG2ZByNlOpjdFyvCCQVdf0h3vgnqtBOkVjs6TynepWOecsiKUVyjpdUmQgWxuGCglS9mHLwLKVOKxdx4pKcscJohifTjoUxxkIsXXUw9UE1GsHsK5dAxDU4t/Sp++KoK2hxFwMDziDn971YCjvNVLHFChU7Eyk/YCWOqisFtSzw2dHcX02k2nrZFAAAAAWXHj/3S6xEsUOWJU/lBp6lfvEo2ZuYBnMeY6AyMYIAtxcOL+o+OZxXXn4m65vHN//5MQEy1lR3n1N7R5aZPf7g==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7t0Tx+lRSUGwXBLtFHvDIQAAAAACAAAAAAAQZgAAAAEAACAAAAA7d4AYVq4iuwyki/4nnJtHF023r1bFddpTHJHb1YkM9wAAAAAOgAAAAAIAACAAAACMMbDZwxhdkss5Lu40jxvKRkT/asslBXbWtbn7Zm6FvZAAAACz0eKKYwwEkjm8PFnnNH+2oGZvoN0wodlYKCr7zl8LOAkLQcApZsygUmWn9pZ2WtpLX2QLWSf7mIpzE7h4A8rqIEtvSrcx+e4AlEXdOYAC2w32YYAA1R4Zwb/I6OPW8BzjfyKnCm+W8i54FuFd9+88gmPPxR5T/Cbd9KeUF9yxpVUXxuJW69hQZ9Aq4VpdvRZAAAAAQvU0n2N9Y7LiBJBxrnITbvB5WEIsu8HZJ7CuFUfXLdrcVfT4bXFZ4q3od0AgqY+jjV7oIGKYqLt/ZAevgiwgUA==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="00_01_inputs_extract.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="00_01_Extract-to-Staging.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="ERPLY_Staging.conmgr" />
@@ -404,10 +405,27 @@
                 <SSIS:Property SSIS:Name="Name">00_01_inputs_extract</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{6E621957-430E-4FB2-AD3E-EA5C4F8D391B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{1601629C-B675-49D2-A500-F4A4498CCA36}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="00_01_Extract-to-Staging.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{B70D4B42-C070-444D-A48A-FEDC34A862EF}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">00_01_Extract-to-Staging</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{35281F08-348E-4CE8-A77E-14C7D175D035}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
