@@ -8,7 +8,10 @@
       DTS:ConnectionString="Data Source=newndizi.oneacrefund.org,6543;User ID=BOSSIS0001;Initial Catalog=ERPLY_Staging;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
       <DTS:Password
         DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7t0Tx+lRSUGwXBLtFHvDIQAAAAACAAAAAAAQZgAAAAEAACAAAADX0TQHKE3XzwfNSgPYlCkMXkug4bc2Yi1fb+/mkzz6CgAAAAAOgAAAAAIAACAAAAANM0BbXJH1qQRxoWNco6lor1wrfSKUhC5IX8OHVrq0mYAAAAC9ONyXl/9CL3QuA6SFBG/LLSGk0CMMNyOtzq1MLIPYShKsuTpRfcwzbLSoBlHPe5gMVOdmlqTAOFFHHH++4FQ3l6ofvRl6B4otmuAc/JjTppecDK6/kwFKy16E+c9HmVxxGfZ17YnZtcqGo4H8t2bqfl1r7ysRvqU92IHrP/PwjkAAAAAnDKA0+UNGpeTNt/n0kj6d9QKvbmSCz63wZyuTQxIrg/RLe/yqSRSZQLBj/CEasfogCYO5VnGbueItd9eY/ARp</DTS:Password>
+        Sensitive="1"
+        p4:Salt="rk9xenSUIlI="
+        p4:IV="Wg448SGXHaaTsTk1pTK92A=="
+        p4:Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" xmlns:p4="www.microsoft.com/SqlServer/SSIS">7+YiIP4E4oLsfRG4MzERUrC9XgIMLFvv6CrvYe5sPBt6h/Q7LRN/isgupgNCxczj2Bi9rEu2hT1BddqwfPXsn3rUPgWT0Snbn3NYxb8C9ZbyD6Qyc6auoGtAiORyzkKysu+yqpjDTnhT7vtLHpofBjAye3ZSeHnaKoZ8jevHcDE=</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>

@@ -12,11 +12,11 @@
   <DataSourceViews />
   <DeploymentModelSpecificContent>
     <Manifest>
-      <SSIS:Project SSIS:ProtectionLevel="EncryptSensitiveWithUserKey" xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
+      <SSIS:Project SSIS:ProtectionLevel="EncryptSensitiveWithPassword" xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
         <SSIS:Properties>
           <SSIS:Property SSIS:Name="ID">{1ee5e990-1c26-48ac-9a60-2495bf10a9f7}</SSIS:Property>
           <SSIS:Property SSIS:Name="Name">Erply-SSIS-ETL</SSIS:Property>
-          <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionComments">
@@ -26,12 +26,12 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">GACHAGUA-PC</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7t0Tx+lRSUGwXBLtFHvDIQAAAAACAAAAAAAQZgAAAAEAACAAAAA7d4AYVq4iuwyki/4nnJtHF023r1bFddpTHJHb1YkM9wAAAAAOgAAAAAIAACAAAACMMbDZwxhdkss5Lu40jxvKRkT/asslBXbWtbn7Zm6FvZAAAACz0eKKYwwEkjm8PFnnNH+2oGZvoN0wodlYKCr7zl8LOAkLQcApZsygUmWn9pZ2WtpLX2QLWSf7mIpzE7h4A8rqIEtvSrcx+e4AlEXdOYAC2w32YYAA1R4Zwb/I6OPW8BzjfyKnCm+W8i54FuFd9+88gmPPxR5T/Cbd9KeUF9yxpVUXxuJW69hQZ9Aq4VpdvRZAAAAAQvU0n2N9Y7LiBJBxrnITbvB5WEIsu8HZJ7CuFUfXLdrcVfT4bXFZ4q3od0AgqY+jjV7oIGKYqLt/ZAevgiwgUA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1" SSIS:Salt="V1j0UYVhEBw=" SSIS:IV="8UKpcZcNHEr3z8uG5rEkUA==" SSIS:Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc">BvWriebaJoGet24+DQIbaose3RkjFgLwIFBXl2D0WRaIcqZmjFOenpSEuIX8JzYD0IrywAGr2xE4ZvltAG59X0nsi41hNsYWeGwCNYRiHki7Bhs9BQSPxrkJkxquUiBbMg/8C/4FItxqQ+FNgZgUcSWpnTNB4GkOyNRgJIFqs4gr5yKpb8CvzqcuLcYp7stu</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="00_01_inputs_extract.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="00_01_Extract-to-Staging.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="00_01_Employees_Dim.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="ERPLY_Staging.conmgr" />
@@ -399,37 +399,37 @@
             </SSIS:Parameter>
           </SSIS:ProjectConnectionParameters>
           <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="00_01_inputs_extract.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{DBAB88F3-A291-43E7-9F23-B868BC2445EB}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">00_01_inputs_extract</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{1601629C-B675-49D2-A500-F4A4498CCA36}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="00_01_Extract-to-Staging.dtsx">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">{B70D4B42-C070-444D-A48A-FEDC34A862EF}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">00_01_Extract-to-Staging</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">33</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{35281F08-348E-4CE8-A77E-14C7D175D035}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{4DC02BA6-ACEB-4083-957C-93D90BD8F45A}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">2</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="00_01_Employees_Dim.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{10E3D027-1E09-4ADD-8F01-12A6A38F0A22}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">00_01_Employees_Dim</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">10</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{03D60CF2-B26A-42B2-A8CF-18B7EF66B461}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">2</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>

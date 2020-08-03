@@ -8,7 +8,10 @@
       DTS:ConnectionString="Data Source=oaffinance.database.windows.net;User ID=erplyadminwriteaccess;Initial Catalog=ErplyStage;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
       <DTS:Password
         DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7t0Tx+lRSUGwXBLtFHvDIQAAAAACAAAAAAAQZgAAAAEAACAAAACr0DHh8c1piQ2/X16onh+y2dffAK43UGz9MNpvIYMDJQAAAAAOgAAAAAIAACAAAABpFU8lJN5ziTjS9PfPPvcliMTkGQ/yD3XMJR5mInUZsoAAAAD22KsbnhKqlxanHfQcqeXpq6LnnCy5XsdmKzsI6DY0/gGpGV6w3fs4IZ8zXGi6MpdRQ4h9Q32PYh0718MinhJReWbPj4hSQp4qAY7TBAehsN8N7Jm8LMFPDZ6GR2fSNuvqA7UeJSG2JiTIV7fJllby81pvSL8M9aWjOLUY/K7OOUAAAADD3YFRJ6Lri+gOBUe5/HGJYUzw3yFC870zvgxl4rc1iuMAZy3EaGCOJbc3Kj7dfhLd8a3YR0aLPjZaXsYiHCFA</DTS:Password>
+        Sensitive="1"
+        p4:Salt="c7/nO658pfg="
+        p4:IV="e+WWrGQtgD+mpT7CnPwarw=="
+        p4:Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" xmlns:p4="www.microsoft.com/SqlServer/SSIS">lyDliHzSCwdg7qajw7gV5BappM0gE5oO/Out6k7Ig4SNnadP7DifrnKL4Q10f4GBld74Frh1vAVdbRaA6Mjb4mF5WlaX7ZCPuurMXcq4fNK7h5i5FEHMJmeK8nXrMkXk5vmvRRWyd1M8Jfs2VuEOdwNQWuZfcXS/HzOCOhpfVJQ=</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>
