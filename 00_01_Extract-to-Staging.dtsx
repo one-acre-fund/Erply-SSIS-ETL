@@ -12,8 +12,8 @@
   DTS:ObjectName="00_01_Extract-to-Staging"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{10786048-F69F-49C3-BAFE-DD1D26667479}">
+  DTS:VersionBuild="37"
+  DTS:VersionGUID="{CA20F56C-6F5E-4464-9049-D10E02026506}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -5502,6 +5502,10 @@ FROM Employees</property>
                       name="VATRate"
                       precision="18"
                       scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load Products\Staging_Products.Inputs[OLE DB Destination Input].ExternalColumns[LastModified]"
+                      dataType="nText"
+                      name="LastModified" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -15656,7 +15660,7 @@ FROM Suppliers</property>
     design-time-name="Package\Load Products">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="161.333333333334,42.6666666666667"
           Id="Package\Load Products\Staging_Products"
@@ -15684,9 +15688,7 @@ FROM Suppliers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

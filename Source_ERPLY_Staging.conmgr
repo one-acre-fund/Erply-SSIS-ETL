@@ -1,0 +1,17 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Source_ERPLY_Staging"
+  DTS:DTSID="{43E20154-6A81-4C05-8137-E740CAA6A214}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=oaffinance.database.windows.net;User ID=erplyadminwriteaccess;Initial Catalog=ErplyStageKenyaTest;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1"
+        p4:Salt="gvYErzgkr2k="
+        p4:IV="hSTqr9IDbHXVMO8dXg6IbA=="
+        p4:Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" xmlns:p4="www.microsoft.com/SqlServer/SSIS">6YAF7RslIExhn8gETx1hdWPOZdl+rHkUbTnBBHI48VbJ5MsKFO69d+WCK4Yy3fMPXlBDm6+EKjfKavmjXMqE/iPJsyt4nDk39Jwr1iMyr+IsNx5DrY16zkdm6BkKt69s3SQKJ0+mSl4to0do92K+EeZMjEHqF2QUeq0h3d+gtvs=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

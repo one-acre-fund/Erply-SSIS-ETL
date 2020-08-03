@@ -1,0 +1,1700 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/27/2020 2:06:12 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="GACHAGUA-PC"
+  DTS:CreatorName="GACHAGUA-PC\watchman"
+  DTS:DTSID="{536164DA-A453-4F47-8800-7ABA7894E279}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.71"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="00_03_Clients_Dim"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{8A2777BB-E98D-4FEB-80B5-EF91CF525465}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Get Clients"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1EF24502-EE27-4057-9418-277FC4F27FE2}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Get Clients"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Get Clients\Add Active From and Active Flag"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add Active From and Active Flag"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT - Get Clients\Add Active From and Active Flag.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Add Active From and Active Flag.Inputs[Derived Column Input].Columns[LastModified]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastModified"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[LastModified]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Get Clients\Add Active From and Active Flag.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT - Get Clients\Add Active From and Active Flag.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Add Active From and Active Flag.Outputs[Derived Column Output].Columns[ActiveFrom]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DFT - Get Clients\Add Active From and Active Flag.Outputs[Derived Column Output].Columns[ActiveFrom]"
+                      name="ActiveFrom"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[LastModified]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LastModified</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Add Active From and Active Flag.Outputs[Derived Column Output].Columns[IsActive]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT - Get Clients\Add Active From and Active Flag.Outputs[Derived Column Output].Columns[IsActive]"
+                      name="IsActive"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Get Clients\Add Active From and Active Flag.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT - Get Clients\Add Active From and Active Flag.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Add Active From and Active Flag.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Clients\Add Active From and Active Flag.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Add Active From and Active Flag.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Clients\Add Active From and Active Flag.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Get Clients\Add Status and Active From"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add Status and Active From"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT - Get Clients\Add Status and Active From.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Add Status and Active From.Inputs[Derived Column Input].Columns[LastModified]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastModified"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[LastModified]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Get Clients\Add Status and Active From.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT - Get Clients\Add Status and Active From.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Add Status and Active From.Outputs[Derived Column Output].Columns[ActiveFrom]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DFT - Get Clients\Add Status and Active From.Outputs[Derived Column Output].Columns[ActiveFrom]"
+                      name="ActiveFrom"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[LastModified]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LastModified</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Add Status and Active From.Outputs[Derived Column Output].Columns[IsActive]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT - Get Clients\Add Status and Active From.Outputs[Derived Column Output].Columns[IsActive]"
+                      name="IsActive"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Get Clients\Add Status and Active From.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT - Get Clients\Add Status and Active From.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Add Status and Active From.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Clients\Add Status and Active From.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Add Status and Active From.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Clients\Add Status and Active From.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Get Clients\Change - Update Active To Date"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Change - Update Active To Date"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Update erp.Clients_Dim
+
+set
+
+ActiveTo = ?,
+IsActive = 0
+
+where ClientErplyID = ? and IsActive = 1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Get Clients\Change - Update Active To Date.Connections[OleDbConnection]"
+                  connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Get Clients\Change - Update Active To Date.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Change - Update Active To Date.Inputs[OLE DB Command Input].Columns[LastModified]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastModified"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Change - Update Active To Date.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[LastModified]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Change - Update Active To Date.Inputs[OLE DB Command Input].Columns[ClientErplyID]"
+                      cachedDataType="i4"
+                      cachedName="ClientErplyID"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Change - Update Active To Date.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientErplyID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Change - Update Active To Date.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="dbTimeStamp"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Change - Update Active To Date.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Get Clients\Change - Update Active To Date.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\DFT - Get Clients\Change - Update Active To Date.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Get Clients\Change - Update Active To Date.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\DFT - Get Clients\Change - Update Active To Date.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Change - Update Active To Date.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Clients\Change - Update Active To Date.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Change - Update Active To Date.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Clients\Change - Update Active To Date.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Get Clients\Check Modified Date"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Check Modified Date"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select ClientErplyID, LastModified from erp.Clients_Dim</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (Select ClientErplyID, LastModified from erp.Clients_Dim) [refTable]
+where [refTable].[ClientErplyID] = ? and [refTable].[LastModified] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ClientErplyID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastModified" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientErplyID]};#{Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[LastModified]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Get Clients\Check Modified Date.Connections[OleDbConnection]"
+                  connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Get Clients\Check Modified Date.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Check Modified Date.Inputs[Lookup Input].Columns[ClientErplyID]"
+                      cachedDataType="i4"
+                      cachedName="ClientErplyID"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientErplyID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ClientErplyID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Check Modified Date.Inputs[Lookup Input].Columns[LastModified]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastModified"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[LastModified]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">LastModified</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Get Clients\Check Modified Date.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT - Get Clients\Check Modified Date.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Get Clients\Check Modified Date.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT - Get Clients\Check Modified Date.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Get Clients\Check Modified Date.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT - Get Clients\Check Modified Date.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Check Modified Date.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Clients\Check Modified Date.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Check Modified Date.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Clients\Check Modified Date.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Get Clients\Clients Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Clients Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+CustomerID as ClientErplyID,
+FullName as ClientName,
+Phone as ClientPhone,
+Gender as ClientGender,
+Null as RewardPoints,
+CONVERT(DATETime, CONVERT(DATETIMEOFFSET, LastModified)) LastModified
+
+
+from Customers</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Get Clients\Clients Source.Connections[OleDbConnection]"
+                  connectionManagerID="{49C2AD63-BE05-4956-A5FC-A83F0639A17E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Source_ERPLY]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientErplyID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].ExternalColumns[ClientErplyID]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientErplyID]"
+                      name="ClientErplyID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].ExternalColumns[ClientName]"
+                      length="100"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientName]"
+                      name="ClientName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientPhone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].ExternalColumns[ClientPhone]"
+                      length="50"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientPhone]"
+                      name="ClientPhone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientGender]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].ExternalColumns[ClientGender]"
+                      length="10"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientGender]"
+                      name="ClientGender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[RewardPoints]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].ExternalColumns[RewardPoints]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[RewardPoints]"
+                      name="RewardPoints"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[LastModified]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].ExternalColumns[LastModified]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[LastModified]"
+                      name="LastModified"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].ExternalColumns[ClientErplyID]"
+                      dataType="i4"
+                      name="ClientErplyID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].ExternalColumns[ClientName]"
+                      dataType="wstr"
+                      length="100"
+                      name="ClientName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].ExternalColumns[ClientPhone]"
+                      dataType="wstr"
+                      length="50"
+                      name="ClientPhone" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].ExternalColumns[ClientGender]"
+                      dataType="wstr"
+                      length="10"
+                      name="ClientGender" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].ExternalColumns[RewardPoints]"
+                      dataType="i4"
+                      name="RewardPoints" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].ExternalColumns[LastModified]"
+                      dataType="dbTimeStamp"
+                      name="LastModified" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[ClientErplyID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[ClientErplyID]"
+                      name="ClientErplyID" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[ClientName]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[ClientName]"
+                      name="ClientName" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[ClientPhone]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[ClientPhone]"
+                      name="ClientPhone" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[ClientGender]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[ClientGender]"
+                      name="ClientGender" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[RewardPoints]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[RewardPoints]"
+                      name="RewardPoints" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[LastModified]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[LastModified]"
+                      name="LastModified" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Get Clients\Does Client Exist?"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Does Client Exist?"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select ClientErplyID from erp.Clients_Dim</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select ClientErplyID from erp.Clients_Dim) [refTable]
+where [refTable].[ClientErplyID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ClientErplyID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientErplyID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Get Clients\Does Client Exist?.Connections[OleDbConnection]"
+                  connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Get Clients\Does Client Exist?.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Does Client Exist?.Inputs[Lookup Input].Columns[ClientErplyID]"
+                      cachedDataType="i4"
+                      cachedName="ClientErplyID"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientErplyID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ClientErplyID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Get Clients\Does Client Exist?.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT - Get Clients\Does Client Exist?.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Get Clients\Does Client Exist?.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT - Get Clients\Does Client Exist?.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Get Clients\Does Client Exist?.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT - Get Clients\Does Client Exist?.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Does Client Exist?.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Clients\Does Client Exist?.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Does Client Exist?.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Clients\Does Client Exist?.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Get Clients\Insert Current Client"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Current Client"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[erp].[Clients_Dim]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Get Clients\Insert Current Client.Connections[OleDbConnection]"
+                  connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].Columns[LastModified]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastModified"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[LastModified]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[LastModified]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].Columns[ActiveFrom]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="ActiveFrom"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[ActiveFrom]"
+                      lineageId="Package\DFT - Get Clients\Add Active From and Active Flag.Outputs[Derived Column Output].Columns[ActiveFrom]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].Columns[IsActive]"
+                      cachedDataType="i4"
+                      cachedName="IsActive"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                      lineageId="Package\DFT - Get Clients\Add Active From and Active Flag.Outputs[Derived Column Output].Columns[IsActive]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].Columns[ClientErplyID]"
+                      cachedDataType="i4"
+                      cachedName="ClientErplyID"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientErplyID]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientErplyID]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].Columns[ClientName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="ClientName"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientName]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientName]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].Columns[ClientPhone]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ClientPhone"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientPhone]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientPhone]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].Columns[ClientGender]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="ClientGender"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientGender]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientGender]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].Columns[RewardPoints]"
+                      cachedDataType="i4"
+                      cachedName="RewardPoints"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[RewardPoints]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[RewardPoints]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[ActiveFrom]"
+                      dataType="dbTimeStamp"
+                      name="ActiveFrom" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[ActiveTo]"
+                      dataType="dbTimeStamp"
+                      name="ActiveTo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                      dataType="bool"
+                      name="IsActive" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[LastModified]"
+                      dataType="dbTimeStamp"
+                      name="LastModified" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientErplyID]"
+                      dataType="i4"
+                      name="ClientErplyID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientName]"
+                      dataType="wstr"
+                      length="50"
+                      name="ClientName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientPhone]"
+                      dataType="wstr"
+                      length="50"
+                      name="ClientPhone" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientGender]"
+                      dataType="wstr"
+                      length="50"
+                      name="ClientGender" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[RewardPoints]"
+                      dataType="i4"
+                      name="RewardPoints" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientID]"
+                      dataType="i4"
+                      name="ClientID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Get Clients\Insert Current Client.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Clients\Insert Current Client.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Clients\Insert Current Client.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Get Clients\Insert new Client"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert new Client"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[erp].[Clients_Dim]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Get Clients\Insert new Client.Connections[OleDbConnection]"
+                  connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].Columns[ClientErplyID]"
+                      cachedDataType="i4"
+                      cachedName="ClientErplyID"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientErplyID]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientErplyID]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].Columns[ClientName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="ClientName"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientName]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientName]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].Columns[ClientPhone]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ClientPhone"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientPhone]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientPhone]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].Columns[ClientGender]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="ClientGender"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientGender]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[ClientGender]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].Columns[RewardPoints]"
+                      cachedDataType="i4"
+                      cachedName="RewardPoints"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[RewardPoints]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[RewardPoints]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].Columns[LastModified]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastModified"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[LastModified]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[LastModified]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].Columns[ActiveFrom]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="ActiveFrom"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[ActiveFrom]"
+                      lineageId="Package\DFT - Get Clients\Add Status and Active From.Outputs[Derived Column Output].Columns[ActiveFrom]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].Columns[IsActive]"
+                      cachedDataType="i4"
+                      cachedName="IsActive"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                      lineageId="Package\DFT - Get Clients\Add Status and Active From.Outputs[Derived Column Output].Columns[IsActive]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientErplyID]"
+                      dataType="i4"
+                      name="ClientErplyID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientName]"
+                      dataType="wstr"
+                      length="50"
+                      name="ClientName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientPhone]"
+                      dataType="wstr"
+                      length="50"
+                      name="ClientPhone" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientGender]"
+                      dataType="wstr"
+                      length="50"
+                      name="ClientGender" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[RewardPoints]"
+                      dataType="i4"
+                      name="RewardPoints" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[ActiveFrom]"
+                      dataType="dbTimeStamp"
+                      name="ActiveFrom" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[ActiveTo]"
+                      dataType="dbTimeStamp"
+                      name="ActiveTo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                      dataType="bool"
+                      name="IsActive" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientID]"
+                      dataType="i4"
+                      name="ClientID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[LastModified]"
+                      dataType="dbTimeStamp"
+                      name="LastModified" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Get Clients\Insert new Client.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Clients\Insert new Client.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Clients\Insert new Client.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Get Clients.Paths[Derived Column Output]"
+              endId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DFT - Get Clients\Add Status and Active From.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT - Get Clients.Paths[Derived Column Output1]"
+              endId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DFT - Get Clients\Add Active From and Active Flag.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT - Get Clients.Paths[Lookup Match Output]"
+              endId="Package\DFT - Get Clients\Check Modified Date.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT - Get Clients\Does Client Exist?.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT - Get Clients.Paths[Lookup No Match Output]"
+              endId="Package\DFT - Get Clients\Add Status and Active From.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\DFT - Get Clients\Does Client Exist?.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DFT - Get Clients.Paths[Lookup No Match Output1]"
+              endId="Package\DFT - Get Clients\Change - Update Active To Date.Inputs[OLE DB Command Input]"
+              name="Lookup No Match Output"
+              startId="Package\DFT - Get Clients\Check Modified Date.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DFT - Get Clients.Paths[OLE DB Command Output]"
+              endId="Package\DFT - Get Clients\Add Active From and Active Flag.Inputs[Derived Column Input]"
+              name="OLE DB Command Output"
+              startId="Package\DFT - Get Clients\Change - Update Active To Date.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\DFT - Get Clients.Paths[OLE DB Source Output]"
+              endId="Package\DFT - Get Clients\Does Client Exist?.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{67061566-73D0-4C7E-B4CF-B743D923F2FA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{49C2AD63-BE05-4956-A5FC-A83F0639A17E}"
+          SQLTask:SqlStatementSource="select Max(LastModified) from erp.Employees_Dim" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{591660B1-B479-4509-BA70-7EAB01BFB23C}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT - Get Clients" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,42.6666666666667"
+          Id="Package\DFT - Get Clients"
+          TopLeft="338.749994952231,239.633329048356" />
+        <NodeLayout
+          Size="164,42.6666666666667"
+          Id="Package\Execute SQL Task"
+          TopLeft="367.916661184281,76.2666653029124" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="449.916661184281,118.933331969579">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-31.16666623205,120.699997078777"
+              Start="0,0"
+              End="-31.16666623205,113.199997078777">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.3499985393885" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,56.3499985393885"
+                    Point2="0,60.3499985393885"
+                    Point3="-4,60.3499985393885" />
+                  <mssgle:LineSegment
+                    End="-27.16666623205,60.3499985393885" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-27.16666623205,60.3499985393885"
+                    Point2="-31.16666623205,60.3499985393885"
+                    Point3="-31.16666623205,64.3499985393885" />
+                  <mssgle:LineSegment
+                    End="-31.16666623205,113.199997078777" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT - Get Clients">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="210.666666666667,42.6666666666667"
+          Id="Package\DFT - Get Clients\Add Status and Active From"
+          TopLeft="5.49999999999999,210.833333333333" />
+        <NodeLayout
+          Size="232,42.6666666666667"
+          Id="Package\DFT - Get Clients\Change - Update Active To Date"
+          TopLeft="248.833333333333,313.5" />
+        <NodeLayout
+          Size="232,42.6666666666667"
+          Id="Package\DFT - Get Clients\Add Active From and Active Flag"
+          TopLeft="248.833333333333,416.166666666667" />
+        <EdgeLayout
+          Id="Package\DFT - Get Clients.Paths[OLE DB Command Output]"
+          TopLeft="364.833333333333,356.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="146.666666666667,42.6666666666667"
+          Id="Package\DFT - Get Clients\Clients Source"
+          TopLeft="291.5,5.49999999999993" />
+        <NodeLayout
+          Size="162.666666666667,42.6666666666667"
+          Id="Package\DFT - Get Clients\Does Client Exist?"
+          TopLeft="283.5,108.166666666667" />
+        <EdgeLayout
+          Id="Package\DFT - Get Clients.Paths[OLE DB Source Output]"
+          TopLeft="364.833333333333,48.1666666666666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - Get Clients.Paths[Lookup No Match Output]"
+          TopLeft="339.055555555556,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-228.222222222222,60.0000000000001"
+              Start="0,0"
+              End="-228.222222222222,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3506493506494" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3506493506494"
+                    Point2="0,24.3506493506494"
+                    Point3="-4,24.3506493506494" />
+                  <mssgle:LineSegment
+                    End="-224.222222222222,24.3506493506494" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-224.222222222222,24.3506493506494"
+                    Point2="-228.222222222222,24.3506493506494"
+                    Point3="-228.222222222222,28.3506493506494" />
+                  <mssgle:LineSegment
+                    End="-228.222222222222,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-169.917497829861,29.3506493506494,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="160,42.6666666666667"
+          Id="Package\DFT - Get Clients\Insert new Client"
+          TopLeft="27.8333333333333,313.5" />
+        <EdgeLayout
+          Id="Package\DFT - Get Clients.Paths[Derived Column Output]"
+          TopLeft="109.333333333333,253.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="176,42.6666666666667"
+          Id="Package\DFT - Get Clients\Check Modified Date"
+          TopLeft="276.833333333333,210.833333333333" />
+        <EdgeLayout
+          Id="Package\DFT - Get Clients.Paths[Lookup Match Output]"
+          TopLeft="390.611111111111,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-25.7777777777778,60.0000000000001"
+              Start="0,0"
+              End="-25.7777777777778,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3506493506494" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3506493506494"
+                    Point2="0,24.3506493506494"
+                    Point3="-4,24.3506493506494" />
+                  <mssgle:LineSegment
+                    End="-21.7777777777778,24.3506493506494" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-21.7777777777778,24.3506493506494"
+                    Point2="-25.7777777777778,24.3506493506494"
+                    Point3="-25.7777777777778,28.3506493506494" />
+                  <mssgle:LineSegment
+                    End="-25.7777777777778,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-61.0802756076389,29.3506493506494,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - Get Clients.Paths[Lookup No Match Output1]"
+          TopLeft="364.833333333333,253.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,20.4453125000001,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="176,42.6666666666667"
+          Id="Package\DFT - Get Clients\Insert Current Client"
+          TopLeft="276.833333333333,518.833333333333" />
+        <EdgeLayout
+          Id="Package\DFT - Get Clients.Paths[Derived Column Output1]"
+          TopLeft="364.833333333333,458.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Get Clients\Clients Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Get Clients\Does Client Exist?">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Get Clients\Insert new Client">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Get Clients\Check Modified Date">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Get Clients\Insert Current Client">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
