@@ -12,20 +12,20 @@
   DTS:ObjectName="00_04_Warehouses_Dim"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{0AF74E68-F927-4513-827C-DF1A1C75AE2E}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{CEE25766-9AB2-47BF-8CDC-8C374E13C7E8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\DFT - Get Employees"
+      DTS:refId="Package\DFT - Get Warehouses"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{28B7E2C8-9CD0-4D77-ACC7-2A1596D64069}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="DFT - Get Employees"
+      DTS:ObjectName="DFT - Get Warehouses"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -33,110 +33,7 @@
           version="1">
           <components>
             <component
-              refId="Package\DFT - Get Employees\Add Active From and Active Flag"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Add Active From and Active Flag"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\DFT - Get Employees\Add Active From and Active Flag.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT - Get Employees\Add Active From and Active Flag.Inputs[Derived Column Input].Columns[LastModified]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="LastModified"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[LastModified]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT - Get Employees\Add Active From and Active Flag.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\DFT - Get Employees\Add Active From and Active Flag.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT - Get Employees\Add Active From and Active Flag.Outputs[Derived Column Output].Columns[ActiveFrom]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="100"
-                      lineageId="Package\DFT - Get Employees\Add Active From and Active Flag.Outputs[Derived Column Output].Columns[ActiveFrom]"
-                      name="ActiveFrom"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">#{Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[LastModified]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LastModified</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DFT - Get Employees\Add Active From and Active Flag.Outputs[Derived Column Output].Columns[IsActive]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT - Get Employees\Add Active From and Active Flag.Outputs[Derived Column Output].Columns[IsActive]"
-                      name="IsActive"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">1</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">1</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT - Get Employees\Add Active From and Active Flag.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\DFT - Get Employees\Add Active From and Active Flag.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT - Get Employees\Add Active From and Active Flag.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT - Get Employees\Add Active From and Active Flag.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT - Get Employees\Add Active From and Active Flag.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT - Get Employees\Add Active From and Active Flag.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT - Get Employees\Add Status and Active From"
+              refId="Package\DFT - Get Warehouses\Add Status and Active From"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
@@ -144,56 +41,26 @@
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\DFT - Get Employees\Add Status and Active From.Inputs[Derived Column Input]"
+                  refId="Package\DFT - Get Warehouses\Add Status and Active From.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT - Get Employees\Add Status and Active From.Inputs[Derived Column Input].Columns[LastModified]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="LastModified"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[LastModified]" />
-                  </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT - Get Employees\Add Status and Active From.Outputs[Derived Column Output]"
+                  refId="Package\DFT - Get Warehouses\Add Status and Active From.Outputs[Derived Column Output]"
                   description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   name="Derived Column Output"
-                  synchronousInputId="Package\DFT - Get Employees\Add Status and Active From.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\DFT - Get Warehouses\Add Status and Active From.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - Get Employees\Add Status and Active From.Outputs[Derived Column Output].Columns[ActiveFrom]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="100"
-                      lineageId="Package\DFT - Get Employees\Add Status and Active From.Outputs[Derived Column Output].Columns[ActiveFrom]"
-                      name="ActiveFrom"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">#{Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[LastModified]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LastModified</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DFT - Get Employees\Add Status and Active From.Outputs[Derived Column Output].Columns[IsActive]"
+                      refId="Package\DFT - Get Warehouses\Add Status and Active From.Outputs[Derived Column Output].Columns[IsActive]"
                       dataType="i4"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT - Get Employees\Add Status and Active From.Outputs[Derived Column Output].Columns[IsActive]"
+                      lineageId="Package\DFT - Get Warehouses\Add Status and Active From.Outputs[Derived Column Output].Columns[IsActive]"
                       name="IsActive"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -214,23 +81,23 @@
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT - Get Employees\Add Status and Active From.Outputs[Derived Column Error Output]"
+                  refId="Package\DFT - Get Warehouses\Add Status and Active From.Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\DFT - Get Employees\Add Status and Active From.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\DFT - Get Warehouses\Add Status and Active From.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - Get Employees\Add Status and Active From.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT - Get Warehouses\Add Status and Active From.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT - Get Employees\Add Status and Active From.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT - Get Warehouses\Add Status and Active From.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT - Get Employees\Add Status and Active From.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT - Get Warehouses\Add Status and Active From.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT - Get Employees\Add Status and Active From.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT - Get Warehouses\Add Status and Active From.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -239,130 +106,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\DFT - Get Employees\Change - Update Active To Date"
-              componentClassID="Microsoft.OLEDBCommand"
-              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
-              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
-              name="Change - Update Active To Date"
-              usesDispositions="true"
-              version="2">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Update erp.Employees_Dim
-
-set
-
-ActiveTo = ?,
-IsActive = 0
-
-where EmployeeErplyID = ? and IsActive = 1</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT - Get Employees\Change - Update Active To Date.Connections[OleDbConnection]"
-                  connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\DFT - Get Employees\Change - Update Active To Date.Inputs[OLE DB Command Input]"
-                  errorOrTruncationOperation="Command Execution"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Command Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT - Get Employees\Change - Update Active To Date.Inputs[OLE DB Command Input].Columns[LastModified]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="LastModified"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Change - Update Active To Date.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[LastModified]" />
-                    <inputColumn
-                      refId="Package\DFT - Get Employees\Change - Update Active To Date.Inputs[OLE DB Command Input].Columns[EmployeeErplyID]"
-                      cachedDataType="i4"
-                      cachedName="EmployeeErplyID"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Change - Update Active To Date.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Change - Update Active To Date.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      dataType="dbTimeStamp"
-                      name="Param_0">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Change - Update Active To Date.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      dataType="i4"
-                      name="Param_1">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
-                      </properties>
-                    </externalMetadataColumn>
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT - Get Employees\Change - Update Active To Date.Outputs[OLE DB Command Output]"
-                  exclusionGroup="1"
-                  name="OLE DB Command Output"
-                  synchronousInputId="Package\DFT - Get Employees\Change - Update Active To Date.Inputs[OLE DB Command Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT - Get Employees\Change - Update Active To Date.Outputs[OLE DB Command Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Command Error Output"
-                  synchronousInputId="Package\DFT - Get Employees\Change - Update Active To Date.Inputs[OLE DB Command Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT - Get Employees\Change - Update Active To Date.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT - Get Employees\Change - Update Active To Date.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT - Get Employees\Change - Update Active To Date.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT - Get Employees\Change - Update Active To Date.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT - Get Employees\Check Modified Date"
+              refId="Package\DFT - Get Warehouses\Does the Warehouse Exist?"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Check Modified Date"
+              name="Does the Warehouse Exist?"
               usesDispositions="true"
               version="6">
               <properties>
@@ -371,14 +119,14 @@ where EmployeeErplyID = ? and IsActive = 1</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select EmployeeErplyID, Lastmodified from erp.Employees_Dim</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select WarehouseErplyID from erp.Warehouses_Dim</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select EmployeeErplyID, Lastmodified from erp.Employees_Dim) [refTable]
-where [refTable].[EmployeeErplyID] = ? and [refTable].[Lastmodified] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select WarehouseErplyID from erp.Warehouses_Dim) [refTable]
+where [refTable].[WarehouseErplyID] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -409,12 +157,12 @@ where [refTable].[EmployeeErplyID] = ? and [refTable].[Lastmodified] = ?</proper
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="EmployeeErplyID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Lastmodified" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="WarehouseErplyID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]};#{Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[LastModified]};</property>
+                  name="ParameterMap">#{Package\DFT - Get Warehouses\280:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -426,7 +174,7 @@ where [refTable].[EmployeeErplyID] = ? and [refTable].[Lastmodified] = ?</proper
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT - Get Employees\Check Modified Date.Connections[OleDbConnection]"
+                  refId="Package\DFT - Get Warehouses\Does the Warehouse Exist?.Connections[OleDbConnection]"
                   connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
                   description="Connection manager used to access lookup data."
@@ -434,35 +182,19 @@ where [refTable].[EmployeeErplyID] = ? and [refTable].[Lastmodified] = ?</proper
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT - Get Employees\Check Modified Date.Inputs[Lookup Input]"
+                  refId="Package\DFT - Get Warehouses\Does the Warehouse Exist?.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT - Get Employees\Check Modified Date.Inputs[Lookup Input].Columns[LastModified]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="LastModified"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[LastModified]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">Lastmodified</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT - Get Employees\Check Modified Date.Inputs[Lookup Input].Columns[EmployeeErplyID]"
+                      refId="Package\DFT - Get Warehouses\Does the Warehouse Exist?.Inputs[Lookup Input].Columns[WarehouseErplyID]"
                       cachedDataType="i4"
-                      cachedName="EmployeeErplyID"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]">
+                      cachedName="WarehouseErplyID"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[WarehouseErplyID]">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">EmployeeErplyID</property>
+                          name="JoinToReferenceColumn">WarehouseErplyID</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -475,38 +207,38 @@ where [refTable].[EmployeeErplyID] = ? and [refTable].[Lastmodified] = ?</proper
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT - Get Employees\Check Modified Date.Outputs[Lookup Match Output]"
+                  refId="Package\DFT - Get Warehouses\Does the Warehouse Exist?.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\DFT - Get Employees\Check Modified Date.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DFT - Get Warehouses\Does the Warehouse Exist?.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT - Get Employees\Check Modified Date.Outputs[Lookup No Match Output]"
+                  refId="Package\DFT - Get Warehouses\Does the Warehouse Exist?.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\DFT - Get Employees\Check Modified Date.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DFT - Get Warehouses\Does the Warehouse Exist?.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT - Get Employees\Check Modified Date.Outputs[Lookup Error Output]"
+                  refId="Package\DFT - Get Warehouses\Does the Warehouse Exist?.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\DFT - Get Employees\Check Modified Date.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DFT - Get Warehouses\Does the Warehouse Exist?.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - Get Employees\Check Modified Date.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT - Get Warehouses\Does the Warehouse Exist?.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT - Get Employees\Check Modified Date.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT - Get Warehouses\Does the Warehouse Exist?.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT - Get Employees\Check Modified Date.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT - Get Warehouses\Does the Warehouse Exist?.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT - Get Employees\Check Modified Date.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT - Get Warehouses\Does the Warehouse Exist?.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -515,152 +247,11 @@ where [refTable].[EmployeeErplyID] = ? and [refTable].[Lastmodified] = ?</proper
               </outputs>
             </component>
             <component
-              refId="Package\DFT - Get Employees\Does the input exist"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
-              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Does the input exist"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the SQL statement that generates the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select EmployeeErplyID from erp.Employees_Dim</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select EmployeeErplyID from erp.Employees_Dim) [refTable]
-where [refTable].[EmployeeErplyID] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the type of connection used to access the reference dataset."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the cache type of the lookup table."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">1</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="EmployeeErplyID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT - Get Employees\Does the input exist.Connections[OleDbConnection]"
-                  connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
-                  description="Connection manager used to access lookup data."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\DFT - Get Employees\Does the input exist.Inputs[Lookup Input]"
-                  name="Lookup Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT - Get Employees\Does the input exist.Inputs[Lookup Input].Columns[EmployeeErplyID]"
-                      cachedDataType="i4"
-                      cachedName="EmployeeErplyID"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">EmployeeErplyID</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT - Get Employees\Does the input exist.Outputs[Lookup Match Output]"
-                  errorOrTruncationOperation="Lookup"
-                  exclusionGroup="1"
-                  name="Lookup Match Output"
-                  synchronousInputId="Package\DFT - Get Employees\Does the input exist.Inputs[Lookup Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT - Get Employees\Does the input exist.Outputs[Lookup No Match Output]"
-                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
-                  exclusionGroup="1"
-                  name="Lookup No Match Output"
-                  synchronousInputId="Package\DFT - Get Employees\Does the input exist.Inputs[Lookup Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT - Get Employees\Does the input exist.Outputs[Lookup Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Lookup Error Output"
-                  synchronousInputId="Package\DFT - Get Employees\Does the input exist.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT - Get Employees\Does the input exist.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT - Get Employees\Does the input exist.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT - Get Employees\Does the input exist.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT - Get Employees\Does the input exist.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT - Get Employees\Employees source"
+              refId="Package\DFT - Get Warehouses\Warehouses Source"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
-              name="Employees source"
+              name="Warehouses Source"
               usesDispositions="true"
               version="7">
               <properties>
@@ -681,15 +272,16 @@ where [refTable].[EmployeeErplyID] = ?</property>
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
-EmployeeID AS EmployeeErplyID,
-EmployeeName,
-Phone as EmployeePhone,
-Gender as EmployeeGender,
-PointsOfSale as EmployeeLocation,
-convert (nvarchar(50), dateadd(S, cast(replace(nullif(LastModified,''), ' ', '') as bigint), '1970-01-01'), 120) LastModified
-
-
-from Employees</property>
+cast(wh.WarehouseId AS int) as WarehouseErplyID,
+wh.WarehouseName,
+wh.WarehouseSapCode as WarehouseCode,
+wh.IsOffline,
+cast(pos.GeoLatitude as decimal(19,6)) Latitude,
+cast(pos.GeoLongitude as decimal(19,6)) Longitude,
+NULL AS RegionName,
+cast('Warehouses'  as nvarchar) AS ErplySource
+FROM Warehouses wh JOIN dbo.PointsOfSale pos
+ON wh.WarehouseId	= pos.WarehouseID</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -714,7 +306,7 @@ from Employees</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT - Get Employees\Employees source.Connections[OleDbConnection]"
+                  refId="Package\DFT - Get Warehouses\Warehouses Source.Connections[OleDbConnection]"
                   connectionManagerID="{49C2AD63-BE05-4956-A5FC-A83F0639A17E}:external"
                   connectionManagerRefId="Project.ConnectionManagers[Source_ERPLY]"
                   description="The OLE DB runtime connection used to access the database."
@@ -722,148 +314,194 @@ from Employees</property>
               </connections>
               <outputs>
                 <output
-                  refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output]"
+                  refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]"
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[WarehouseErplyID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].ExternalColumns[EmployeeErplyID]"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]"
-                      name="EmployeeErplyID"
+                      externalMetadataColumnId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].ExternalColumns[WarehouseErplyID]"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[WarehouseErplyID]"
+                      name="WarehouseErplyID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeName]"
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[WarehouseName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].ExternalColumns[EmployeeName]"
-                      length="50"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeName]"
-                      name="EmployeeName"
+                      externalMetadataColumnId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].ExternalColumns[WarehouseName]"
+                      length="100"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[WarehouseName]"
+                      name="WarehouseName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeePhone]"
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[WarehouseCode]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].ExternalColumns[EmployeePhone]"
-                      length="50"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeePhone]"
-                      name="EmployeePhone"
+                      externalMetadataColumnId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].ExternalColumns[WarehouseCode]"
+                      length="100"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[WarehouseCode]"
+                      name="WarehouseCode"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeGender]"
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[IsOffline]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].ExternalColumns[IsOffline]"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[IsOffline]"
+                      name="IsOffline"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[Latitude]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].ExternalColumns[Latitude]"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[Latitude]"
+                      name="Latitude"
+                      precision="19"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[Longitude]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].ExternalColumns[Longitude]"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[Longitude]"
+                      name="Longitude"
+                      precision="19"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[RegionName]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].ExternalColumns[RegionName]"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[RegionName]"
+                      name="RegionName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[ErplySource]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].ExternalColumns[EmployeeGender]"
-                      length="10"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeGender]"
-                      name="EmployeeGender"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeLocation]"
-                      dataType="nText"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].ExternalColumns[EmployeeLocation]"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeLocation]"
-                      name="EmployeeLocation"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[LastModified]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].ExternalColumns[LastModified]"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[LastModified]"
-                      name="LastModified"
+                      externalMetadataColumnId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].ExternalColumns[ErplySource]"
+                      length="30"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[ErplySource]"
+                      name="ErplySource"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].ExternalColumns[EmployeeErplyID]"
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].ExternalColumns[WarehouseErplyID]"
                       dataType="i4"
-                      name="EmployeeErplyID" />
+                      name="WarehouseErplyID" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].ExternalColumns[EmployeeName]"
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].ExternalColumns[WarehouseName]"
                       dataType="wstr"
-                      length="50"
-                      name="EmployeeName" />
+                      length="100"
+                      name="WarehouseName" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].ExternalColumns[EmployeePhone]"
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].ExternalColumns[WarehouseCode]"
                       dataType="wstr"
-                      length="50"
-                      name="EmployeePhone" />
+                      length="100"
+                      name="WarehouseCode" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].ExternalColumns[EmployeeGender]"
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].ExternalColumns[IsOffline]"
+                      dataType="i4"
+                      name="IsOffline" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].ExternalColumns[Latitude]"
+                      dataType="numeric"
+                      name="Latitude"
+                      precision="19"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].ExternalColumns[Longitude]"
+                      dataType="numeric"
+                      name="Longitude"
+                      precision="19"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].ExternalColumns[RegionName]"
+                      dataType="i4"
+                      name="RegionName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].ExternalColumns[ErplySource]"
                       dataType="wstr"
-                      length="10"
-                      name="EmployeeGender" />
-                    <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].ExternalColumns[EmployeeLocation]"
-                      dataType="nText"
-                      name="EmployeeLocation" />
-                    <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].ExternalColumns[LastModified]"
-                      dataType="wstr"
-                      length="50"
-                      name="LastModified" />
+                      length="30"
+                      name="ErplySource" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Error Output]"
+                  refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Error Output].Columns[EmployeeErplyID]"
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[WarehouseErplyID]"
                       dataType="i4"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Error Output].Columns[EmployeeErplyID]"
-                      name="EmployeeErplyID" />
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[WarehouseErplyID]"
+                      name="WarehouseErplyID" />
                     <outputColumn
-                      refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Error Output].Columns[EmployeeName]"
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[WarehouseName]"
                       dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Error Output].Columns[EmployeeName]"
-                      name="EmployeeName" />
+                      length="100"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[WarehouseName]"
+                      name="WarehouseName" />
                     <outputColumn
-                      refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Error Output].Columns[EmployeePhone]"
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[WarehouseCode]"
                       dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Error Output].Columns[EmployeePhone]"
-                      name="EmployeePhone" />
+                      length="100"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[WarehouseCode]"
+                      name="WarehouseCode" />
                     <outputColumn
-                      refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Error Output].Columns[EmployeeGender]"
-                      dataType="wstr"
-                      length="10"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Error Output].Columns[EmployeeGender]"
-                      name="EmployeeGender" />
-                    <outputColumn
-                      refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Error Output].Columns[EmployeeLocation]"
-                      dataType="nText"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Error Output].Columns[EmployeeLocation]"
-                      name="EmployeeLocation" />
-                    <outputColumn
-                      refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Error Output].Columns[LastModified]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Error Output].Columns[LastModified]"
-                      name="LastModified" />
-                    <outputColumn
-                      refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[IsOffline]"
                       dataType="i4"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[IsOffline]"
+                      name="IsOffline" />
+                    <outputColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[Latitude]"
+                      dataType="numeric"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[Latitude]"
+                      name="Latitude"
+                      precision="19"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[Longitude]"
+                      dataType="numeric"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[Longitude]"
+                      name="Longitude"
+                      precision="19"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[RegionName]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[RegionName]"
+                      name="RegionName" />
+                    <outputColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[ErplySource]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[ErplySource]"
+                      name="ErplySource" />
+                    <outputColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -872,11 +510,11 @@ from Employees</property>
               </outputs>
             </component>
             <component
-              refId="Package\DFT - Get Employees\Insert current input Record"
+              refId="Package\DFT - Get Warehouses\Warehouses_Dim"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="Insert current input Record"
+              name="Warehouses_Dim"
               usesDispositions="true"
               version="4">
               <properties>
@@ -887,7 +525,7 @@ from Employees</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[erp].[Employees_Dim]</property>
+                  name="OpenRowset">[erp].[Warehouses_Dim]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -929,7 +567,7 @@ from Employees</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT - Get Employees\Insert current input Record.Connections[OleDbConnection]"
+                  refId="Package\DFT - Get Warehouses\Warehouses_Dim.Connections[OleDbConnection]"
                   connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
                   description="The OLE DB runtime connection used to access the database."
@@ -937,330 +575,153 @@ from Employees</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input]"
+                  refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].Columns[EmployeeErplyID]"
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].Columns[WarehouseErplyID]"
                       cachedDataType="i4"
-                      cachedName="EmployeeErplyID"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeErplyID]"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]" />
+                      cachedName="WarehouseErplyID"
+                      externalMetadataColumnId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseErplyID]"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[WarehouseErplyID]" />
                     <inputColumn
-                      refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].Columns[EmployeeName]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="EmployeeName"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeName]"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeName]" />
-                    <inputColumn
-                      refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].Columns[EmployeePhone]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="EmployeePhone"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].ExternalColumns[EmployeePhone]"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeePhone]" />
-                    <inputColumn
-                      refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].Columns[EmployeeGender]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="EmployeeGender"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeGender]"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeGender]" />
-                    <inputColumn
-                      refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].Columns[EmployeeLocation]"
-                      cachedDataType="nText"
-                      cachedName="EmployeeLocation"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeLocation]"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeLocation]" />
-                    <inputColumn
-                      refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].Columns[LastModified]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="LastModified"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].ExternalColumns[LastModified]"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[LastModified]" />
-                    <inputColumn
-                      refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].Columns[ActiveFrom]"
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].Columns[WarehouseName]"
                       cachedDataType="wstr"
                       cachedLength="100"
-                      cachedName="ActiveFrom"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].ExternalColumns[ActiveFrom]"
-                      lineageId="Package\DFT - Get Employees\Add Active From and Active Flag.Outputs[Derived Column Output].Columns[ActiveFrom]" />
+                      cachedName="WarehouseName"
+                      externalMetadataColumnId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseName]"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[WarehouseName]" />
                     <inputColumn
-                      refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].Columns[IsActive]"
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].Columns[WarehouseCode]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="WarehouseCode"
+                      externalMetadataColumnId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseCode]"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[WarehouseCode]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].Columns[IsOffline]"
+                      cachedDataType="i4"
+                      cachedName="IsOffline"
+                      externalMetadataColumnId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[IsOffline]"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[IsOffline]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].Columns[RegionName]"
+                      cachedDataType="i4"
+                      cachedName="RegionName"
+                      externalMetadataColumnId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[RegionName]"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[RegionName]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].Columns[ErplySource]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="ErplySource"
+                      externalMetadataColumnId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[ErplySource]"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[ErplySource]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].Columns[IsActive]"
                       cachedDataType="i4"
                       cachedName="IsActive"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
-                      lineageId="Package\DFT - Get Employees\Add Active From and Active Flag.Outputs[Derived Column Output].Columns[IsActive]" />
+                      externalMetadataColumnId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                      lineageId="Package\DFT - Get Warehouses\Add Status and Active From.Outputs[Derived Column Output].Columns[IsActive]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].Columns[Longitude]"
+                      cachedDataType="numeric"
+                      cachedName="Longitude"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[Longitude]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].Columns[Latitude]"
+                      cachedDataType="numeric"
+                      cachedName="Latitude"
+                      cachedPrecision="19"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[Latitude]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeID]"
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseID]"
                       dataType="i4"
-                      name="EmployeeID" />
+                      name="WarehouseID" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeErplyID]"
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseErplyID]"
                       dataType="i4"
-                      name="EmployeeErplyID" />
+                      name="WarehouseErplyID" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeName]"
-                      dataType="wstr"
-                      length="100"
-                      name="EmployeeName" />
-                    <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].ExternalColumns[EmployeePhone]"
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseCode]"
                       dataType="wstr"
                       length="50"
-                      name="EmployeePhone" />
+                      name="WarehouseCode" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeGender]"
-                      dataType="wstr"
-                      length="10"
-                      name="EmployeeGender" />
-                    <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeLocation]"
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseName]"
                       dataType="wstr"
                       length="50"
-                      name="EmployeeLocation" />
+                      name="WarehouseName" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].ExternalColumns[ActiveFrom]"
-                      dataType="dbTimeStamp"
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                      dataType="numeric"
+                      name="Latitude"
+                      precision="19"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                      dataType="numeric"
+                      name="Longitude"
+                      precision="19"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[RegionName]"
+                      dataType="wstr"
+                      length="50"
+                      name="RegionName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[IsOffline]"
+                      dataType="bool"
+                      name="IsOffline" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[ErplySource]"
+                      dataType="wstr"
+                      length="50"
+                      name="ErplySource" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[ActiveFrom]"
+                      dataType="dbDate"
                       name="ActiveFrom" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].ExternalColumns[ActiveTo]"
-                      dataType="dbTimeStamp"
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[ActiveTo]"
+                      dataType="dbDate"
                       name="ActiveTo" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
                       dataType="bool"
                       name="IsActive" />
-                    <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].ExternalColumns[LastModified]"
-                      dataType="dbTimeStamp"
-                      name="LastModified" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT - Get Employees\Insert current input Record.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\DFT - Get Warehouses\Warehouses_Dim.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - Get Employees\Insert current input Record.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT - Get Employees\Insert current input Record.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses_Dim.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT - Get Employees\Insert current input Record.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT - Get Employees\Insert current input Record.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT - Get Employees\Insert new Input"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="Insert new Input"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[erp].[Employees_Dim]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT - Get Employees\Insert new Input.Connections[OleDbConnection]"
-                  connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].Columns[EmployeeErplyID]"
-                      cachedDataType="i4"
-                      cachedName="EmployeeErplyID"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeErplyID]"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]" />
-                    <inputColumn
-                      refId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].Columns[EmployeeName]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="EmployeeName"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeName]"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeName]" />
-                    <inputColumn
-                      refId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].Columns[EmployeePhone]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="EmployeePhone"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].ExternalColumns[EmployeePhone]"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeePhone]" />
-                    <inputColumn
-                      refId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].Columns[EmployeeGender]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="EmployeeGender"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeGender]"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeGender]" />
-                    <inputColumn
-                      refId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].Columns[EmployeeLocation]"
-                      cachedDataType="nText"
-                      cachedName="EmployeeLocation"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeLocation]"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[EmployeeLocation]" />
-                    <inputColumn
-                      refId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].Columns[ActiveFrom]"
-                      cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="ActiveFrom"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].ExternalColumns[ActiveFrom]"
-                      lineageId="Package\DFT - Get Employees\Add Status and Active From.Outputs[Derived Column Output].Columns[ActiveFrom]" />
-                    <inputColumn
-                      refId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].Columns[IsActive]"
-                      cachedDataType="i4"
-                      cachedName="IsActive"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
-                      lineageId="Package\DFT - Get Employees\Add Status and Active From.Outputs[Derived Column Output].Columns[IsActive]" />
-                    <inputColumn
-                      refId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].Columns[LastModified]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="LastModified"
-                      externalMetadataColumnId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].ExternalColumns[LastModified]"
-                      lineageId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output].Columns[LastModified]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeID]"
-                      dataType="i4"
-                      name="EmployeeID" />
-                    <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeErplyID]"
-                      dataType="i4"
-                      name="EmployeeErplyID" />
-                    <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeName]"
-                      dataType="wstr"
-                      length="100"
-                      name="EmployeeName" />
-                    <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].ExternalColumns[EmployeePhone]"
-                      dataType="wstr"
-                      length="50"
-                      name="EmployeePhone" />
-                    <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeGender]"
-                      dataType="wstr"
-                      length="10"
-                      name="EmployeeGender" />
-                    <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeLocation]"
-                      dataType="nText"
-                      name="EmployeeLocation" />
-                    <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].ExternalColumns[ActiveFrom]"
-                      dataType="dbTimeStamp"
-                      name="ActiveFrom" />
-                    <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].ExternalColumns[ActiveTo]"
-                      dataType="dbTimeStamp"
-                      name="ActiveTo" />
-                    <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
-                      dataType="bool"
-                      name="IsActive" />
-                    <externalMetadataColumn
-                      refId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input].ExternalColumns[LastModified]"
-                      dataType="dbTimeStamp"
-                      name="LastModified" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT - Get Employees\Insert new Input.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT - Get Employees\Insert new Input.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT - Get Employees\Insert new Input.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT - Get Employees\Insert new Input.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT - Get Employees\Insert new Input.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses_Dim.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1271,40 +732,20 @@ from Employees</property>
           </components>
           <paths>
             <path
-              refId="Package\DFT - Get Employees.Paths[Derived Column Output]"
-              endId="Package\DFT - Get Employees\Insert new Input.Inputs[OLE DB Destination Input]"
+              refId="Package\DFT - Get Warehouses.Paths[Derived Column Output]"
+              endId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
-              startId="Package\DFT - Get Employees\Add Status and Active From.Outputs[Derived Column Output]" />
+              startId="Package\DFT - Get Warehouses\Add Status and Active From.Outputs[Derived Column Output]" />
             <path
-              refId="Package\DFT - Get Employees.Paths[Derived Column Output1]"
-              endId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input]"
-              name="Derived Column Output"
-              startId="Package\DFT - Get Employees\Add Active From and Active Flag.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\DFT - Get Employees.Paths[Lookup Match Output]"
-              endId="Package\DFT - Get Employees\Check Modified Date.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\DFT - Get Employees\Does the input exist.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\DFT - Get Employees.Paths[Lookup No Match Output]"
-              endId="Package\DFT - Get Employees\Change - Update Active To Date.Inputs[OLE DB Command Input]"
+              refId="Package\DFT - Get Warehouses.Paths[Lookup No Match Output]"
+              endId="Package\DFT - Get Warehouses\Add Status and Active From.Inputs[Derived Column Input]"
               name="Lookup No Match Output"
-              startId="Package\DFT - Get Employees\Check Modified Date.Outputs[Lookup No Match Output]" />
+              startId="Package\DFT - Get Warehouses\Does the Warehouse Exist?.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\DFT - Get Employees.Paths[Lookup No Match Output1]"
-              endId="Package\DFT - Get Employees\Add Status and Active From.Inputs[Derived Column Input]"
-              name="Lookup No Match Output"
-              startId="Package\DFT - Get Employees\Does the input exist.Outputs[Lookup No Match Output]" />
-            <path
-              refId="Package\DFT - Get Employees.Paths[OLE DB Command Output]"
-              endId="Package\DFT - Get Employees\Add Active From and Active Flag.Inputs[Derived Column Input]"
-              name="OLE DB Command Output"
-              startId="Package\DFT - Get Employees\Change - Update Active To Date.Outputs[OLE DB Command Output]" />
-            <path
-              refId="Package\DFT - Get Employees.Paths[OLE DB Source Output]"
-              endId="Package\DFT - Get Employees\Does the input exist.Inputs[Lookup Input]"
+              refId="Package\DFT - Get Warehouses.Paths[OLE DB Source Output]"
+              endId="Package\DFT - Get Warehouses\Does the Warehouse Exist?.Inputs[Lookup Input]"
               name="OLE DB Source Output"
-              startId="Package\DFT - Get Employees\Employees source.Outputs[OLE DB Source Output]" />
+              startId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1336,7 +777,7 @@ from Employees</property>
       DTS:From="Package\Execute SQL Task"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\DFT - Get Employees" />
+      DTS:To="Package\DFT - Get Warehouses" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1351,8 +792,8 @@ from Employees</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="178.666666666667,42.6666666666667"
-          Id="Package\DFT - Get Employees"
+          Size="186.666666666667,42.6666666666667"
+          Id="Package\DFT - Get Warehouses"
           TopLeft="338.749994952231,239.633329048356" />
         <NodeLayout
           Size="164,42.6666666666667"
@@ -1364,26 +805,26 @@ from Employees</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-21.8333328987167,120.699997078776"
+              EndConnector="-17.8333328987167,120.699997078777"
               Start="0,0"
-              End="-21.8333328987167,113.199997078776">
+              End="-17.8333328987167,113.199997078777">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,56.3499985393882" />
+                    End="0,56.3499985393885" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,56.3499985393882"
-                    Point2="0,60.3499985393882"
-                    Point3="-4,60.3499985393882" />
+                    Point1="0,56.3499985393885"
+                    Point2="0,60.3499985393885"
+                    Point3="-4,60.3499985393885" />
                   <mssgle:LineSegment
-                    End="-17.8333328987167,60.3499985393882" />
+                    End="-13.8333328987167,60.3499985393885" />
                   <mssgle:CubicBezierSegment
-                    Point1="-17.8333328987167,60.3499985393882"
-                    Point2="-21.8333328987167,60.3499985393882"
-                    Point3="-21.8333328987167,64.3499985393882" />
+                    Point1="-13.8333328987167,60.3499985393885"
+                    Point2="-17.8333328987167,60.3499985393885"
+                    Point3="-17.8333328987167,64.3499985393885" />
                   <mssgle:LineSegment
-                    End="-21.8333328987167,113.199997078776" />
+                    End="-17.8333328987167,113.199997078777" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1396,133 +837,49 @@ from Employees</property>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\DFT - Get Employees">
+    design-time-name="Package\DFT - Get Warehouses">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="173.333333333334,42.6666666666667"
-          Id="Package\DFT - Get Employees\Does the input exist"
-          TopLeft="290.833333333333,108.166666666667" />
-        <NodeLayout
-          Size="208,42.6666666666667"
-          Id="Package\DFT - Get Employees\Insert current input Record"
-          TopLeft="17.5000000000001,518.833333333333" />
-        <NodeLayout
-          Size="176,42.6666666666667"
-          Id="Package\DFT - Get Employees\Check Modified Date"
-          TopLeft="35.5,210.833333333333" />
-        <NodeLayout
-          Size="158.666666666667,42.6666666666667"
-          Id="Package\DFT - Get Employees\Insert new Input"
-          TopLeft="298.166666666667,313.5" />
-        <NodeLayout
-          Size="232,42.6666666666667"
-          Id="Package\DFT - Get Employees\Change - Update Active To Date"
-          TopLeft="5.5,313.5" />
-        <EdgeLayout
-          Id="Package\DFT - Get Employees.Paths[Lookup No Match Output]"
-          TopLeft="122.5,253.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
-              Start="0,0"
-              End="0,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,20.4453125000001,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - Get Employees.Paths[Lookup Match Output]"
-          TopLeft="349.944444444444,150.833333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-226.444444444444,60.0000000000001"
-              Start="0,0"
-              End="-226.444444444444,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.329268292683" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.329268292683"
-                    Point2="0,24.329268292683"
-                    Point3="-4,24.329268292683" />
-                  <mssgle:LineSegment
-                    End="-222.444444444444,24.329268292683" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-222.444444444444,24.329268292683"
-                    Point2="-226.444444444444,24.329268292683"
-                    Point3="-226.444444444444,28.329268292683" />
-                  <mssgle:LineSegment
-                    End="-226.444444444444,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-161.413608940972,29.329268292683,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="210.666666666667,42.6666666666667"
-          Id="Package\DFT - Get Employees\Add Status and Active From"
-          TopLeft="272.166666666667,210.833333333333" />
+          Id="Package\DFT - Get Warehouses\Add Status and Active From"
+          TopLeft="5.50000000000003,210.833333333334" />
+        <NodeLayout
+          Size="208,42.6666666666667"
+          Id="Package\DFT - Get Warehouses\Does the Warehouse Exist?"
+          TopLeft="6.83333333333334,108.166666666667" />
         <EdgeLayout
-          Id="Package\DFT - Get Employees.Paths[Lookup No Match Output1]"
-          TopLeft="405.055555555556,150.833333333333">
+          Id="Package\DFT - Get Warehouses.Paths[Lookup No Match Output]"
+          TopLeft="110.833333333333,150.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-27.5555555555555,60.0000000000001"
+              EndConnector="0,60.0000000000001"
               Start="0,0"
-              End="-27.5555555555555,52.5000000000001">
+              End="0,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.329268292683" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.329268292683"
-                    Point2="0,24.329268292683"
-                    Point3="-4,24.329268292683" />
-                  <mssgle:LineSegment
-                    End="-23.5555555555555,24.329268292683" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-23.5555555555555,24.329268292683"
-                    Point2="-27.5555555555555,24.329268292683"
-                    Point3="-27.5555555555555,28.329268292683" />
-                  <mssgle:LineSegment
-                    End="-27.5555555555555,52.5000000000001" />
+                    End="0,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-69.5841644965278,29.329268292683,111.6127734375,11.609375"
+              BoundingBox="-55.80638671875,20.4453125,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="161.333333333334,42.6666666666667"
+          Id="Package\DFT - Get Warehouses\Warehouses_Dim"
+          TopLeft="30.1666666666667,313.5" />
         <EdgeLayout
-          Id="Package\DFT - Get Employees.Paths[Derived Column Output]"
-          TopLeft="377.5,253.5">
+          Id="Package\DFT - Get Warehouses.Paths[Derived Column Output]"
+          TopLeft="110.833333333333,253.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1543,38 +900,12 @@ from Employees</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="164,42.6666666666667"
-          Id="Package\DFT - Get Employees\Employees source"
-          TopLeft="295.5,5.49999999999993" />
+          Size="172,42.6666666666667"
+          Id="Package\DFT - Get Warehouses\Warehouses Source"
+          TopLeft="24.8333333333333,5.50000000000004" />
         <EdgeLayout
-          Id="Package\DFT - Get Employees.Paths[OLE DB Source Output]"
-          TopLeft="377.5,48.1666666666666">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="232,42.6666666666667"
-          Id="Package\DFT - Get Employees\Add Active From and Active Flag"
-          TopLeft="5.50000000000006,416.166666666667" />
-        <EdgeLayout
-          Id="Package\DFT - Get Employees.Paths[OLE DB Command Output]"
-          TopLeft="121.5,356.166666666667">
+          Id="Package\DFT - Get Warehouses.Paths[OLE DB Source Output]"
+          TopLeft="110.833333333333,48.1666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1586,28 +917,6 @@ from Employees</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - Get Employees.Paths[Derived Column Output1]"
-          TopLeft="121.5,458.833333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1620,7 +929,30 @@ from Employees</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - Get Employees\Insert new Input">
+    design-time-name="Package\DFT - Get Warehouses\Does the Warehouse Exist?">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Get Warehouses\Warehouses_Dim">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1633,67 +965,8 @@ from Employees</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - Get Employees\Check Modified Date">
+    design-time-name="Package\DFT - Get Warehouses\Warehouses Source">
     <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT - Get Employees\Employees source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT - Get Employees\Insert current input Record">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT - Get Employees\Does the input exist">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
