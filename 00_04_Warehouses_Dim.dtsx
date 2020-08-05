@@ -12,12 +12,624 @@
   DTS:ObjectName="00_04_Warehouses_Dim"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="31"
-  DTS:VersionGUID="{CEE25766-9AB2-47BF-8CDC-8C374E13C7E8}">
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{92E4EBAD-37FF-41C3-B34A-79E3A7471ED4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Get Suppliers"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{6e47c1e2-8f8e-4477-82ce-6b90a3de4650}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Get Suppliers"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Get Suppliers\Add Status and Active From"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add Status and Active From"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT - Get Suppliers\Add Status and Active From.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Get Suppliers\Add Status and Active From.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT - Get Suppliers\Add Status and Active From.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Get Suppliers\Add Status and Active From.Outputs[Derived Column Output].Columns[IsActive]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT - Get Suppliers\Add Status and Active From.Outputs[Derived Column Output].Columns[IsActive]"
+                      name="IsActive"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Get Suppliers\Add Status and Active From.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT - Get Suppliers\Add Status and Active From.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Get Suppliers\Add Status and Active From.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Suppliers\Add Status and Active From.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Get Suppliers\Add Status and Active From.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Suppliers\Add Status and Active From.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Get Suppliers\Does the Warehouse Exist?"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Does the Warehouse Exist?"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select WarehouseErplyID from erp.Warehouses_Dim</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select WarehouseErplyID from erp.Warehouses_Dim) [refTable]
+where [refTable].[WarehouseErplyID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="WarehouseErplyID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].Columns[WarehouseErplyID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Get Suppliers\Does the Warehouse Exist?.Connections[OleDbConnection]"
+                  connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Get Suppliers\Does the Warehouse Exist?.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Get Suppliers\Does the Warehouse Exist?.Inputs[Lookup Input].Columns[WarehouseErplyID]"
+                      cachedDataType="i4"
+                      cachedName="WarehouseErplyID"
+                      lineageId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].Columns[WarehouseErplyID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">WarehouseErplyID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Get Suppliers\Does the Warehouse Exist?.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT - Get Suppliers\Does the Warehouse Exist?.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Get Suppliers\Does the Warehouse Exist?.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT - Get Suppliers\Does the Warehouse Exist?.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Get Suppliers\Does the Warehouse Exist?.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT - Get Suppliers\Does the Warehouse Exist?.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Get Suppliers\Does the Warehouse Exist?.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Suppliers\Does the Warehouse Exist?.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Get Suppliers\Does the Warehouse Exist?.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Suppliers\Does the Warehouse Exist?.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Get Suppliers\Suppliers Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Suppliers Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+cast(SupplierID AS int) as WarehouseErplyID,
+cast(FullName as nvarchar(100)) as WarehouseName,
+cast(1 AS int) as IsOffline,
+cast('Suppliers'  as nvarchar) AS ErplySource
+FROM Suppliers</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Get Suppliers\Suppliers Source.Connections[OleDbConnection]"
+                  connectionManagerID="{49C2AD63-BE05-4956-A5FC-A83F0639A17E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Source_ERPLY]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].Columns[WarehouseErplyID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].ExternalColumns[WarehouseErplyID]"
+                      lineageId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].Columns[WarehouseErplyID]"
+                      name="WarehouseErplyID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].Columns[WarehouseName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].ExternalColumns[WarehouseName]"
+                      length="100"
+                      lineageId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].Columns[WarehouseName]"
+                      name="WarehouseName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].Columns[IsOffline]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].ExternalColumns[IsOffline]"
+                      lineageId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].Columns[IsOffline]"
+                      name="IsOffline"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].Columns[ErplySource]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].ExternalColumns[ErplySource]"
+                      length="30"
+                      lineageId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].Columns[ErplySource]"
+                      name="ErplySource"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].ExternalColumns[WarehouseErplyID]"
+                      dataType="i4"
+                      name="WarehouseErplyID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].ExternalColumns[WarehouseName]"
+                      dataType="wstr"
+                      length="100"
+                      name="WarehouseName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].ExternalColumns[IsOffline]"
+                      dataType="i4"
+                      name="IsOffline" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].ExternalColumns[ErplySource]"
+                      dataType="wstr"
+                      length="30"
+                      name="ErplySource" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Error Output].Columns[WarehouseErplyID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Error Output].Columns[WarehouseErplyID]"
+                      name="WarehouseErplyID" />
+                    <outputColumn
+                      refId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Error Output].Columns[WarehouseName]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Error Output].Columns[WarehouseName]"
+                      name="WarehouseName" />
+                    <outputColumn
+                      refId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Error Output].Columns[IsOffline]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Error Output].Columns[IsOffline]"
+                      name="IsOffline" />
+                    <outputColumn
+                      refId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Error Output].Columns[ErplySource]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Error Output].Columns[ErplySource]"
+                      name="ErplySource" />
+                    <outputColumn
+                      refId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Get Suppliers\Warehouses_Dim"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Warehouses_Dim"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[erp].[Warehouses_Dim]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Get Suppliers\Warehouses_Dim.Connections[OleDbConnection]"
+                  connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].Columns[WarehouseErplyID]"
+                      cachedDataType="i4"
+                      cachedName="WarehouseErplyID"
+                      externalMetadataColumnId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseErplyID]"
+                      lineageId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].Columns[WarehouseErplyID]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].Columns[WarehouseName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="WarehouseName"
+                      externalMetadataColumnId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseName]"
+                      lineageId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].Columns[WarehouseName]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].Columns[IsOffline]"
+                      cachedDataType="i4"
+                      cachedName="IsOffline"
+                      externalMetadataColumnId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[IsOffline]"
+                      lineageId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].Columns[IsOffline]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].Columns[ErplySource]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="ErplySource"
+                      externalMetadataColumnId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[ErplySource]"
+                      lineageId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output].Columns[ErplySource]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].Columns[IsActive]"
+                      cachedDataType="i4"
+                      cachedName="IsActive"
+                      externalMetadataColumnId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                      lineageId="Package\DFT - Get Suppliers\Add Status and Active From.Outputs[Derived Column Output].Columns[IsActive]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseID]"
+                      dataType="i4"
+                      name="WarehouseID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseErplyID]"
+                      dataType="i4"
+                      name="WarehouseErplyID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseCode]"
+                      dataType="wstr"
+                      length="50"
+                      name="WarehouseCode" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseName]"
+                      dataType="wstr"
+                      length="50"
+                      name="WarehouseName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                      dataType="numeric"
+                      name="Latitude"
+                      precision="19"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                      dataType="numeric"
+                      name="Longitude"
+                      precision="19"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[RegionName]"
+                      dataType="wstr"
+                      length="50"
+                      name="RegionName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[IsOffline]"
+                      dataType="bool"
+                      name="IsOffline" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[ErplySource]"
+                      dataType="wstr"
+                      length="50"
+                      name="ErplySource" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[ActiveFrom]"
+                      dataType="dbDate"
+                      name="ActiveFrom" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[ActiveTo]"
+                      dataType="dbDate"
+                      name="ActiveTo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                      dataType="bool"
+                      name="IsActive" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Get Suppliers\Warehouses_Dim.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Get Suppliers\Warehouses_Dim.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Suppliers\Warehouses_Dim.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Get Suppliers\Warehouses_Dim.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Suppliers\Warehouses_Dim.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Get Suppliers.Paths[Derived Column Output]"
+              endId="Package\DFT - Get Suppliers\Warehouses_Dim.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DFT - Get Suppliers\Add Status and Active From.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT - Get Suppliers.Paths[Lookup No Match Output]"
+              endId="Package\DFT - Get Suppliers\Add Status and Active From.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\DFT - Get Suppliers\Does the Warehouse Exist?.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DFT - Get Suppliers.Paths[OLE DB Source Output]"
+              endId="Package\DFT - Get Suppliers\Does the Warehouse Exist?.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT - Get Suppliers\Suppliers Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\DFT - Get Warehouses"
       DTS:CreationName="Microsoft.Pipeline"
@@ -162,7 +774,7 @@ where [refTable].[WarehouseErplyID] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\DFT - Get Warehouses\280:invalid};</property>
+                  name="ParameterMap">#{Package\DFT - Get Warehouses\204:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -833,6 +1445,10 @@ ON wh.WarehouseId	= pos.WarehouseID</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\DFT - Get Suppliers"
+          TopLeft="784.583321642131,141.699997466207" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -842,13 +1458,69 @@ ON wh.WarehouseId	= pos.WarehouseID</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="210.666666666667,42.6666666666667"
-          Id="Package\DFT - Get Warehouses\Add Status and Active From"
-          TopLeft="5.50000000000003,210.833333333334" />
+          Size="172,42.6666666666667"
+          Id="Package\DFT - Get Warehouses\Warehouses Source"
+          TopLeft="24.8333333333333,5.50000000000004" />
         <NodeLayout
           Size="208,42.6666666666667"
           Id="Package\DFT - Get Warehouses\Does the Warehouse Exist?"
           TopLeft="6.83333333333334,108.166666666667" />
+        <NodeLayout
+          Size="161.333333333334,42.6666666666667"
+          Id="Package\DFT - Get Warehouses\Warehouses_Dim"
+          TopLeft="30.1666666666667,313.5" />
+        <NodeLayout
+          Size="210.666666666667,42.6666666666667"
+          Id="Package\DFT - Get Warehouses\Add Status and Active From"
+          TopLeft="5.50000000000003,210.833333333334" />
+        <EdgeLayout
+          Id="Package\DFT - Get Warehouses.Paths[Derived Column Output]"
+          TopLeft="110.833333333333,253.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - Get Warehouses.Paths[OLE DB Source Output]"
+          TopLeft="110.833333333333,48.1666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT - Get Warehouses.Paths[Lookup No Match Output]"
           TopLeft="110.833333333333,150.833333333333">
@@ -873,12 +1545,72 @@ ON wh.WarehouseId	= pos.WarehouseID</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Get Warehouses\Warehouses Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Get Warehouses\Does the Warehouse Exist?">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Get Warehouses\Warehouses_Dim">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT - Get Suppliers">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="208,42.6666666666667"
+          Id="Package\DFT - Get Suppliers\Does the Warehouse Exist?"
+          TopLeft="6.83333333333334,108.166666666667" />
         <NodeLayout
           Size="161.333333333334,42.6666666666667"
-          Id="Package\DFT - Get Warehouses\Warehouses_Dim"
+          Id="Package\DFT - Get Suppliers\Warehouses_Dim"
           TopLeft="30.1666666666667,313.5" />
+        <NodeLayout
+          Size="210.666666666667,42.6666666666667"
+          Id="Package\DFT - Get Suppliers\Add Status and Active From"
+          TopLeft="5.50000000000003,210.833333333334" />
         <EdgeLayout
-          Id="Package\DFT - Get Warehouses.Paths[Derived Column Output]"
+          Id="Package\DFT - Get Suppliers.Paths[Derived Column Output]"
           TopLeft="110.833333333333,253.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -899,12 +1631,36 @@ ON wh.WarehouseId	= pos.WarehouseID</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="172,42.6666666666667"
-          Id="Package\DFT - Get Warehouses\Warehouses Source"
-          TopLeft="24.8333333333333,5.50000000000004" />
         <EdgeLayout
-          Id="Package\DFT - Get Warehouses.Paths[OLE DB Source Output]"
+          Id="Package\DFT - Get Suppliers.Paths[Lookup No Match Output]"
+          TopLeft="110.833333333333,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,20.4453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\DFT - Get Suppliers\Suppliers Source"
+          TopLeft="32.1666666666667,5.50000000000004" />
+        <EdgeLayout
+          Id="Package\DFT - Get Suppliers.Paths[OLE DB Source Output]"
           TopLeft="110.833333333333,48.1666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -929,7 +1685,7 @@ ON wh.WarehouseId	= pos.WarehouseID</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - Get Warehouses\Does the Warehouse Exist?">
+    design-time-name="Package\DFT - Get Suppliers\Does the Warehouse Exist?">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -952,7 +1708,7 @@ ON wh.WarehouseId	= pos.WarehouseID</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - Get Warehouses\Warehouses_Dim">
+    design-time-name="Package\DFT - Get Suppliers\Warehouses_Dim">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -965,7 +1721,7 @@ ON wh.WarehouseId	= pos.WarehouseID</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - Get Warehouses\Warehouses Source">
+    design-time-name="Package\DFT - Get Suppliers\Suppliers Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

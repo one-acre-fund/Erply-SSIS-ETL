@@ -1,0 +1,1732 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/5/2020 8:16:51 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="GACHAGUA-PC"
+  DTS:CreatorName="GACHAGUA-PC\watchman"
+  DTS:DTSID="{CFC1D644-8F12-4002-838E-31B135778362}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.71"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="01-02_StockTakings_Fact"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{3E478B96-E7A7-4CDA-872D-AB7F719A12B4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{24AE24DD-3BD5-4460-846C-E375CFCEA7B1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Get Confirmed by EmployeeID"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Get Confirmed by EmployeeID"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select EmployeeID, EmployeeErplyID from erp.Employees_Dim</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (Select EmployeeID, EmployeeErplyID from erp.Employees_Dim) [refTable]
+where [refTable].[EmployeeErplyID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="EmployeeID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EmployeeErplyID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task 1\2:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Get Confirmed by EmployeeID.Connections[OleDbConnection]"
+                  connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Get Confirmed by EmployeeID.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Get Confirmed by EmployeeID.Inputs[Lookup Input].Columns[EmployeeConfirmedID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeConfirmedID"
+                      lineageId="Package\Data Flow Task 1\2:invalid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">EmployeeErplyID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Get Confirmed by EmployeeID.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task 1\Get Confirmed by EmployeeID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Get Confirmed by EmployeeID.Outputs[Lookup Match Output].Columns[ConfirmedByEmployeeID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task 1\Get Confirmed by EmployeeID.Outputs[Lookup Match Output].Columns[ConfirmedByEmployeeID]"
+                      name="ConfirmedByEmployeeID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">EmployeeID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Get Confirmed by EmployeeID.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task 1\Get Confirmed by EmployeeID.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Get Confirmed by EmployeeID.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Get Confirmed by EmployeeID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Get Confirmed by EmployeeID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Get Confirmed by EmployeeID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Get Confirmed by EmployeeID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Get Confirmed by EmployeeID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\StockTakings"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E9628354-B26D-4E8B-B56F-0C39654DA72C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="StockTakings"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\StockTakings\Get DateID"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Get DateID"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select DateKey as DateID, CONVERT(date, [Date]) as Date from erp.date_Dim</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (Select DateKey as DateID, CONVERT(date, [Date]) as Date from erp.date_Dim) [refTable]
+where [refTable].[Date] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\StockTakings\20:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\StockTakings\Get DateID.Connections[OleDbConnection]"
+                  connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\StockTakings\Get DateID.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\StockTakings\Get DateID.Inputs[Lookup Input].Columns[Added]"
+                      cachedDataType="dbDate"
+                      cachedName="Added"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[Added]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Date</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\StockTakings\Get DateID.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\StockTakings\Get DateID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\StockTakings\Get DateID.Outputs[Lookup Match Output].Columns[DateID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\StockTakings\Get DateID.Outputs[Lookup Match Output].Columns[DateID]"
+                      name="DateID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">DateID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\StockTakings\Get DateID.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\StockTakings\Get DateID.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\StockTakings\Get DateID.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\StockTakings\Get DateID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\StockTakings\Get DateID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\StockTakings\Get DateID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\StockTakings\Get DateID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\StockTakings\Get DateID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\StockTakings\Get EmployeeID"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Get EmployeeID"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select EmployeeID, EmployeeErplyID from erp.Employees_Dim</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (Select EmployeeID, EmployeeErplyID from erp.Employees_Dim) [refTable]
+where [refTable].[EmployeeErplyID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="EmployeeID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EmployeeErplyID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\StockTakings\23:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\StockTakings\Get EmployeeID.Connections[OleDbConnection]"
+                  connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\StockTakings\Get EmployeeID.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\StockTakings\Get EmployeeID.Inputs[Lookup Input].Columns[EmployeeErplyID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeErplyID"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">EmployeeErplyID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\StockTakings\Get EmployeeID.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\StockTakings\Get EmployeeID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\StockTakings\Get EmployeeID.Outputs[Lookup Match Output].Columns[EmployeeID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\StockTakings\Get EmployeeID.Outputs[Lookup Match Output].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">EmployeeID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\StockTakings\Get EmployeeID.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\StockTakings\Get EmployeeID.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\StockTakings\Get EmployeeID.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\StockTakings\Get EmployeeID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\StockTakings\Get EmployeeID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\StockTakings\Get EmployeeID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\StockTakings\Get EmployeeID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\StockTakings\Get EmployeeID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\StockTakings\Get InputID"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Get InputID"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select InputID, InputErplyID from erp.Inputs_Dim where IsActive = 1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select InputID, InputErplyID from erp.Inputs_Dim where IsActive = 1) [refTable]
+where [refTable].[InputErplyID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="InputID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InputErplyID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\StockTakings\17:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\StockTakings\Get InputID.Connections[OleDbConnection]"
+                  connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\StockTakings\Get InputID.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\StockTakings\Get InputID.Inputs[Lookup Input].Columns[InputErplyID]"
+                      cachedDataType="i4"
+                      cachedName="InputErplyID"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[InputErplyID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">InputErplyID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\StockTakings\Get InputID.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\StockTakings\Get InputID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\StockTakings\Get InputID.Outputs[Lookup Match Output].Columns[InputID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\StockTakings\Get InputID.Outputs[Lookup Match Output].Columns[InputID]"
+                      name="InputID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">InputID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\StockTakings\Get InputID.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\StockTakings\Get InputID.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\StockTakings\Get InputID.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\StockTakings\Get InputID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\StockTakings\Get InputID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\StockTakings\Get InputID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\StockTakings\Get InputID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\StockTakings\Get InputID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\StockTakings\Get WarehouseID"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Get WarehouseID"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select WarehouseID, WarehouseERplyID from erp.Warehouses_Dim</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select WarehouseID, WarehouseERplyID from erp.Warehouses_Dim) [refTable]
+where [refTable].[WarehouseERplyID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="WarehouseID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="WarehouseERplyID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\StockTakings\26:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\StockTakings\Get WarehouseID.Connections[OleDbConnection]"
+                  connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\StockTakings\Get WarehouseID.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\StockTakings\Get WarehouseID.Inputs[Lookup Input].Columns[WarehouseErplyID]"
+                      cachedDataType="i4"
+                      cachedName="WarehouseErplyID"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[WarehouseErplyID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">WarehouseERplyID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\StockTakings\Get WarehouseID.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\StockTakings\Get WarehouseID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\StockTakings\Get WarehouseID.Outputs[Lookup Match Output].Columns[WarehouseID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\StockTakings\Get WarehouseID.Outputs[Lookup Match Output].Columns[WarehouseID]"
+                      name="WarehouseID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">WarehouseID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\StockTakings\Get WarehouseID.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\StockTakings\Get WarehouseID.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\StockTakings\Get WarehouseID.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\StockTakings\Get WarehouseID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\StockTakings\Get WarehouseID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\StockTakings\Get WarehouseID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\StockTakings\Get WarehouseID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\StockTakings\Get WarehouseID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\StockTakings\StockTakings source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="StockTakings source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+
+sd.ProductID AS InputErplyID,
+CONVERT(DATE, CONVERT(DATETIMEOFFSET, sh.Added)) Added,
+sh.addedByEmployeeID  AS EmployeeErplyID,
+cast(sh.Warehouses AS int) WarehouseErplyID,
+sh.confirmedByEmployeeID as EmployeeConfirmedID,
+sh.inventoryRegistrationID,
+sh.inventoryWriteOffID,
+sh.[status] as StockTakingStatus,
+sd.inStock,
+sd.reserved,
+cast(sd.countPcs AS float) as Counted,
+sd.comment
+FROM dbo.StockTakingHeaders sh	JOIN dbo.StockTakingDetails sd	
+ON sh.stocktakingid = sd.StockTakingId</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\StockTakings\StockTakings source.Connections[OleDbConnection]"
+                  connectionManagerID="{49C2AD63-BE05-4956-A5FC-A83F0639A17E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Source_ERPLY]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[InputErplyID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[InputErplyID]"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[InputErplyID]"
+                      name="InputErplyID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[Added]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[Added]"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[Added]"
+                      name="Added"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[EmployeeErplyID]"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]"
+                      name="EmployeeErplyID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[WarehouseErplyID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[WarehouseErplyID]"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[WarehouseErplyID]"
+                      name="WarehouseErplyID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[EmployeeConfirmedID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[EmployeeConfirmedID]"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[EmployeeConfirmedID]"
+                      name="EmployeeConfirmedID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[inventoryRegistrationID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[inventoryRegistrationID]"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[inventoryRegistrationID]"
+                      name="inventoryRegistrationID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[inventoryWriteOffID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[inventoryWriteOffID]"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[inventoryWriteOffID]"
+                      name="inventoryWriteOffID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[StockTakingStatus]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[StockTakingStatus]"
+                      length="50"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[StockTakingStatus]"
+                      name="StockTakingStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[inStock]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[inStock]"
+                      length="50"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[inStock]"
+                      name="inStock"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[reserved]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[reserved]"
+                      length="50"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[reserved]"
+                      name="reserved"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[Counted]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[Counted]"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[Counted]"
+                      name="Counted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[comment]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[comment]"
+                      length="200"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[comment]"
+                      name="comment"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[InputErplyID]"
+                      dataType="i4"
+                      name="InputErplyID" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[Added]"
+                      dataType="dbDate"
+                      name="Added" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[EmployeeErplyID]"
+                      dataType="i4"
+                      name="EmployeeErplyID" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[WarehouseErplyID]"
+                      dataType="i4"
+                      name="WarehouseErplyID" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[EmployeeConfirmedID]"
+                      dataType="i4"
+                      name="EmployeeConfirmedID" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[inventoryRegistrationID]"
+                      dataType="i4"
+                      name="inventoryRegistrationID" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[inventoryWriteOffID]"
+                      dataType="i4"
+                      name="inventoryWriteOffID" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[StockTakingStatus]"
+                      dataType="wstr"
+                      length="50"
+                      name="StockTakingStatus" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[inStock]"
+                      dataType="wstr"
+                      length="50"
+                      name="inStock" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[reserved]"
+                      dataType="wstr"
+                      length="50"
+                      name="reserved" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[Counted]"
+                      dataType="r8"
+                      name="Counted" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].ExternalColumns[comment]"
+                      dataType="wstr"
+                      length="200"
+                      name="comment" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[InputErplyID]"
+                      dataType="i4"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[InputErplyID]"
+                      name="InputErplyID" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[Added]"
+                      dataType="dbDate"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[Added]"
+                      name="Added" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[EmployeeErplyID]"
+                      dataType="i4"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[EmployeeErplyID]"
+                      name="EmployeeErplyID" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[WarehouseErplyID]"
+                      dataType="i4"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[WarehouseErplyID]"
+                      name="WarehouseErplyID" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[EmployeeConfirmedID]"
+                      dataType="i4"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[EmployeeConfirmedID]"
+                      name="EmployeeConfirmedID" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[inventoryRegistrationID]"
+                      dataType="i4"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[inventoryRegistrationID]"
+                      name="inventoryRegistrationID" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[inventoryWriteOffID]"
+                      dataType="i4"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[inventoryWriteOffID]"
+                      name="inventoryWriteOffID" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[StockTakingStatus]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[StockTakingStatus]"
+                      name="StockTakingStatus" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[inStock]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[inStock]"
+                      name="inStock" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[reserved]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[reserved]"
+                      name="reserved" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[Counted]"
+                      dataType="r8"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[Counted]"
+                      name="Counted" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[comment]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[comment]"
+                      name="comment" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\StockTakings\StockTakingsFact"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="StockTakingsFact"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[erp].[StockTakings_Fact]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\StockTakings\StockTakingsFact.Connections[OleDbConnection]"
+                  connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].Columns[inventoryRegistrationID]"
+                      cachedDataType="i4"
+                      cachedName="inventoryRegistrationID"
+                      externalMetadataColumnId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[InventoryRegistrationID]"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[inventoryRegistrationID]" />
+                    <inputColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].Columns[inventoryWriteOffID]"
+                      cachedDataType="i4"
+                      cachedName="inventoryWriteOffID"
+                      externalMetadataColumnId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[InventoryWriteOffID]"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[inventoryWriteOffID]" />
+                    <inputColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].Columns[inStock]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="inStock"
+                      externalMetadataColumnId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[InStock]"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[inStock]" />
+                    <inputColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].Columns[reserved]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="reserved"
+                      externalMetadataColumnId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[Reserved]"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[reserved]" />
+                    <inputColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].Columns[Counted]"
+                      cachedDataType="r8"
+                      cachedName="Counted"
+                      externalMetadataColumnId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[Counted]"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[Counted]" />
+                    <inputColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].Columns[comment]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="comment"
+                      externalMetadataColumnId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[Comment]"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[comment]" />
+                    <inputColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].Columns[StockTakingStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StockTakingStatus"
+                      externalMetadataColumnId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[StockTakingStatus]"
+                      lineageId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output].Columns[StockTakingStatus]" />
+                    <inputColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].Columns[WarehouseID]"
+                      cachedDataType="i4"
+                      cachedName="WarehouseID"
+                      externalMetadataColumnId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseID]"
+                      lineageId="Package\StockTakings\Get WarehouseID.Outputs[Lookup Match Output].Columns[WarehouseID]" />
+                    <inputColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].Columns[InputID]"
+                      cachedDataType="i4"
+                      cachedName="InputID"
+                      externalMetadataColumnId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[InputID]"
+                      lineageId="Package\StockTakings\Get InputID.Outputs[Lookup Match Output].Columns[InputID]" />
+                    <inputColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeID]"
+                      lineageId="Package\StockTakings\Get EmployeeID.Outputs[Lookup Match Output].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].Columns[DateID]"
+                      cachedDataType="i4"
+                      cachedName="DateID"
+                      externalMetadataColumnId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[DateID]"
+                      lineageId="Package\StockTakings\Get DateID.Outputs[Lookup Match Output].Columns[DateID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[StockTakingID]"
+                      dataType="i4"
+                      name="StockTakingID" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[InputID]"
+                      dataType="i4"
+                      name="InputID" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[DateID]"
+                      dataType="i4"
+                      name="DateID" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseID]"
+                      dataType="i4"
+                      name="WarehouseID" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[ConfirmedByEmployeeID]"
+                      dataType="i4"
+                      name="ConfirmedByEmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[InventoryRegistrationID]"
+                      dataType="i4"
+                      name="InventoryRegistrationID" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[InventoryWriteOffID]"
+                      dataType="i4"
+                      name="InventoryWriteOffID" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[StockTakingStatus]"
+                      dataType="wstr"
+                      length="50"
+                      name="StockTakingStatus" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[InStock]"
+                      dataType="i4"
+                      name="InStock" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[Reserved]"
+                      dataType="i4"
+                      name="Reserved" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[Counted]"
+                      dataType="r8"
+                      name="Counted" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[Variance]"
+                      dataType="i4"
+                      name="Variance" />
+                    <externalMetadataColumn
+                      refId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input].ExternalColumns[Comment]"
+                      dataType="wstr"
+                      length="255"
+                      name="Comment" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\StockTakings\StockTakingsFact.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakingsFact.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\StockTakings\StockTakingsFact.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\StockTakings\StockTakingsFact.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\StockTakings\StockTakingsFact.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\StockTakings.Paths[Lookup Match Output]"
+              endId="Package\StockTakings\Get InputID.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\StockTakings\Get WarehouseID.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\StockTakings.Paths[Lookup Match Output1]"
+              endId="Package\StockTakings\Get EmployeeID.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\StockTakings\Get InputID.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\StockTakings.Paths[Lookup Match Output2]"
+              endId="Package\StockTakings\StockTakingsFact.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\StockTakings\Get DateID.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\StockTakings.Paths[Lookup Match Output3]"
+              endId="Package\StockTakings\Get DateID.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\StockTakings\Get EmployeeID.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\StockTakings.Paths[OLE DB Source Output]"
+              endId="Package\StockTakings\Get WarehouseID.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\StockTakings\StockTakings source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="141.333333333334,42.6666666666667"
+          Id="Package\StockTakings"
+          TopLeft="505.833325795829,126.099997745156" />
+        <NodeLayout
+          Size="161.333333333334,42.6666666666667"
+          Id="Package\Data Flow Task 1"
+          TopLeft="289.999995678663,91.8666650239627" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\StockTakings">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="162.666666666667,42.6666666666667"
+          Id="Package\StockTakings\Get WarehouseID"
+          TopLeft="12.1666666666667,108.166666666667" />
+        <NodeLayout
+          Size="136,42.6666666666667"
+          Id="Package\StockTakings\Get InputID"
+          TopLeft="25.5,210.833333333333" />
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\StockTakings\Get EmployeeID"
+          TopLeft="15.5,313.5" />
+        <NodeLayout
+          Size="132,42.6666666666667"
+          Id="Package\StockTakings\Get DateID"
+          TopLeft="27.5000000000001,416.166666666667" />
+        <EdgeLayout
+          Id="Package\StockTakings.Paths[Lookup Match Output]"
+          TopLeft="93.5,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\StockTakings.Paths[Lookup Match Output1]"
+          TopLeft="93.5,253.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125000001,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="161.333333333334,42.6666666666667"
+          Id="Package\StockTakings\StockTakingsFact"
+          TopLeft="12.8333333333334,518.833333333333" />
+        <EdgeLayout
+          Id="Package\StockTakings.Paths[Lookup Match Output2]"
+          TopLeft="93.5000000000001,458.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\StockTakings.Paths[Lookup Match Output3]"
+          TopLeft="93.5000000000001,356.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="176,42.6666666666667"
+          Id="Package\StockTakings\StockTakings source"
+          TopLeft="5.5,5.49999999999993" />
+        <EdgeLayout
+          Id="Package\StockTakings.Paths[OLE DB Source Output]"
+          TopLeft="93.5,48.1666666666666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\StockTakings\Get WarehouseID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\StockTakings\Get InputID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\StockTakings\Get EmployeeID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\StockTakings\Get DateID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\StockTakings\StockTakingsFact">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Data Flow Task 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="222.666666666667,42.6666666666667"
+          Id="Package\Data Flow Task 1\Get Confirmed by EmployeeID"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\StockTakings\StockTakings source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -12,8 +12,8 @@
   DTS:ObjectName="00_02_Inputs_Dim"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="28"
-  DTS:VersionGUID="{37F99FED-1962-42BB-B266-24E325E2D420}">
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{52658345-1421-42FE-BE06-4D890831118A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -136,55 +136,6 @@
               </outputs>
             </component>
             <component
-              refId="Package\DFT - Get Inputs\Add derrived fields"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Add derrived fields"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\DFT - Get Inputs\Add derrived fields.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT - Get Inputs\Add derrived fields.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\DFT - Get Inputs\Add derrived fields.Inputs[Derived Column Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT - Get Inputs\Add derrived fields.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\DFT - Get Inputs\Add derrived fields.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT - Get Inputs\Add derrived fields.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT - Get Inputs\Add derrived fields.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT - Get Inputs\Add derrived fields.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT - Get Inputs\Add derrived fields.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\DFT - Get Inputs\add new input"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -285,7 +236,8 @@
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[InputGroup]" />
                     <inputColumn
                       refId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].Columns[InputCategory]"
-                      cachedDataType="nText"
+                      cachedDataType="wstr"
+                      cachedLength="100"
                       cachedName="InputCategory"
                       externalMetadataColumnId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].ExternalColumns[InputCategory]"
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[InputCategory]" />
@@ -312,7 +264,8 @@
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[InputWeight]" />
                     <inputColumn
                       refId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].Columns[UoM]"
-                      cachedDataType="nText"
+                      cachedDataType="wstr"
+                      cachedLength="20"
                       cachedName="UoM"
                       externalMetadataColumnId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].ExternalColumns[UoM]"
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[UoM]" />
@@ -320,15 +273,15 @@
                       refId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].Columns[Price]"
                       cachedDataType="numeric"
                       cachedName="Price"
-                      cachedPrecision="18"
-                      cachedScale="2"
+                      cachedPrecision="19"
+                      cachedScale="3"
                       externalMetadataColumnId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[Price]" />
                     <inputColumn
                       refId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].Columns[PriceWithVAT]"
                       cachedDataType="numeric"
                       cachedName="PriceWithVAT"
-                      cachedPrecision="18"
+                      cachedPrecision="19"
                       cachedScale="2"
                       externalMetadataColumnId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].ExternalColumns[PriceWithVAT]"
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[PriceWithVAT]" />
@@ -336,22 +289,21 @@
                       refId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].Columns[Cost]"
                       cachedDataType="numeric"
                       cachedName="Cost"
-                      cachedPrecision="18"
-                      cachedScale="2"
+                      cachedPrecision="19"
+                      cachedScale="3"
                       externalMetadataColumnId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].ExternalColumns[Cost]"
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[Cost]" />
                     <inputColumn
                       refId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].Columns[VATRate]"
                       cachedDataType="numeric"
                       cachedName="VATRate"
-                      cachedPrecision="18"
-                      cachedScale="2"
+                      cachedPrecision="19"
+                      cachedScale="3"
                       externalMetadataColumnId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].ExternalColumns[VATRate]"
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[VATRate]" />
                     <inputColumn
                       refId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].Columns[ActiveFrom]"
-                      cachedDataType="wstr"
-                      cachedLength="100"
+                      cachedDataType="dbTimeStamp"
                       cachedName="ActiveFrom"
                       externalMetadataColumnId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].ExternalColumns[ActiveFrom]"
                       lineageId="Package\DFT - Get Inputs\Add Status and Active From.Outputs[Derived Column Output].Columns[ActiveFrom]" />
@@ -391,22 +343,21 @@
                     <externalMetadataColumn
                       refId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].ExternalColumns[InputGroup]"
                       dataType="wstr"
-                      length="20"
+                      length="50"
                       name="InputGroup" />
                     <externalMetadataColumn
                       refId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].ExternalColumns[InputCategory]"
                       dataType="wstr"
-                      length="20"
+                      length="100"
                       name="InputCategory" />
                     <externalMetadataColumn
                       refId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].ExternalColumns[InputDescription]"
-                      dataType="wstr"
-                      length="250"
+                      dataType="nText"
                       name="InputDescription" />
                     <externalMetadataColumn
                       refId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].ExternalColumns[InputStatus]"
                       dataType="wstr"
-                      length="20"
+                      length="50"
                       name="InputStatus" />
                     <externalMetadataColumn
                       refId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].ExternalColumns[InputWeight]"
@@ -899,13 +850,13 @@ where [refTable].[InputErplyID] = ? and [refTable].[LastModified] = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select InputErplyID from erp.Inputs_Dim</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select InputErplyID from erp.Inputs_Dim where IsActive = 1</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (Select InputErplyID from erp.Inputs_Dim) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (Select InputErplyID from erp.Inputs_Dim where IsActive = 1) [refTable]
 where [refTable].[InputErplyID] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -1061,7 +1012,7 @@ CategoryName as InputCategory,
 [Description] as InputDescription,
 [Status] as InputStatus,
 [netWeight] as InputWeight,
-unitName as UoM,
+cast(unitName as nvarchar(20)) UoM,
 Price,
 PriceWithVAT,
 Cost,
@@ -1152,10 +1103,11 @@ from erp.staging_Products sp</property>
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[InputCategory]"
-                      dataType="nText"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].ExternalColumns[InputCategory]"
+                      length="100"
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[InputCategory]"
                       name="InputCategory"
                       truncationRowDisposition="FailComponent" />
@@ -1191,10 +1143,11 @@ from erp.staging_Products sp</property>
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[UoM]"
-                      dataType="nText"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].ExternalColumns[UoM]"
+                      length="20"
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[UoM]"
                       name="UoM"
                       truncationRowDisposition="FailComponent" />
@@ -1206,8 +1159,8 @@ from erp.staging_Products sp</property>
                       externalMetadataColumnId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].ExternalColumns[Price]"
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[Price]"
                       name="Price"
-                      precision="18"
-                      scale="2"
+                      precision="19"
+                      scale="3"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[PriceWithVAT]"
@@ -1217,7 +1170,7 @@ from erp.staging_Products sp</property>
                       externalMetadataColumnId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].ExternalColumns[PriceWithVAT]"
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[PriceWithVAT]"
                       name="PriceWithVAT"
-                      precision="18"
+                      precision="19"
                       scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
@@ -1228,8 +1181,8 @@ from erp.staging_Products sp</property>
                       externalMetadataColumnId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].ExternalColumns[Cost]"
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[Cost]"
                       name="Cost"
-                      precision="18"
-                      scale="2"
+                      precision="19"
+                      scale="3"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[VATRate]"
@@ -1239,8 +1192,8 @@ from erp.staging_Products sp</property>
                       externalMetadataColumnId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].ExternalColumns[VATRate]"
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[VATRate]"
                       name="VATRate"
-                      precision="18"
-                      scale="2"
+                      precision="19"
+                      scale="3"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[LastModified]"
@@ -1294,7 +1247,8 @@ from erp.staging_Products sp</property>
                       scale="2" />
                     <externalMetadataColumn
                       refId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].ExternalColumns[UoM]"
-                      dataType="nText"
+                      dataType="wstr"
+                      length="20"
                       name="UoM" />
                     <externalMetadataColumn
                       refId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].ExternalColumns[Price]"
@@ -1379,7 +1333,8 @@ from erp.staging_Products sp</property>
                       scale="2" />
                     <outputColumn
                       refId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Error Output].Columns[UoM]"
-                      dataType="nText"
+                      dataType="wstr"
+                      length="20"
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Error Output].Columns[UoM]"
                       name="UoM" />
                     <outputColumn
@@ -1533,7 +1488,8 @@ from erp.staging_Products sp</property>
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[InputGroup]" />
                     <inputColumn
                       refId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].Columns[InputCategory]"
-                      cachedDataType="nText"
+                      cachedDataType="wstr"
+                      cachedLength="100"
                       cachedName="InputCategory"
                       externalMetadataColumnId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].ExternalColumns[InputCategory]"
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[InputCategory]" />
@@ -1560,7 +1516,8 @@ from erp.staging_Products sp</property>
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[InputWeight]" />
                     <inputColumn
                       refId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].Columns[UoM]"
-                      cachedDataType="nText"
+                      cachedDataType="wstr"
+                      cachedLength="20"
                       cachedName="UoM"
                       externalMetadataColumnId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].ExternalColumns[UoM]"
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[UoM]" />
@@ -1568,15 +1525,15 @@ from erp.staging_Products sp</property>
                       refId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].Columns[Price]"
                       cachedDataType="numeric"
                       cachedName="Price"
-                      cachedPrecision="18"
-                      cachedScale="2"
+                      cachedPrecision="19"
+                      cachedScale="3"
                       externalMetadataColumnId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[Price]" />
                     <inputColumn
                       refId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].Columns[PriceWithVAT]"
                       cachedDataType="numeric"
                       cachedName="PriceWithVAT"
-                      cachedPrecision="18"
+                      cachedPrecision="19"
                       cachedScale="2"
                       externalMetadataColumnId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].ExternalColumns[PriceWithVAT]"
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[PriceWithVAT]" />
@@ -1584,16 +1541,16 @@ from erp.staging_Products sp</property>
                       refId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].Columns[Cost]"
                       cachedDataType="numeric"
                       cachedName="Cost"
-                      cachedPrecision="18"
-                      cachedScale="2"
+                      cachedPrecision="19"
+                      cachedScale="3"
                       externalMetadataColumnId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].ExternalColumns[Cost]"
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[Cost]" />
                     <inputColumn
                       refId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].Columns[VATRate]"
                       cachedDataType="numeric"
                       cachedName="VATRate"
-                      cachedPrecision="18"
-                      cachedScale="2"
+                      cachedPrecision="19"
+                      cachedScale="3"
                       externalMetadataColumnId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].ExternalColumns[VATRate]"
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[VATRate]" />
                     <inputColumn
@@ -1639,22 +1596,21 @@ from erp.staging_Products sp</property>
                     <externalMetadataColumn
                       refId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].ExternalColumns[InputGroup]"
                       dataType="wstr"
-                      length="20"
+                      length="50"
                       name="InputGroup" />
                     <externalMetadataColumn
                       refId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].ExternalColumns[InputCategory]"
                       dataType="wstr"
-                      length="20"
+                      length="100"
                       name="InputCategory" />
                     <externalMetadataColumn
                       refId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].ExternalColumns[InputDescription]"
-                      dataType="wstr"
-                      length="250"
+                      dataType="nText"
                       name="InputDescription" />
                     <externalMetadataColumn
                       refId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].ExternalColumns[InputStatus]"
                       dataType="wstr"
-                      length="20"
+                      length="50"
                       name="InputStatus" />
                     <externalMetadataColumn
                       refId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].ExternalColumns[InputWeight]"
@@ -1767,11 +1723,6 @@ from erp.staging_Products sp</property>
               name="Derived Column Output"
               startId="Package\DFT - Get Inputs\Add Active From and Active Flag.Outputs[Derived Column Output]" />
             <path
-              refId="Package\DFT - Get Inputs.Paths[Derived Column Output2]"
-              endId="Package\DFT - Get Inputs\Does the input Exist?.Inputs[Lookup Input]"
-              name="Derived Column Output"
-              startId="Package\DFT - Get Inputs\Add derrived fields.Outputs[Derived Column Output]" />
-            <path
               refId="Package\DFT - Get Inputs.Paths[Lookup Match Output]"
               endId="Package\DFT - Get Inputs\check modified date.Inputs[Lookup Input]"
               name="Lookup Match Output"
@@ -1793,7 +1744,7 @@ from erp.staging_Products sp</property>
               startId="Package\DFT - Get Inputs\Change - Update Active To Date.Outputs[OLE DB Command Output]" />
             <path
               refId="Package\DFT - Get Inputs.Paths[OLE DB Source Output]"
-              endId="Package\DFT - Get Inputs\Add derrived fields.Inputs[Derived Column Input]"
+              endId="Package\DFT - Get Inputs\Does the input Exist?.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output]" />
           </paths>
@@ -1890,52 +1841,42 @@ from erp.staging_Products sp</property>
     design-time-name="Package\DFT - Get Inputs">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="210.666666666667,42.6666666666667"
-          Id="Package\DFT - Get Inputs\Add Status and Active From"
-          TopLeft="5.49999999999999,210.833333333333" />
-        <NodeLayout
-          Size="232,42.6666666666667"
-          Id="Package\DFT - Get Inputs\Change - Update Active To Date"
-          TopLeft="247.833333333333,313.5" />
-        <NodeLayout
-          Size="145.333333333334,42.6666666666667"
-          Id="Package\DFT - Get Inputs\Inputs Source"
-          TopLeft="291.166666666667,5.49999999999993" />
-        <NodeLayout
-          Size="232,42.6666666666667"
-          Id="Package\DFT - Get Inputs\Add Active From and Active Flag"
-          TopLeft="247.833333333333,416.166666666667" />
-        <EdgeLayout
-          Id="Package\DFT - Get Inputs.Paths[OLE DB Command Output]"
-          TopLeft="363.833333333333,356.166666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
-              Start="0,0"
-              End="0,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="178.666666666667,42.6666666666667"
           Id="Package\DFT - Get Inputs\Does the input Exist?"
-          TopLeft="274.5,108.166666666667" />
+          TopLeft="285.166666666667,210.833333333333" />
+        <NodeLayout
+          Size="145.333333333334,42.6666666666667"
+          Id="Package\DFT - Get Inputs\Inputs Source"
+          TopLeft="301.833333333333,5.49999999999993" />
+        <NodeLayout
+          Size="210.666666666667,42.6666666666667"
+          Id="Package\DFT - Get Inputs\Add Status and Active From"
+          TopLeft="269.166666666667,313.5" />
+        <NodeLayout
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\DFT - Get Inputs\Insert Current Input"
+          TopLeft="34.1666666666668,621.5" />
+        <NodeLayout
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\DFT - Get Inputs\check modified date"
+          TopLeft="34.1666666666667,313.5" />
+        <NodeLayout
+          Size="232,42.6666666666667"
+          Id="Package\DFT - Get Inputs\Change - Update Active To Date"
+          TopLeft="5.50000000000009,416.166666666667" />
+        <NodeLayout
+          Size="146.666666666667,42.6666666666667"
+          Id="Package\DFT - Get Inputs\add new input"
+          TopLeft="301.166666666667,416.166666666667" />
+        <NodeLayout
+          Size="232,42.6666666666667"
+          Id="Package\DFT - Get Inputs\Add Active From and Active Flag"
+          TopLeft="5.50000000000009,518.833333333333" />
         <EdgeLayout
-          Id="Package\DFT - Get Inputs.Paths[Lookup No Match Output]"
-          TopLeft="335.388888888889,150.833333333333">
+          Id="Package\DFT - Get Inputs.Paths[Lookup Match Output]"
+          TopLeft="346.055555555556,253.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1965,17 +1906,13 @@ from erp.staging_Products sp</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-168.084164496528,29.319526627219,111.6127734375,11.609375"
+              BoundingBox="-160.469164496528,29.319526627219,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="146.666666666667,42.6666666666667"
-          Id="Package\DFT - Get Inputs\add new input"
-          TopLeft="37.5,313.5" />
         <EdgeLayout
-          Id="Package\DFT - Get Inputs.Paths[Derived Column Output]"
-          TopLeft="110.833333333333,253.5">
+          Id="Package\DFT - Get Inputs.Paths[Derived Column Output1]"
+          TopLeft="121.5,561.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1995,13 +1932,77 @@ from erp.staging_Products sp</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="174.666666666667,42.6666666666667"
-          Id="Package\DFT - Get Inputs\check modified date"
-          TopLeft="276.5,210.833333333333" />
         <EdgeLayout
-          Id="Package\DFT - Get Inputs.Paths[Lookup Match Output]"
-          TopLeft="392.277777777778,150.833333333333">
+          Id="Package\DFT - Get Inputs.Paths[Derived Column Output]"
+          TopLeft="374.5,356.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - Get Inputs.Paths[OLE DB Command Output]"
+          TopLeft="121.5,458.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - Get Inputs.Paths[Lookup No Match Output1]"
+          TopLeft="121.5,356.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,20.4453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - Get Inputs.Paths[Lookup No Match Output]"
+          TopLeft="402.944444444445,253.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2031,124 +2032,24 @@ from erp.staging_Products sp</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-62.4136089409722,29.319526627219,96.3827734375,11.609375"
+              BoundingBox="-70.0286089409722,29.319526627219,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - Get Inputs.Paths[Lookup No Match Output1]"
-          TopLeft="363.833333333333,253.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
-              Start="0,0"
-              End="0,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,20.4453125000001,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="174.666666666667,42.6666666666667"
-          Id="Package\DFT - Get Inputs\Insert Current Input"
-          TopLeft="276.5,518.833333333333" />
-        <EdgeLayout
-          Id="Package\DFT - Get Inputs.Paths[Derived Column Output1]"
-          TopLeft="363.833333333333,458.833333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="168,42.6666666666667"
-          Id="Package\DFT - Get Inputs\Add derrived fields"
-          TopLeft="729.999989122152,127.399997721911" />
         <EdgeLayout
           Id="Package\DFT - Get Inputs.Paths[OLE DB Source Output]"
-          TopLeft="363.833333333333,48.1666666666666">
+          TopLeft="374.5,48.1666666666666">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="450.166655788819,79.233331055244"
+              EndConnector="0,162.666666666666"
               Start="0,0"
-              End="450.166655788819,71.733331055244">
+              End="0,155.166666666666">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.616665527622" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,35.616665527622"
-                    Point2="0,39.616665527622"
-                    Point3="4,39.616665527622" />
-                  <mssgle:LineSegment
-                    End="446.166655788819,39.616665527622" />
-                  <mssgle:CubicBezierSegment
-                    Point1="446.166655788819,39.616665527622"
-                    Point2="450.166655788819,39.616665527622"
-                    Point3="450.166655788819,43.616665527622" />
-                  <mssgle:LineSegment
-                    End="450.166655788819,71.733331055244" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - Get Inputs.Paths[Derived Column Output2]"
-          TopLeft="729.999989122152,148.733331055244">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-276.833322455486,-19.233331055244"
-              Start="0,0"
-              End="-269.333322455486,-19.233331055244">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-134.416661227743,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-134.416661227743,0"
-                    Point2="-138.416661227743,0"
-                    Point3="-138.416661227743,-4" />
-                  <mssgle:LineSegment
-                    End="-138.416661227743,-15.233331055244" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-138.416661227743,-15.233331055244"
-                    Point2="-138.416661227743,-19.233331055244"
-                    Point3="-142.416661227743,-19.233331055244" />
-                  <mssgle:LineSegment
-                    End="-269.333322455486,-19.233331055244" />
+                    End="0,155.166666666666" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2160,14 +2061,6 @@ from erp.staging_Products sp</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT - Get Inputs\Inputs Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DFT - Get Inputs\Does the input Exist?">
     <Properties>
@@ -2192,7 +2085,15 @@ from erp.staging_Products sp</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - Get Inputs\add new input">
+    design-time-name="Package\DFT - Get Inputs\Inputs Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Get Inputs\Insert Current Input">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2210,7 +2111,7 @@ from erp.staging_Products sp</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2220,7 +2121,7 @@ from erp.staging_Products sp</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2228,7 +2129,7 @@ from erp.staging_Products sp</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - Get Inputs\Insert Current Input">
+    design-time-name="Package\DFT - Get Inputs\add new input">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
