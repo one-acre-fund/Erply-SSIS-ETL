@@ -12,16 +12,1780 @@
   DTS:ObjectName="01_01_Sales_Fact"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{3BF31B3E-E300-4CBB-A457-6E859BFAA18A}">
+  DTS:VersionBuild="55"
+  DTS:VersionGUID="{34BF4B6B-4D7D-4DEF-ABB9-0A677D8A702E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{98984BA5-C992-400D-96B9-6A43F8729E90}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="AuditID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E771BB25-FE5D-40C1-9BC0-8004670EF09A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ETLStartTime">
+      <DTS:VariableValue
+        DTS:DataType="7">8/11/2020 1:00:07 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3AF669B6-D3A0-4BAC-A8E9-2C46598A2B53}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LastETLTime">
+      <DTS:VariableValue
+        DTS:DataType="7">8/11/2020 1:00:24 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FD09DD9A-7313-405F-A0C8-7890D392F304}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsInserted">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{603E9E01-86E2-4332-921E-0994CADCCFBA}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsUpdated">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{995105DA-C635-4B5B-B1C3-77AA9898B3C4}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableName">
+      <DTS:VariableValue
+        DTS:DataType="8">Sales_Fact</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Audit Parameters"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{522D3E3C-AC07-4154-B0AD-C34EF463CB9E}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Audit Parameters">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Audit Parameters\Get Audit Parameters"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{e04bb783-ff96-4f34-827c-5e0521dbb4d7}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get Audit Parameters"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Audit Parameters\Get Audit Parameters\Audit"
+                  componentClassID="Microsoft.Lineage"
+                  contactInfo="Audit;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Includes data about the environment in which the package runs. Map system variables to new output columns. For example, add the name of the computer and operator to the data flow."
+                  name="Audit">
+                  <inputs>
+                    <input
+                      refId="Package\Audit Parameters\Get Audit Parameters\Audit.Inputs[Audit Input 1]"
+                      name="Audit Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Audit Parameters\Get Audit Parameters\Audit.Outputs[Audit Output 1]"
+                      exclusionGroup="1"
+                      name="Audit Output 1"
+                      synchronousInputId="Package\Audit Parameters\Get Audit Parameters\Audit.Inputs[Audit Input 1]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\Audit.Outputs[Audit Output 1].Columns[PackageName]"
+                          dataType="wstr"
+                          length="64"
+                          lineageId="Package\Audit Parameters\Get Audit Parameters\Audit.Outputs[Audit Output 1].Columns[PackageName]"
+                          name="PackageName">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies which audit item this column produces."
+                              name="LineageItemSelected"
+                              typeConverter="LineageItemSelected">2</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="DC - AuditID"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID.Outputs[Derived Column Output].Columns[AuditID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID.Outputs[Derived Column Output].Columns[AuditID]"
+                          name="AuditID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::AuditID]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::AuditID]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID.Outputs[Derived Column Output].Columns[RowsInserted]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID.Outputs[Derived Column Output].Columns[RowsInserted]"
+                          name="RowsInserted"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::RowsInserted]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::RowsInserted]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID.Outputs[Derived Column Output].Columns[RowsUpdated]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID.Outputs[Derived Column Output].Columns[RowsUpdated]"
+                          name="RowsUpdated"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::RowsUpdated]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::RowsUpdated]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Audit Parameters\Get Audit Parameters\Get RowsExtracted"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Get RowsExtracted"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select count(*) as RowsExtracted from integration.staging_SalesFact</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Audit Parameters\Get Audit Parameters\Get RowsExtracted.Connections[OleDbConnection]"
+                      connectionManagerID="{9DE91C01-E81A-4BCE-94FD-0C83DA58AF33}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ERPLY_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Audit Parameters\Get Audit Parameters\Get RowsExtracted.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\Get RowsExtracted.Outputs[OLE DB Source Output].Columns[RowsExtracted]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Audit Parameters\Get Audit Parameters\Get RowsExtracted.Outputs[OLE DB Source Output].ExternalColumns[RowsExtracted]"
+                          lineageId="Package\Audit Parameters\Get Audit Parameters\Get RowsExtracted.Outputs[OLE DB Source Output].Columns[RowsExtracted]"
+                          name="RowsExtracted"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\Get RowsExtracted.Outputs[OLE DB Source Output].ExternalColumns[RowsExtracted]"
+                          dataType="i4"
+                          name="RowsExtracted" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Audit Parameters\Get Audit Parameters\Get RowsExtracted.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\Get RowsExtracted.Outputs[OLE DB Source Error Output].Columns[RowsExtracted]"
+                          dataType="i4"
+                          lineageId="Package\Audit Parameters\Get Audit Parameters\Get RowsExtracted.Outputs[OLE DB Source Error Output].Columns[RowsExtracted]"
+                          name="RowsExtracted" />
+                        <outputColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\Get RowsExtracted.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Audit Parameters\Get Audit Parameters\Get RowsExtracted.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\Get RowsExtracted.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Audit Parameters\Get Audit Parameters\Get RowsExtracted.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="Update Audit Dimension"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Update integration.AuditDimension
+
+set 
+
+PackageName = ?,
+RowsExtracted = ?,
+RowsInserted = ?,
+RowsUpdated = ?
+
+where AuditId = ?
+</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Connections[OleDbConnection]"
+                      connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Inputs[OLE DB Command Input].Columns[PackageName]"
+                          cachedDataType="wstr"
+                          cachedLength="64"
+                          cachedName="PackageName"
+                          externalMetadataColumnId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\Audit Parameters\Get Audit Parameters\Audit.Outputs[Audit Output 1].Columns[PackageName]" />
+                        <inputColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Inputs[OLE DB Command Input].Columns[RowsExtracted]"
+                          cachedDataType="i4"
+                          cachedName="RowsExtracted"
+                          externalMetadataColumnId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          lineageId="Package\Audit Parameters\Get Audit Parameters\Get RowsExtracted.Outputs[OLE DB Source Output].Columns[RowsExtracted]" />
+                        <inputColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Inputs[OLE DB Command Input].Columns[RowsInserted]"
+                          cachedDataType="i4"
+                          cachedName="RowsInserted"
+                          externalMetadataColumnId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          lineageId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID.Outputs[Derived Column Output].Columns[RowsInserted]" />
+                        <inputColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Inputs[OLE DB Command Input].Columns[RowsUpdated]"
+                          cachedDataType="i4"
+                          cachedName="RowsUpdated"
+                          externalMetadataColumnId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          lineageId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID.Outputs[Derived Column Output].Columns[RowsUpdated]" />
+                        <inputColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Inputs[OLE DB Command Input].Columns[AuditID]"
+                          cachedDataType="i4"
+                          cachedName="AuditID"
+                          externalMetadataColumnId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                          lineageId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID.Outputs[Derived Column Output].Columns[AuditID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          dataType="wstr"
+                          length="100"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          dataType="i4"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          dataType="i4"
+                          name="Param_2">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          dataType="i4"
+                          name="Param_3">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                          dataType="i4"
+                          name="Param_4">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Audit Parameters\Get Audit Parameters.Paths[Audit Output 1]"
+                  endId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID.Inputs[Derived Column Input]"
+                  name="Audit Output 1"
+                  startId="Package\Audit Parameters\Get Audit Parameters\Audit.Outputs[Audit Output 1]" />
+                <path
+                  refId="Package\Audit Parameters\Get Audit Parameters.Paths[Derived Column Output]"
+                  endId="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension.Inputs[OLE DB Command Input]"
+                  name="Derived Column Output"
+                  startId="Package\Audit Parameters\Get Audit Parameters\DC - AuditID.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Audit Parameters\Get Audit Parameters.Paths[OLE DB Source Output]"
+                  endId="Package\Audit Parameters\Get Audit Parameters\Audit.Inputs[Audit Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\Audit Parameters\Get Audit Parameters\Get RowsExtracted.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Audit Parameters\Get RowsInserted"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{92040250-814D-4A93-856D-5A548189B753}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get RowsInserted"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4026D486-A9A6-460B-87D2-56079C6B1F69}"
+              SQLTask:SqlStatementSource="SELECT count(*) AS RowsInserted FROM [ERPLY_Staging].Integration.staging_SalesFact s&#xA;WHERE s.[ErplyInvoiceID] Not IN (SELECT [ErplyInvoiceID] FROM erp.Sales_Fact sf&#x9;)"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::RowsInserted" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Audit Parameters\Get RowsUpdated"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{FE438E8F-BF02-4EBA-845F-8BC41DD69F5E}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get RowsUpdated"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4026D486-A9A6-460B-87D2-56079C6B1F69}"
+              SQLTask:SqlStatementSource="SELECT count(*) AS RowsUpdated FROM [ERPLY_Staging].Integration.staging_SalesFact s&#xA;WHERE s.[ErplyInvoiceID] IN (SELECT [ErplyInvoiceID] FROM erp.Sales_Fact sf&#x9;)"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::RowsUpdated" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Audit Parameters.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{362852BD-474C-4035-A27A-376061A92DCD}"
+          DTS:From="Package\Audit Parameters\Get RowsInserted"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Audit Parameters\Get Audit Parameters" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Audit Parameters.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{798296FB-862F-4AB0-88A7-4B3CF5869C36}"
+          DTS:From="Package\Audit Parameters\Get RowsUpdated"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Audit Parameters\Get Audit Parameters" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ETL Begin"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{CE45C595-EEA9-4DD8-B968-F1E109A5C041}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ETL Begin">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\ETL Begin\Get AuditID"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{21ECD502-F1CB-48A5-98AD-968C9EFE3763}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get AuditID"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4026D486-A9A6-460B-87D2-56079C6B1F69}"
+              SQLTask:SqlStatementSource="select isnull(max(AuditID), 0) + 1  from integration.AuditDimension&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::AuditID" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ETL Begin\Get ETL Start Time"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{35778ED9-4161-4378-88F5-797DD4391BF8}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get ETL Start Time"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{9DE91C01-E81A-4BCE-94FD-0C83DA58AF33}"
+              SQLTask:SqlStatementSource="SELECT DATEADD(&quot;Minute&quot;, -5, GETDATE()  )"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::ETLStartTime" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ETL Begin\Get Latest ETL Time"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8C7C68BD-3BE3-4802-87D5-99DB91CE8DC4}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get Latest ETL Time"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4026D486-A9A6-460B-87D2-56079C6B1F69}"
+              SQLTask:SqlStatementSource="EXEC Integration.GetLastETLTime ?;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::LastETLTime" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ETL Begin\Update AuditDimension"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{BF9AF6B8-13AD-4FB3-B733-D599AAE68831}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update AuditDimension"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4026D486-A9A6-460B-87D2-56079C6B1F69}"
+              SQLTask:SqlStatementSource="Insert into integration.AuditDimension(&#xA;AuditID,&#xA;TableName,&#xA;PackageName,&#xA;RowsExtracted,&#xA;RowsInserted,&#xA;RowsUpdated,&#xA;LoadStartTime,&#xA;LoadEndTime)&#xA;Values&#xA;( ?, Null,Null, Null, Null,Null, ?, Null&#xA;)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::AuditID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="20"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::ETLStartTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ETL Begin.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{1B93F4AE-87A9-4739-8A39-EF8C5C858C2E}"
+          DTS:From="Package\ETL Begin\Get AuditID"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\ETL Begin\Update AuditDimension" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ETL Begin.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{F660BBC8-3787-4F29-BBA3-9216FC9A35D9}"
+          DTS:From="Package\ETL Begin\Get ETL Start Time"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\ETL Begin\Update AuditDimension" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ETL Begin.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{AFEF2C22-EF31-4283-892E-FE6C55B5687D}"
+          DTS:From="Package\ETL Begin\Update AuditDimension"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\ETL Begin\Get Latest ETL Time" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Production"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6DA02A10-63F7-4420-90B2-3D563CCFE85E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Production"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4026D486-A9A6-460B-87D2-56079C6B1F69}"
+          SQLTask:SqlStatementSource="Exec [Integration].[LoadStagedSaleData]?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::AuditID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Staging"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{8AEDE2BB-2606-4791-8E0A-5313301B00F2}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Staging">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Load Staging\Load staging"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{C0AE1E71-B4A0-49DA-979C-C465D551818E}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load staging"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Load Staging\Load staging\integration GetSalesUpdates"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="integration GetSalesUpdates"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC Integration.GetSalesUpdates ?, ?
+WITH RESULT SETS
+(
+    (
+  [WarehouseErplyID] [int] NULL, 
+	[InputErplyID] [int] NULL,
+	[EmployeeErplyID] [int] NULL,
+	[ClientErplyID] [int] NULL,
+	[ErplyInvoiceID] [int] NULL,
+	[ErplyInvoiceRowID] [int] NULL,
+	[CampaignNames] [nvarchar](100) NULL,
+	[Status] [nvarchar](50) NULL,
+	[Price] [decimal](19, 2) NULL,
+	[Date] [datetime] NULL,
+	[Discount] [decimal](19, 2) NULL,
+	[IsPromotion] [bit] NULL,
+	[VAT] [decimal](19, 2) NULL,
+	[FinalNetPrice] [decimal](19, 2) NULL,
+	[FinalPriceWithVAT] [decimal](19, 2) NULL,
+	[RowNetTotal] [decimal](19, 2) NULL,
+	[RowTotal] [decimal](19, 2) NULL,
+	[CurrencyCode] [nvarchar](10) NULL,
+	[CurrencyRate] [decimal](19, 2) NULL,
+	[Quantity] [decimal](19, 2) NULL,
+	[LastModified] [datetime] NULL
+    )
+);</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"@LastETLTime:Input",{3AF669B6-D3A0-4BAC-A8E9-2C46598A2B53};"@ETLStartTime:Input",{E771BB25-FE5D-40C1-9BC0-8004670EF09A};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Connections[OleDbConnection]"
+                      connectionManagerID="{9DE91C01-E81A-4BCE-94FD-0C83DA58AF33}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ERPLY_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[ErplyInvoiceID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[ErplyInvoiceID]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[ErplyInvoiceID]"
+                          name="ErplyInvoiceID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[ErplyInvoiceRowID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[ErplyInvoiceRowID]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[ErplyInvoiceRowID]"
+                          name="ErplyInvoiceRowID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[CampaignNames]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[CampaignNames]"
+                          length="100"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[CampaignNames]"
+                          name="CampaignNames"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[Status]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                          length="50"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[Status]"
+                          name="Status"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[Price]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[Price]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[Price]"
+                          name="Price"
+                          precision="19"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[Discount]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[Discount]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[Discount]"
+                          name="Discount"
+                          precision="19"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[IsPromotion]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[IsPromotion]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[IsPromotion]"
+                          name="IsPromotion"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[VAT]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[VAT]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[VAT]"
+                          name="VAT"
+                          precision="19"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[FinalNetPrice]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[FinalNetPrice]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[FinalNetPrice]"
+                          name="FinalNetPrice"
+                          precision="19"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[FinalPriceWithVAT]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[FinalPriceWithVAT]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[FinalPriceWithVAT]"
+                          name="FinalPriceWithVAT"
+                          precision="19"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[RowNetTotal]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[RowNetTotal]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[RowNetTotal]"
+                          name="RowNetTotal"
+                          precision="19"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[RowTotal]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[RowTotal]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[RowTotal]"
+                          name="RowTotal"
+                          precision="19"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[CurrencyCode]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[CurrencyCode]"
+                          length="10"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[CurrencyCode]"
+                          name="CurrencyCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[CurrencyRate]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[CurrencyRate]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[CurrencyRate]"
+                          name="CurrencyRate"
+                          precision="19"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[Quantity]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[Quantity]"
+                          name="Quantity"
+                          precision="19"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[LastModified]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[LastModified]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[LastModified]"
+                          name="LastModified"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[WarehouseErplyID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[WarehouseErplyID]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[WarehouseErplyID]"
+                          name="WarehouseErplyID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[InputErplyID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[InputErplyID]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[InputErplyID]"
+                          name="InputErplyID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[EmployeeErplyID]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]"
+                          name="EmployeeErplyID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[ClientErplyID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[ClientErplyID]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[ClientErplyID]"
+                          name="ClientErplyID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[Date]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[Date]"
+                          name="Date"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[ErplyInvoiceID]"
+                          dataType="i4"
+                          name="ErplyInvoiceID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[ErplyInvoiceRowID]"
+                          dataType="i4"
+                          name="ErplyInvoiceRowID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[CampaignNames]"
+                          dataType="wstr"
+                          length="100"
+                          name="CampaignNames" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                          dataType="wstr"
+                          length="50"
+                          name="Status" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[Price]"
+                          dataType="numeric"
+                          name="Price"
+                          precision="19"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[Discount]"
+                          dataType="numeric"
+                          name="Discount"
+                          precision="19"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[IsPromotion]"
+                          dataType="bool"
+                          name="IsPromotion" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[VAT]"
+                          dataType="numeric"
+                          name="VAT"
+                          precision="19"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[FinalNetPrice]"
+                          dataType="numeric"
+                          name="FinalNetPrice"
+                          precision="19"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[FinalPriceWithVAT]"
+                          dataType="numeric"
+                          name="FinalPriceWithVAT"
+                          precision="19"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[RowNetTotal]"
+                          dataType="numeric"
+                          name="RowNetTotal"
+                          precision="19"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[RowTotal]"
+                          dataType="numeric"
+                          name="RowTotal"
+                          precision="19"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[CurrencyCode]"
+                          dataType="wstr"
+                          length="10"
+                          name="CurrencyCode" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[CurrencyRate]"
+                          dataType="numeric"
+                          name="CurrencyRate"
+                          precision="19"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                          dataType="numeric"
+                          name="Quantity"
+                          precision="19"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[LastModified]"
+                          dataType="dbTimeStamp"
+                          name="LastModified" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[WarehouseErplyID]"
+                          dataType="i4"
+                          name="WarehouseErplyID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[InputErplyID]"
+                          dataType="i4"
+                          name="InputErplyID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[EmployeeErplyID]"
+                          dataType="i4"
+                          name="EmployeeErplyID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[ClientErplyID]"
+                          dataType="i4"
+                          name="ClientErplyID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                          dataType="dbTimeStamp"
+                          name="Date" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[WarehouseErplyID]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[WarehouseErplyID]"
+                          name="WarehouseErplyID" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[InputErplyID]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[InputErplyID]"
+                          name="InputErplyID" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[EmployeeErplyID]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[EmployeeErplyID]"
+                          name="EmployeeErplyID" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[ClientErplyID]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[ClientErplyID]"
+                          name="ClientErplyID" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[ErplyInvoiceID]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[ErplyInvoiceID]"
+                          name="ErplyInvoiceID" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[ErplyInvoiceRowID]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[ErplyInvoiceRowID]"
+                          name="ErplyInvoiceRowID" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[CampaignNames]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[CampaignNames]"
+                          name="CampaignNames" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[Status]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[Status]"
+                          name="Status" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[Price]"
+                          dataType="numeric"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[Price]"
+                          name="Price"
+                          precision="19"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[Date]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[Date]"
+                          name="Date" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[Discount]"
+                          dataType="numeric"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[Discount]"
+                          name="Discount"
+                          precision="19"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[IsPromotion]"
+                          dataType="bool"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[IsPromotion]"
+                          name="IsPromotion" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[VAT]"
+                          dataType="numeric"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[VAT]"
+                          name="VAT"
+                          precision="19"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[FinalNetPrice]"
+                          dataType="numeric"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[FinalNetPrice]"
+                          name="FinalNetPrice"
+                          precision="19"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[FinalPriceWithVAT]"
+                          dataType="numeric"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[FinalPriceWithVAT]"
+                          name="FinalPriceWithVAT"
+                          precision="19"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[RowNetTotal]"
+                          dataType="numeric"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[RowNetTotal]"
+                          name="RowNetTotal"
+                          precision="19"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[RowTotal]"
+                          dataType="numeric"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[RowTotal]"
+                          name="RowTotal"
+                          precision="19"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[CurrencyCode]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[CurrencyCode]"
+                          name="CurrencyCode" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[CurrencyRate]"
+                          dataType="numeric"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[CurrencyRate]"
+                          name="CurrencyRate"
+                          precision="19"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                          dataType="numeric"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                          name="Quantity"
+                          precision="19"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[LastModified]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[LastModified]"
+                          name="LastModified" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Load Staging\Load staging\Integration SalesFact"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Integration SalesFact"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[integration].[staging_salesFact]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load Staging\Load staging\Integration SalesFact.Connections[OleDbConnection]"
+                      connectionManagerID="{9DE91C01-E81A-4BCE-94FD-0C83DA58AF33}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ERPLY_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[ErplyInvoiceID]"
+                          cachedDataType="i4"
+                          cachedName="ErplyInvoiceID"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[ErplyInvoiceID]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[ErplyInvoiceID]" />
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[ErplyInvoiceRowID]"
+                          cachedDataType="i4"
+                          cachedName="ErplyInvoiceRowID"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[ErplyInvoiceRowID]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[ErplyInvoiceRowID]" />
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[CampaignNames]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="CampaignNames"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[CampaignNames]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[CampaignNames]" />
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[Status]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Status"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[Status]" />
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[Price]"
+                          cachedDataType="numeric"
+                          cachedName="Price"
+                          cachedPrecision="19"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[Price]" />
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[Discount]"
+                          cachedDataType="numeric"
+                          cachedName="Discount"
+                          cachedPrecision="19"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[Discount]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[Discount]" />
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[IsPromotion]"
+                          cachedDataType="bool"
+                          cachedName="IsPromotion"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[IsPromotion]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[IsPromotion]" />
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[VAT]"
+                          cachedDataType="numeric"
+                          cachedName="VAT"
+                          cachedPrecision="19"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[VAT]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[VAT]" />
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[FinalNetPrice]"
+                          cachedDataType="numeric"
+                          cachedName="FinalNetPrice"
+                          cachedPrecision="19"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[FinalNetPrice]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[FinalNetPrice]" />
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[FinalPriceWithVAT]"
+                          cachedDataType="numeric"
+                          cachedName="FinalPriceWithVAT"
+                          cachedPrecision="19"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[FinalPriceWithVAT]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[FinalPriceWithVAT]" />
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[RowNetTotal]"
+                          cachedDataType="numeric"
+                          cachedName="RowNetTotal"
+                          cachedPrecision="19"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[RowNetTotal]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[RowNetTotal]" />
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[RowTotal]"
+                          cachedDataType="numeric"
+                          cachedName="RowTotal"
+                          cachedPrecision="19"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[RowTotal]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[RowTotal]" />
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[CurrencyCode]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="CurrencyCode"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyCode]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[CurrencyCode]" />
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[CurrencyRate]"
+                          cachedDataType="numeric"
+                          cachedName="CurrencyRate"
+                          cachedPrecision="19"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyRate]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[CurrencyRate]" />
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[Quantity]"
+                          cachedDataType="numeric"
+                          cachedName="Quantity"
+                          cachedPrecision="19"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[Quantity]" />
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[LastModified]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="LastModified"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[LastModified]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[LastModified]" />
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[WarehouseErplyID]"
+                          cachedDataType="i4"
+                          cachedName="WarehouseErplyID"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseErplyID]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[WarehouseErplyID]" />
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[InputErplyID]"
+                          cachedDataType="i4"
+                          cachedName="InputErplyID"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[InputErplyID]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[InputErplyID]" />
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[EmployeeErplyID]"
+                          cachedDataType="i4"
+                          cachedName="EmployeeErplyID"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeErplyID]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]" />
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[ClientErplyID]"
+                          cachedDataType="i4"
+                          cachedName="ClientErplyID"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[ClientErplyID]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[ClientErplyID]" />
+                        <inputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[Date]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="Date"
+                          externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                          lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[Date]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[DateID]"
+                          dataType="i4"
+                          name="DateID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[InputID]"
+                          dataType="i4"
+                          name="InputID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseID]"
+                          dataType="i4"
+                          name="WarehouseID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[ClientID]"
+                          dataType="i4"
+                          name="ClientID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeID]"
+                          dataType="i4"
+                          name="EmployeeID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[ErplyInvoiceID]"
+                          dataType="i4"
+                          name="ErplyInvoiceID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[ErplyInvoiceRowID]"
+                          dataType="i4"
+                          name="ErplyInvoiceRowID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[CampaignNames]"
+                          dataType="wstr"
+                          length="100"
+                          name="CampaignNames" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[IsPromotion]"
+                          dataType="i4"
+                          name="IsPromotion" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                          dataType="wstr"
+                          length="10"
+                          name="Status" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
+                          dataType="numeric"
+                          name="Price"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[Discount]"
+                          dataType="numeric"
+                          name="Discount"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[VAT]"
+                          dataType="numeric"
+                          name="VAT"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[FinalNetPrice]"
+                          dataType="numeric"
+                          name="FinalNetPrice"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[FinalPriceWithVAT]"
+                          dataType="numeric"
+                          name="FinalPriceWithVAT"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[RowNetTotal]"
+                          dataType="numeric"
+                          name="RowNetTotal"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[RowTotal]"
+                          dataType="numeric"
+                          name="RowTotal"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyCode]"
+                          dataType="wstr"
+                          length="10"
+                          name="CurrencyCode" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyRate]"
+                          dataType="numeric"
+                          name="CurrencyRate"
+                          precision="19"
+                          scale="9" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                          dataType="numeric"
+                          name="Quantity"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[LastModified]"
+                          dataType="dbTimeStamp"
+                          name="LastModified" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseErplyID]"
+                          dataType="i4"
+                          name="WarehouseErplyID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[InputErplyID]"
+                          dataType="i4"
+                          name="InputErplyID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeErplyID]"
+                          dataType="i4"
+                          name="EmployeeErplyID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[ClientErplyID]"
+                          dataType="i4"
+                          name="ClientErplyID" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                          dataType="dbDate"
+                          name="Date" />
+                        <externalMetadataColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[PaymentAuthCode]"
+                          dataType="nText"
+                          name="PaymentAuthCode" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Load Staging\Load staging\Integration SalesFact.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging\Load staging\Integration SalesFact.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Staging\Load staging\Integration SalesFact.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Staging\Load staging\Integration SalesFact.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Load Staging\Load staging.Paths[OLE DB Source Output]"
+                  endId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Load Staging\Truncate Staging"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{54C3C6CC-09F4-46E5-8B91-FFADE2D78B02}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Staging"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{9DE91C01-E81A-4BCE-94FD-0C83DA58AF33}"
+              SQLTask:SqlStatementSource="Truncate Table integration.staging_salesFact;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Load Staging.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{CAE14525-0C0D-4CF5-A3F5-3CB38ED2D339}"
+          DTS:From="Package\Load Staging\Truncate Staging"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Load Staging\Load staging" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\SalesFact"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
       DTS:DTSID="{ECFCCD66-DB5D-4C8B-9C02-DFACDF635A9B}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -818,6 +2582,127 @@ where [refTable].[WarehouseERplyID] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\SalesFact\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml"></property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SalesFact\Lookup.Connections[OleDbConnection]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\SalesFact\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SalesFact\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\SalesFact\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\SalesFact\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\SalesFact\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\SalesFact\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\SalesFact\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SalesFact\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SalesFact\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SalesFact\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SalesFact\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\SalesFact\Sales Source"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
@@ -862,7 +2747,8 @@ sd.RowNetTotal,
 sd.RowTotal,
 sh.CurrencyCode,
 sh.CurrencyRate,
-sd.Amount as Quantity
+sd.Amount as Quantity,
+CONVERT(DATETime, CONVERT(DATETIMEOFFSET, sh.LastModified)) LastModified
 
 FROM dbo.SaleHeaders sh	JOIN SaleDetails sd
 ON sh.SaleId = Sd.SaleId</property>
@@ -1102,6 +2988,15 @@ ON sh.SaleId = Sd.SaleId</property>
                       precision="18"
                       scale="2"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SalesFact\Sales Source.Outputs[OLE DB Source Output].Columns[LastModified]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SalesFact\Sales Source.Outputs[OLE DB Source Output].ExternalColumns[LastModified]"
+                      lineageId="Package\SalesFact\Sales Source.Outputs[OLE DB Source Output].Columns[LastModified]"
+                      name="LastModified"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1206,6 +3101,10 @@ ON sh.SaleId = Sd.SaleId</property>
                       name="Quantity"
                       precision="18"
                       scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\SalesFact\Sales Source.Outputs[OLE DB Source Output].ExternalColumns[LastModified]"
+                      dataType="dbTimeStamp"
+                      name="LastModified" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1336,6 +3235,11 @@ ON sh.SaleId = Sd.SaleId</property>
                       name="Quantity"
                       precision="18"
                       scale="2" />
+                    <outputColumn
+                      refId="Package\SalesFact\Sales Source.Outputs[OLE DB Source Error Output].Columns[LastModified]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\SalesFact\Sales Source.Outputs[OLE DB Source Error Output].Columns[LastModified]"
+                      name="LastModified" />
                     <outputColumn
                       refId="Package\SalesFact\Sales Source.Outputs[OLE DB Source Error Output].Columns[EmployeeErplyID]"
                       dataType="i4"
@@ -1677,6 +3581,10 @@ ON sh.SaleId = Sd.SaleId</property>
                       name="Quantity"
                       precision="19"
                       scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\SalesFact\Sales_Fact.Inputs[OLE DB Destination Input].ExternalColumns[LastModified]"
+                      dataType="dbTimeStamp"
+                      name="LastModified" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1728,13 +3636,8 @@ ON sh.SaleId = Sd.SaleId</property>
               name="Lookup Match Output"
               startId="Package\SalesFact\Get EmployeeID.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\SalesFact.Paths[Lookup Match Output4]"
-              endId="Package\SalesFact\Sales_Fact.Inputs[OLE DB Destination Input]"
-              name="Lookup Match Output"
-              startId="Package\SalesFact\Get DateID.Outputs[Lookup Match Output]" />
-            <path
               refId="Package\SalesFact.Paths[OLE DB Source Output]"
-              endId="Package\SalesFact\Get WarehouseID.Inputs[Lookup Input]"
+              endId="Package\SalesFact\Sales_Fact.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\SalesFact\Sales Source.Outputs[OLE DB Source Output]" />
           </paths>
@@ -1742,6 +3645,32 @@ ON sh.SaleId = Sd.SaleId</property>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{5C2F4B11-BB9E-4D9D-8882-F85F325638B6}"
+      DTS:From="Package\ETL Begin"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load Staging" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{0B06C8D6-CAD7-499D-8871-65EA10E02514}"
+      DTS:From="Package\Load Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Audit Parameters" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{FF250E83-D040-4031-99DD-5A3F154F1940}"
+      DTS:From="Package\Audit Parameters"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Load Production" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -1753,61 +3682,288 @@ ON sh.SaleId = Sd.SaleId</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="124,42.6666666666667"
-          Id="Package\SalesFact"
-          TopLeft="366.666661202908,106.166664768259" />
-      </GraphLayout>
-    </LayoutInfo>
-  </Package>
-  <TaskHost
-    design-time-name="Package\SalesFact">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+          Size="180,42.6666666666667"
+          Id="Package\Audit Parameters\Get Audit Parameters"
+          TopLeft="12.9166601536175,50.7999984270336" />
         <NodeLayout
-          Size="129.333333333334,42.6666666666667"
-          Id="Package\SalesFact\Sales_Fact"
-          TopLeft="22.1666666666667,621.5" />
+          Size="164,42.6666666666667"
+          Id="Package\Audit Parameters\Get RowsInserted"
+          TopLeft="27.7499906060598,0.299995560050093" />
         <NodeLayout
-          Size="132,42.6666666666667"
-          Id="Package\SalesFact\Get DateID"
-          TopLeft="20.8333333333334,518.833333333333" />
-        <NodeLayout
-          Size="136,42.6666666666667"
-          Id="Package\SalesFact\Get InputID"
-          TopLeft="18.8333333333334,210.833333333333" />
-        <NodeLayout
-          Size="140,42.6666666666667"
-          Id="Package\SalesFact\Sales Source"
-          TopLeft="16.8333333333333,5.49999999999993" />
-        <NodeLayout
-          Size="137.333333333334,42.6666666666667"
-          Id="Package\SalesFact\Get ClientID"
-          TopLeft="18.1666666666667,313.5" />
-        <NodeLayout
-          Size="156,42.6666666666667"
-          Id="Package\SalesFact\Get EmployeeID"
-          TopLeft="8.83333333333339,416.166666666667" />
-        <NodeLayout
-          Size="162.666666666667,42.6666666666667"
-          Id="Package\SalesFact\Get WarehouseID"
-          TopLeft="5.50000000000001,108.166666666666" />
+          Size="164,42.6666666666667"
+          Id="Package\Audit Parameters\Get RowsUpdated"
+          TopLeft="274.833320257565,16.3333286066851" />
         <EdgeLayout
-          Id="Package\SalesFact.Paths[OLE DB Source Output]"
-          TopLeft="86.8333333333333,48.1666666666666">
+          Id="Package\Audit Parameters.PrecedenceConstraints[Constraint]"
+          TopLeft="191.74999060606,21.6333288933834">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,59.9999999999999"
+              EndConnector="1.16666954755772,50.5000028669836"
               Start="0,0"
-              End="0,52.4999999999999">
+              End="8.66666954755772,50.5000028669836">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.4999999999999" />
+                    End="19.6666695475577,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.6666695475577,0"
+                    Point2="23.6666695475577,0"
+                    Point3="23.6666695475577,4" />
+                  <mssgle:LineSegment
+                    End="23.6666695475577,46.5000028669836" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.6666695475577,46.5000028669836"
+                    Point2="23.6666695475577,50.5000028669836"
+                    Point3="19.6666695475577,50.5000028669836" />
+                  <mssgle:LineSegment
+                    End="8.66666954755772,50.5000028669836" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Audit Parameters.PrecedenceConstraints[Constraint 1]"
+          TopLeft="274.833320257565,37.6666619400184">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-81.916660103947,40.2444475981263"
+              Start="0,0"
+              End="-74.416660103947,40.2444475981263">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-43.3734901805959,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-43.3734901805959,0"
+                    Point2="-47.3734901805959,0"
+                    Point3="-47.3734901805959,4" />
+                  <mssgle:LineSegment
+                    End="-47.3734901805959,36.2444475981263" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-47.3734901805959,36.2444475981263"
+                    Point2="-47.3734901805959,40.2444475981263"
+                    Point3="-51.3734901805959,40.2444475981263" />
+                  <mssgle:LineSegment
+                    End="-74.416660103947,40.2444475981263" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="False"
+          PanelSize="444,148.666666666667"
+          Size="182,42.6666666666667"
+          Id="Package\Audit Parameters"
+          TopLeft="177.5,210.833333333333" />
+        <NodeLayout
+          Size="135.333333333334,42.6666666666667"
+          Id="Package\ETL Begin\Get AuditID"
+          TopLeft="37.833329272767,13.699998396039" />
+        <NodeLayout
+          Size="169.333333333334,42.6666666666667"
+          Id="Package\ETL Begin\Get ETL Start Time"
+          TopLeft="195.333326925834,14.5666650472085" />
+        <NodeLayout
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\ETL Begin\Get Latest ETL Time"
+          TopLeft="98.1666614885132,192.76666193227" />
+        <NodeLayout
+          Size="189.333333333334,42.6666666666667"
+          Id="Package\ETL Begin\Update AuditDimension"
+          TopLeft="93.2499951136609,114.233329931696" />
+        <EdgeLayout
+          Id="Package\ETL Begin.PrecedenceConstraints[Constraint]"
+          TopLeft="105.499995939434,56.3666650627057">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="82.4166658408939,57.8666648689906"
+              Start="0,0"
+              End="82.4166658408939,50.3666648689906">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.9333324344953" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.9333324344953"
+                    Point2="0,28.9333324344953"
+                    Point3="4,28.9333324344953" />
+                  <mssgle:LineSegment
+                    End="78.4166658408939,28.9333324344953" />
+                  <mssgle:CubicBezierSegment
+                    Point1="78.4166658408939,28.9333324344953"
+                    Point2="82.4166658408939,28.9333324344953"
+                    Point3="82.4166658408939,32.9333324344953" />
+                  <mssgle:LineSegment
+                    End="82.4166658408939,50.3666648689906" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ETL Begin.PrecedenceConstraints[Constraint 1]"
+          TopLeft="279.999993592501,57.2333317138751">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-61.861109589951,56.9999982178212"
+              Start="0,0"
+              End="-61.861109589951,49.4999982178212">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.9134067608824" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.9134067608824"
+                    Point2="0,33.9134067608824"
+                    Point3="-4,33.9134067608824" />
+                  <mssgle:LineSegment
+                    End="-57.861109589951,33.9134067608824" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-57.861109589951,33.9134067608824"
+                    Point2="-61.861109589951,33.9134067608824"
+                    Point3="-61.861109589951,37.9134067608824" />
+                  <mssgle:LineSegment
+                    End="-61.861109589951,49.4999982178212" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ETL Begin.PrecedenceConstraints[Constraint 2]"
+          TopLeft="186.708328301087,156.899996598363">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.8666653339067"
+              Start="0,0"
+              End="0,28.3666653339067">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.3666653339067" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="False"
+          PanelSize="369.333333333334,290.666666666667"
+          Size="148.666666666667,42.6666666666667"
+          Id="Package\ETL Begin"
+          TopLeft="194.166666666667,5.50000000000003" />
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\Load Production"
+          TopLeft="190.5,313.5" />
+        <NodeLayout
+          Size="140,42.6666666666667"
+          Id="Package\Load Staging\Load staging"
+          TopLeft="57.249995858719,107.033327700098" />
+        <NodeLayout
+          Size="160,42.6666666666667"
+          Id="Package\Load Staging\Truncate Staging"
+          TopLeft="32.666662891706,9.09999611794959" />
+        <EdgeLayout
+          Id="Package\Load Staging.PrecedenceConstraints[Constraint]"
+          TopLeft="112.666662891706,51.7666627846163">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.583332967013,55.2666649154821"
+              Start="0,0"
+              End="14.583332967013,47.7666649154821">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.6333324577411" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.6333324577411"
+                    Point2="0,27.6333324577411"
+                    Point3="4,27.6333324577411" />
+                  <mssgle:LineSegment
+                    End="10.583332967013,27.6333324577411" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.583332967013,27.6333324577411"
+                    Point2="14.583332967013,27.6333324577411"
+                    Point3="14.583332967013,31.6333324577411" />
+                  <mssgle:LineSegment
+                    End="14.583332967013,47.7666649154821" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="False"
+          PanelSize="262.666666666667,204.666666666667"
+          Size="163.333333333334,42.6666666666667"
+          Id="Package\Load Staging"
+          TopLeft="187.166665921609,108.166666666667" />
+        <NodeLayout
+          Size="124,42.6666666666667"
+          Id="Package\SalesFact"
+          TopLeft="5.50000000000006,313.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="268.666666294138,48.1666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000003"
+              Start="0,0"
+              End="0,52.5000000000003">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000003" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1817,8 +3973,76 @@ ON sh.SaleId = Sd.SaleId</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SalesFact.Paths[Lookup Match Output4]"
-          TopLeft="86.8333333333334,561.5">
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="268.666666294138,150.833333333334">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999993"
+              Start="0,0"
+              End="0,52.4999999999993">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999993" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="268.5,253.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000003"
+              Start="0,0"
+              End="0,52.5000000000003">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000003" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Audit Parameters\Get Audit Parameters">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="193.333333333334,42.6666666666667"
+          Id="Package\Audit Parameters\Get Audit Parameters\Update Audit Dimension"
+          TopLeft="5.50000000000003,313.5" />
+        <NodeLayout
+          Size="104,42.6666666666667"
+          Id="Package\Audit Parameters\Get Audit Parameters\Audit"
+          TopLeft="50.1666666666667,108.166666666667" />
+        <NodeLayout
+          Size="168,42.6666666666667"
+          Id="Package\Audit Parameters\Get Audit Parameters\Get RowsExtracted"
+          TopLeft="18.1666666666667,5.50000000000004" />
+        <NodeLayout
+          Size="139.333333333334,42.6666666666667"
+          Id="Package\Audit Parameters\Get Audit Parameters\DC - AuditID"
+          TopLeft="32.5,210.833333333334" />
+        <EdgeLayout
+          Id="Package\Audit Parameters\Get Audit Parameters.Paths[OLE DB Source Output]"
+          TopLeft="102.166666666667,48.1666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1835,11 +4059,164 @@ ON sh.SaleId = Sd.SaleId</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125000001,96.3827734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Audit Parameters\Get Audit Parameters.Paths[Derived Column Output]"
+          TopLeft="102.166666666667,253.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Audit Parameters\Get Audit Parameters.Paths[Audit Output 1]"
+          TopLeft="102.166666666667,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Load Staging\Load staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="178.666666666667,42.6666666666667"
+          Id="Package\Load Staging\Load staging\Integration SalesFact"
+          TopLeft="540,259.333333333333" />
+        <NodeLayout
+          Size="212,42.6666666666667"
+          Id="Package\Load Staging\Load staging\integration GetSalesUpdates"
+          TopLeft="538,110.666666666667" />
+        <EdgeLayout
+          Id="Package\Load Staging\Load staging.Paths[OLE DB Source Output]"
+          TopLeft="644,153.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.6666666666667,106"
+              Start="0,0"
+              End="-14.6666666666667,98.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,49"
+                    Point2="0,53"
+                    Point3="-4,53" />
+                  <mssgle:LineSegment
+                    End="-10.6666666666667,53" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.6666666666667,53"
+                    Point2="-14.6666666666667,53"
+                    Point3="-14.6666666666667,57" />
+                  <mssgle:LineSegment
+                    End="-14.6666666666667,98.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Staging\Load staging\integration GetSalesUpdates">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Staging\Load staging\Integration SalesFact">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\SalesFact">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="140,42.6666666666667"
+          Id="Package\SalesFact\Sales Source"
+          TopLeft="16.8333333333333,5.49999999999993" />
+        <NodeLayout
+          Size="132,42.6666666666667"
+          Id="Package\SalesFact\Get DateID"
+          TopLeft="20.8333333333334,518.833333333333" />
+        <NodeLayout
+          Size="136,42.6666666666667"
+          Id="Package\SalesFact\Get InputID"
+          TopLeft="18.8333333333334,210.833333333333" />
+        <NodeLayout
+          Size="113.333333333334,42.6666666666667"
+          Id="Package\SalesFact\Lookup"
+          TopLeft="291.249995660037,553.199990608692" />
+        <NodeLayout
+          Size="129.333333333334,42.6666666666667"
+          Id="Package\SalesFact\Sales_Fact"
+          TopLeft="407.583327590178,252.733339927395" />
+        <NodeLayout
+          Size="137.333333333334,42.6666666666667"
+          Id="Package\SalesFact\Get ClientID"
+          TopLeft="18.1666666666667,313.5" />
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\SalesFact\Get EmployeeID"
+          TopLeft="8.83333333333339,416.166666666667" />
+        <NodeLayout
+          Size="162.666666666667,42.6666666666667"
+          Id="Package\SalesFact\Get WarehouseID"
+          TopLeft="5.50000000000001,108.166666666666" />
         <EdgeLayout
           Id="Package\SalesFact.Paths[Lookup Match Output3]"
           TopLeft="86.8333333333334,458.833333333333">
@@ -1860,7 +4237,7 @@ ON sh.SaleId = Sd.SaleId</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              BoundingBox="-57.0600390625,18.25,114.120078125,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1884,7 +4261,7 @@ ON sh.SaleId = Sd.SaleId</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              BoundingBox="-57.0600390625,18.2500000000001,114.120078125,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1908,7 +4285,7 @@ ON sh.SaleId = Sd.SaleId</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125000001,96.3827734375,11.609375"
+              BoundingBox="-57.0600390625,18.2500000000001,114.120078125,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1932,7 +4309,43 @@ ON sh.SaleId = Sd.SaleId</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              BoundingBox="-57.0600390625,18.25,114.120078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SalesFact.Paths[OLE DB Source Output]"
+          TopLeft="86.8333333333333,48.1666666666666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="385.416660923511,204.566673260728"
+              Start="0,0"
+              End="385.416660923511,197.066673260728">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,98.2833366303642" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,98.2833366303642"
+                    Point2="0,102.283336630364"
+                    Point3="4,102.283336630364" />
+                  <mssgle:LineSegment
+                    End="381.416660923511,102.283336630364" />
+                  <mssgle:CubicBezierSegment
+                    Point1="381.416660923511,102.283336630364"
+                    Point2="385.416660923511,102.283336630364"
+                    Point3="385.416660923511,106.283336630364" />
+                  <mssgle:LineSegment
+                    End="385.416660923511,197.066673260728" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="184.708330461755,107.283336630364,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1940,15 +4353,10 @@ ON sh.SaleId = Sd.SaleId</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\SalesFact\Sales_Fact">
+    design-time-name="Package\SalesFact\Sales Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -1999,10 +4407,15 @@ ON sh.SaleId = Sd.SaleId</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\SalesFact\Sales Source">
+    design-time-name="Package\SalesFact\Sales_Fact">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

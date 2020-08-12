@@ -12,8 +12,8 @@
   DTS:ObjectName="01_03_InventoryMovements_Fact"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{0A6B5DD9-0B09-4D5E-89B8-A28199965582}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{29C6250B-8533-4CD1-A13C-5493428733E5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2726,11 +2726,11 @@ FROM dbo.InventoryWriteOff ith</property>
               </outputs>
             </component>
             <component
-              refId="Package\Refresh Fact table\Suppliers"
+              refId="Package\Refresh Fact table\PurchaseDocuments"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
-              name="Suppliers"
+              name="PurchaseDocuments"
               usesDispositions="true"
               version="7">
               <properties>
@@ -2793,7 +2793,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Refresh Fact table\Suppliers.Connections[OleDbConnection]"
+                  refId="Package\Refresh Fact table\PurchaseDocuments.Connections[OleDbConnection]"
                   connectionManagerID="{43E20154-6A81-4C05-8137-E740CAA6A214}:external"
                   connectionManagerRefId="Project.ConnectionManagers[Source_ERPLY_Staging]"
                   description="The OLE DB runtime connection used to access the database."
@@ -2801,310 +2801,310 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
               </connections>
               <outputs>
                 <output
-                  refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output]"
+                  refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[Date]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[Date]"
                       dataType="dbDate"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[Date]"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[Date]"
+                      externalMetadataColumnId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[Date]"
                       name="Date"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[InventoryTransactionDate]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[InventoryTransactionDate]"
                       dataType="dbDate"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[InventoryTransactionDate]"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[InventoryTransactionDate]"
+                      externalMetadataColumnId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[InventoryTransactionDate]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[InventoryTransactionDate]"
                       name="InventoryTransactionDate"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[ErplyWarehouseToID]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[ErplyWarehouseToID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[ErplyWarehouseToID]"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[ErplyWarehouseToID]"
+                      externalMetadataColumnId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[ErplyWarehouseToID]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[ErplyWarehouseToID]"
                       name="ErplyWarehouseToID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[EmployeeErplyID]"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]"
+                      externalMetadataColumnId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[EmployeeErplyID]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]"
                       name="EmployeeErplyID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[ErplyInventoryID]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[ErplyInventoryID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[ErplyInventoryID]"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[ErplyInventoryID]"
+                      externalMetadataColumnId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[ErplyInventoryID]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[ErplyInventoryID]"
                       name="ErplyInventoryID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[DocumentType]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[DocumentType]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[DocumentType]"
+                      externalMetadataColumnId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[DocumentType]"
                       length="20"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[DocumentType]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[DocumentType]"
                       name="DocumentType"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[MovementType]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[MovementType]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[MovementType]"
+                      externalMetadataColumnId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[MovementType]"
                       length="20"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[MovementType]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[MovementType]"
                       name="MovementType"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[Price]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[Price]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[Price]"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[Price]"
+                      externalMetadataColumnId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[Price]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[Price]"
                       name="Price"
                       precision="18"
                       scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[TotalCost]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[TotalCost]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[TotalCost]"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[TotalCost]"
+                      externalMetadataColumnId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[TotalCost]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[TotalCost]"
                       name="TotalCost"
                       precision="18"
                       scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[CurrencyCode]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[CurrencyCode]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[CurrencyCode]"
+                      externalMetadataColumnId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[CurrencyCode]"
                       length="20"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[CurrencyCode]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[CurrencyCode]"
                       name="CurrencyCode"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[CurrencyRate]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[CurrencyRate]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[CurrencyRate]"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[CurrencyRate]"
+                      externalMetadataColumnId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[CurrencyRate]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[CurrencyRate]"
                       name="CurrencyRate"
                       precision="18"
                       scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[Quantity]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      externalMetadataColumnId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[Quantity]"
                       name="Quantity"
                       precision="18"
                       scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[InputErplyID]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[InputErplyID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[InputErplyID]"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[InputErplyID]"
+                      externalMetadataColumnId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[InputErplyID]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[InputErplyID]"
                       name="InputErplyID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[WarehouseFromErplyID]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[WarehouseFromErplyID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[WarehouseFromErplyID]"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[WarehouseFromErplyID]"
+                      externalMetadataColumnId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[WarehouseFromErplyID]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[WarehouseFromErplyID]"
                       name="WarehouseFromErplyID"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[Date]"
                       dataType="dbDate"
                       name="Date" />
                     <externalMetadataColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[InventoryTransactionDate]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[InventoryTransactionDate]"
                       dataType="dbDate"
                       name="InventoryTransactionDate" />
                     <externalMetadataColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[ErplyWarehouseToID]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[ErplyWarehouseToID]"
                       dataType="i4"
                       name="ErplyWarehouseToID" />
                     <externalMetadataColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[EmployeeErplyID]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[EmployeeErplyID]"
                       dataType="i4"
                       name="EmployeeErplyID" />
                     <externalMetadataColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[ErplyInventoryID]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[ErplyInventoryID]"
                       dataType="i4"
                       name="ErplyInventoryID" />
                     <externalMetadataColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[DocumentType]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[DocumentType]"
                       dataType="wstr"
                       length="20"
                       name="DocumentType" />
                     <externalMetadataColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[MovementType]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[MovementType]"
                       dataType="nText"
                       name="MovementType" />
                     <externalMetadataColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[Price]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[Price]"
                       dataType="numeric"
                       name="Price"
                       precision="18"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[TotalCost]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[TotalCost]"
                       dataType="numeric"
                       name="TotalCost"
                       precision="18"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[CurrencyCode]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[CurrencyCode]"
                       dataType="nText"
                       name="CurrencyCode" />
                     <externalMetadataColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[CurrencyRate]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[CurrencyRate]"
                       dataType="numeric"
                       name="CurrencyRate"
                       precision="18"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
                       dataType="numeric"
                       name="Quantity"
                       precision="18"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[InputErplyID]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[InputErplyID]"
                       dataType="i4"
                       name="InputErplyID" />
                     <externalMetadataColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].ExternalColumns[WarehouseFromErplyID]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[WarehouseFromErplyID]"
                       dataType="i4"
                       name="WarehouseFromErplyID" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[Date]"
                       dataType="dbDate"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[Date]"
                       name="Date" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[InventoryTransactionDate]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[InventoryTransactionDate]"
                       dataType="dbDate"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[InventoryTransactionDate]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[InventoryTransactionDate]"
                       name="InventoryTransactionDate" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[InputErplyID]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[InputErplyID]"
                       dataType="i4"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[InputErplyID]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[InputErplyID]"
                       name="InputErplyID" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[WarehouseFromErplyID]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[WarehouseFromErplyID]"
                       dataType="i4"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[WarehouseFromErplyID]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[WarehouseFromErplyID]"
                       name="WarehouseFromErplyID" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[ErplyWarehouseToID]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[ErplyWarehouseToID]"
                       dataType="i4"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[ErplyWarehouseToID]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[ErplyWarehouseToID]"
                       name="ErplyWarehouseToID" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[EmployeeErplyID]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[EmployeeErplyID]"
                       dataType="i4"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[EmployeeErplyID]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[EmployeeErplyID]"
                       name="EmployeeErplyID" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[ErplyInventoryID]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[ErplyInventoryID]"
                       dataType="i4"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[ErplyInventoryID]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[ErplyInventoryID]"
                       name="ErplyInventoryID" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[DocumentType]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[DocumentType]"
                       dataType="wstr"
                       length="20"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[DocumentType]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[DocumentType]"
                       name="DocumentType" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[MovementType]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[MovementType]"
                       dataType="nText"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[MovementType]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[MovementType]"
                       name="MovementType" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[Price]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[Price]"
                       dataType="numeric"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[Price]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[Price]"
                       name="Price"
                       precision="18"
                       scale="2" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[TotalCost]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[TotalCost]"
                       dataType="numeric"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[TotalCost]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[TotalCost]"
                       name="TotalCost"
                       precision="18"
                       scale="2" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[CurrencyCode]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[CurrencyCode]"
                       dataType="nText"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[CurrencyCode]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[CurrencyCode]"
                       name="CurrencyCode" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[CurrencyRate]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[CurrencyRate]"
                       dataType="numeric"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[CurrencyRate]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[CurrencyRate]"
                       name="CurrencyRate"
                       precision="18"
                       scale="2" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[Quantity]"
                       dataType="numeric"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[Quantity]"
                       name="Quantity"
                       precision="18"
                       scale="2" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -3673,7 +3673,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                       refId="Package\Refresh Fact table\Union All.Inputs[Union All Input 4].Columns[Date]"
                       cachedDataType="dbDate"
                       cachedName="Date"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[Date]">
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[Date]">
                       <properties>
                         <property
                           containsID="true"
@@ -3686,7 +3686,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                       refId="Package\Refresh Fact table\Union All.Inputs[Union All Input 4].Columns[InventoryTransactionDate]"
                       cachedDataType="dbDate"
                       cachedName="InventoryTransactionDate"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[InventoryTransactionDate]">
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[InventoryTransactionDate]">
                       <properties>
                         <property
                           containsID="true"
@@ -3699,7 +3699,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                       refId="Package\Refresh Fact table\Union All.Inputs[Union All Input 4].Columns[ErplyWarehouseToID]"
                       cachedDataType="i4"
                       cachedName="ErplyWarehouseToID"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[ErplyWarehouseToID]">
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[ErplyWarehouseToID]">
                       <properties>
                         <property
                           containsID="true"
@@ -3712,7 +3712,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                       refId="Package\Refresh Fact table\Union All.Inputs[Union All Input 4].Columns[EmployeeErplyID]"
                       cachedDataType="i4"
                       cachedName="EmployeeErplyID"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]">
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[EmployeeErplyID]">
                       <properties>
                         <property
                           containsID="true"
@@ -3725,7 +3725,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                       refId="Package\Refresh Fact table\Union All.Inputs[Union All Input 4].Columns[ErplyInventoryID]"
                       cachedDataType="i4"
                       cachedName="ErplyInventoryID"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[ErplyInventoryID]">
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[ErplyInventoryID]">
                       <properties>
                         <property
                           containsID="true"
@@ -3739,7 +3739,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                       cachedDataType="wstr"
                       cachedLength="20"
                       cachedName="DocumentType"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[DocumentType]">
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[DocumentType]">
                       <properties>
                         <property
                           containsID="true"
@@ -3753,7 +3753,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                       cachedDataType="wstr"
                       cachedLength="20"
                       cachedName="MovementType"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[MovementType]">
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[MovementType]">
                       <properties>
                         <property
                           containsID="true"
@@ -3768,7 +3768,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                       cachedName="Price"
                       cachedPrecision="18"
                       cachedScale="2"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[Price]">
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[Price]">
                       <properties>
                         <property
                           containsID="true"
@@ -3783,7 +3783,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                       cachedName="TotalCost"
                       cachedPrecision="18"
                       cachedScale="2"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[TotalCost]">
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[TotalCost]">
                       <properties>
                         <property
                           containsID="true"
@@ -3797,7 +3797,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                       cachedDataType="wstr"
                       cachedLength="20"
                       cachedName="CurrencyCode"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[CurrencyCode]">
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[CurrencyCode]">
                       <properties>
                         <property
                           containsID="true"
@@ -3812,7 +3812,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                       cachedName="CurrencyRate"
                       cachedPrecision="18"
                       cachedScale="2"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[CurrencyRate]">
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[CurrencyRate]">
                       <properties>
                         <property
                           containsID="true"
@@ -3827,7 +3827,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                       cachedName="Quantity"
                       cachedPrecision="18"
                       cachedScale="2"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[Quantity]">
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[Quantity]">
                       <properties>
                         <property
                           containsID="true"
@@ -3840,7 +3840,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                       refId="Package\Refresh Fact table\Union All.Inputs[Union All Input 4].Columns[InputErplyID]"
                       cachedDataType="i4"
                       cachedName="InputErplyID"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[InputErplyID]">
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[InputErplyID]">
                       <properties>
                         <property
                           containsID="true"
@@ -3853,7 +3853,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                       refId="Package\Refresh Fact table\Union All.Inputs[Union All Input 4].Columns[WarehouseFromErplyID]"
                       cachedDataType="i4"
                       cachedName="WarehouseFromErplyID"
-                      lineageId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output].Columns[WarehouseFromErplyID]">
+                      lineageId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[WarehouseFromErplyID]">
                       <properties>
                         <property
                           containsID="true"
@@ -4015,7 +4015,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
               refId="Package\Refresh Fact table.Paths[OLE DB Source Output3]"
               endId="Package\Refresh Fact table\Union All.Inputs[Union All Input 4]"
               name="OLE DB Source Output"
-              startId="Package\Refresh Fact table\Suppliers.Outputs[OLE DB Source Output]" />
+              startId="Package\Refresh Fact table\PurchaseDocuments.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\Refresh Fact table.Paths[Union All Output 1]"
               endId="Package\Refresh Fact table\Get WarehouseFromID.Inputs[Lookup Input]"
@@ -4432,8 +4432,8 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="122.666666666667,42.6666666666667"
-          Id="Package\Refresh Fact table\Suppliers"
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\Refresh Fact table\PurchaseDocuments"
           TopLeft="706.749989550561,11.2666830859575" />
         <EdgeLayout
           Id="Package\Refresh Fact table.Paths[OLE DB Source Output3]"
@@ -4655,7 +4655,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Refresh Fact table\Suppliers">
+    design-time-name="Package\Refresh Fact table\PurchaseDocuments">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
