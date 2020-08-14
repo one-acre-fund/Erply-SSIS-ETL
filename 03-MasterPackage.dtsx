@@ -12,8 +12,8 @@
   DTS:ObjectName="03-MasterPackage"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{5C0CAFB8-06FA-42E0-8D84-AB045E502F4E}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{A936DA5A-FB8D-474E-A843-09E76E54C833}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -49,22 +49,6 @@
         <ExecutePackageTask>
           <UseProjectReference>True</UseProjectReference>
           <PackageName>00_01_Employees_Dim.dtsx</PackageName>
-        </ExecutePackageTask>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Execute Package Task 6"
-      DTS:CreationName="Microsoft.ExecutePackageTask"
-      DTS:Description="Execute Package Task"
-      DTS:DTSID="{3ac186e6-5025-48bf-a519-a4499f1d8807}"
-      DTS:ExecutableType="Microsoft.ExecutePackageTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Execute Package Task 6"
-      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <ExecutePackageTask>
-          <UseProjectReference>True</UseProjectReference>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -242,25 +226,25 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="141.333333333334,42.6666666666667"
-          Id="Package\Load Staging"
-          TopLeft="37.0833327807486,16.033333046635" />
-        <NodeLayout
           Size="135.333333333334,42.6666666666667"
           Id="Package\Clients_Dim"
           TopLeft="34.5833328180015,115.266664605538" />
-        <NodeLayout
-          Size="134,42.6666666666667"
-          Id="Package\Inputs_Dim"
-          TopLeft="31.2499995343387,207.966664783756" />
         <NodeLayout
           Size="154.666666666667,42.6666666666667"
           Id="Package\Employees_Dim"
           TopLeft="34.9999994784594,291.566665124695" />
         <NodeLayout
-          Size="161.333333333334,42.6666666666667"
-          Id="Package\Warehouses_Dim"
-          TopLeft="38.7499994225801,385.133331954082" />
+          Size="134,42.6666666666667"
+          Id="Package\Inputs_Dim"
+          TopLeft="31.2499995343387,207.966664783756" />
+        <NodeLayout
+          Size="204,42.6666666666667"
+          Id="Package\InventoryMovements_Fact"
+          TopLeft="265.41666271165,84.0666651634376" />
+        <NodeLayout
+          Size="141.333333333334,42.6666666666667"
+          Id="Package\Load Staging"
+          TopLeft="37.0833327807486,16.033333046635" />
         <NodeLayout
           Size="129.333333333334,42.6666666666667"
           Id="Package\Sales_Fact"
@@ -270,9 +254,9 @@
           Id="Package\StockTakings_Fact"
           TopLeft="285.416662413627,237.300004935861" />
         <NodeLayout
-          Size="184,42.6666666666667"
-          Id="Package\Execute Package Task 6"
-          TopLeft="294.166662283242,748.599997628927" />
+          Size="161.333333333334,42.6666666666667"
+          Id="Package\Warehouses_Dim"
+          TopLeft="38.7499994225801,385.133331954082" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="104.999999466042,58.6999997133017">
@@ -417,10 +401,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="204,42.6666666666667"
-          Id="Package\InventoryMovements_Fact"
-          TopLeft="265.41666271165,84.0666651634376" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
           TopLeft="368.083329229305,237.300004935861">

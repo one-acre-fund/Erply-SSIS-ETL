@@ -12,8 +12,8 @@
   DTS:ObjectName="00_02_Inputs_Dim"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="35"
-  DTS:VersionGUID="{461046EA-949E-411B-849C-46C0E1295397}">
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{A6E1ABF2-B5ED-46BF-862A-704C147DB503}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1795,37 +1795,37 @@ from Products</property>
         <NodeLayout
           Size="158.666666666667,42.6666666666667"
           Id="Package\DFT - Get Inputs"
-          TopLeft="338.749994952231,239.633329048356" />
+          TopLeft="338.749994952231,251.333328839144" />
         <NodeLayout
           Size="164,42.6666666666667"
           Id="Package\Execute SQL Task"
-          TopLeft="367.916661184281,76.2666653029124" />
+          TopLeft="769.583321865648,44.6333325352271" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="449.916661184281,118.933331969579">
+          TopLeft="851.583321865648,87.2999992018938">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-31.8333328987167,120.699997078777"
+              EndConnector="-433.499993580084,164.03332963725"
               Start="0,0"
-              End="-31.8333328987167,113.199997078777">
+              End="-433.499993580084,156.53332963725">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,56.3499985393885" />
+                    End="0,78.0166648186249" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,56.3499985393885"
-                    Point2="0,60.3499985393885"
-                    Point3="-4,60.3499985393885" />
+                    Point1="0,78.0166648186249"
+                    Point2="0,82.0166648186249"
+                    Point3="-4,82.0166648186249" />
                   <mssgle:LineSegment
-                    End="-27.8333328987167,60.3499985393885" />
+                    End="-429.499993580084,82.0166648186249" />
                   <mssgle:CubicBezierSegment
-                    Point1="-27.8333328987167,60.3499985393885"
-                    Point2="-31.8333328987167,60.3499985393885"
-                    Point3="-31.8333328987167,64.3499985393885" />
+                    Point1="-429.499993580084,82.0166648186249"
+                    Point2="-433.499993580084,82.0166648186249"
+                    Point3="-433.499993580084,86.0166648186249" />
                   <mssgle:LineSegment
-                    End="-31.8333328987167,113.199997078777" />
+                    End="-433.499993580084,156.53332963725" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2101,7 +2101,7 @@ from Products</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2111,7 +2111,7 @@ from Products</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2124,7 +2124,7 @@ from Products</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2134,7 +2134,7 @@ from Products</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

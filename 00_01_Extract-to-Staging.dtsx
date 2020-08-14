@@ -12,8 +12,8 @@
   DTS:ObjectName="00_01_Extract-to-Staging"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="41"
-  DTS:VersionGUID="{AD584F70-A3C5-4420-88CB-4863BFC5EFCF}">
+  DTS:VersionBuild="44"
+  DTS:VersionGUID="{123A13EE-3EC5-446B-8CBC-2A2292427657}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -708,6 +708,1094 @@ FROM InventoryRegistration</property>
               endId="Package\InventoryRegistration\staging_InventoryRegistration.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\InventoryRegistration\InventoryRegistration.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\InventoryRegistrationDetails"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2f180c22-fd49-41cd-8583-f92437635c0a}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="InventoryRegistrationDetails"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="InventoryRegistrationDetails"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[erp].[staging_InventoryRegistrationDetails]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Connections[OleDbConnection]"
+                  connectionManagerID="{9DE91C01-E81A-4BCE-94FD-0C83DA58AF33}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input].Columns[ProductId]"
+                      cachedDataType="i4"
+                      cachedName="ProductId"
+                      externalMetadataColumnId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input].ExternalColumns[ProductId]"
+                      lineageId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductId]" />
+                    <inputColumn
+                      refId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input].Columns[Price]"
+                      cachedDataType="numeric"
+                      cachedName="Price"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
+                      lineageId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].Columns[Price]" />
+                    <inputColumn
+                      refId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input].Columns[Amount]"
+                      cachedDataType="numeric"
+                      cachedName="Amount"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
+                      lineageId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].Columns[Amount]" />
+                    <inputColumn
+                      refId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input].Columns[Cost]"
+                      cachedDataType="numeric"
+                      cachedName="Cost"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input].ExternalColumns[Cost]"
+                      lineageId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cost]" />
+                    <inputColumn
+                      refId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input].Columns[InventoryRegistrationID]"
+                      cachedDataType="i4"
+                      cachedName="InventoryRegistrationID"
+                      externalMetadataColumnId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input].ExternalColumns[InventoryRegistrationID]"
+                      lineageId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].Columns[InventoryRegistrationID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input].ExternalColumns[ProductId]"
+                      dataType="i4"
+                      name="ProductId" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
+                      dataType="numeric"
+                      name="Price"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
+                      dataType="numeric"
+                      name="Amount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input].ExternalColumns[Cost]"
+                      dataType="numeric"
+                      name="Cost"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input].ExternalColumns[InventoryRegistrationID]"
+                      dataType="i4"
+                      name="InventoryRegistrationID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\InventoryRegistrationDetails\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[InventoryRegistrationDetails]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\InventoryRegistrationDetails\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{49C2AD63-BE05-4956-A5FC-A83F0639A17E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Source_ERPLY]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductId]"
+                      lineageId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductId]"
+                      name="ProductId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].Columns[Price]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Price]"
+                      lineageId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].Columns[Price]"
+                      name="Price"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].Columns[Amount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                      lineageId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].Columns[Amount]"
+                      name="Amount"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cost]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Cost]"
+                      lineageId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cost]"
+                      name="Cost"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].Columns[InventoryRegistrationID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InventoryRegistrationID]"
+                      lineageId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].Columns[InventoryRegistrationID]"
+                      name="InventoryRegistrationID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductId]"
+                      dataType="i4"
+                      name="ProductId" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Price]"
+                      dataType="numeric"
+                      name="Price"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                      dataType="numeric"
+                      name="Amount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Cost]"
+                      dataType="numeric"
+                      name="Cost"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InventoryRegistrationID]"
+                      dataType="i4"
+                      name="InventoryRegistrationID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductId]"
+                      dataType="i4"
+                      lineageId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductId]"
+                      name="ProductId" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Price]"
+                      dataType="numeric"
+                      lineageId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Price]"
+                      name="Price"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                      dataType="numeric"
+                      lineageId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                      name="Amount"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Cost]"
+                      dataType="numeric"
+                      lineageId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Cost]"
+                      name="Cost"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InventoryRegistrationID]"
+                      dataType="i4"
+                      lineageId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InventoryRegistrationID]"
+                      name="InventoryRegistrationID" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\InventoryRegistrationDetails.Paths[OLE DB Source Output]"
+              endId="Package\InventoryRegistrationDetails\InventoryRegistrationDetails.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\InventoryRegistrationDetails\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\InventoryRegistrationHeader"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{334A3CD2-7A9E-44F6-BC37-849147F2B17A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="InventoryRegistrationHeader"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="InventoryRegistrationHeaders"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[erp].[staging_InventoryRegistrationHeaders]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Connections[OleDbConnection]"
+                  connectionManagerID="{9DE91C01-E81A-4BCE-94FD-0C83DA58AF33}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].Columns[InventoryRegistrationID]"
+                      cachedDataType="i4"
+                      cachedName="InventoryRegistrationID"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[InventoryRegistrationID]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[InventoryRegistrationID]" />
+                    <inputColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].Columns[InventoryRegistrationNo]"
+                      cachedDataType="i4"
+                      cachedName="InventoryRegistrationNo"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[InventoryRegistrationNo]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[InventoryRegistrationNo]" />
+                    <inputColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].Columns[CreatorID]"
+                      cachedDataType="i4"
+                      cachedName="CreatorID"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[CreatorID]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatorID]" />
+                    <inputColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].Columns[WarehouseID]"
+                      cachedDataType="i4"
+                      cachedName="WarehouseID"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseID]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[WarehouseID]" />
+                    <inputColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].Columns[StocktakingID]"
+                      cachedDataType="i4"
+                      cachedName="StocktakingID"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[StocktakingID]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[StocktakingID]" />
+                    <inputColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].Columns[InventoryID]"
+                      cachedDataType="i4"
+                      cachedName="InventoryID"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[InventoryID]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[InventoryID]" />
+                    <inputColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].Columns[SupplierID]"
+                      cachedDataType="i4"
+                      cachedName="SupplierID"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[SupplierID]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[SupplierID]" />
+                    <inputColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].Columns[ReasonID]"
+                      cachedDataType="i4"
+                      cachedName="ReasonID"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[ReasonID]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[ReasonID]" />
+                    <inputColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].Columns[CurrencyCode]"
+                      cachedDataType="nText"
+                      cachedName="CurrencyCode"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyCode]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrencyCode]" />
+                    <inputColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].Columns[CurrencyRate]"
+                      cachedDataType="numeric"
+                      cachedName="CurrencyRate"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyRate]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrencyRate]" />
+                    <inputColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].Columns[Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Date"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].Columns[InventoryTransactionDate]"
+                      cachedDataType="dbDate"
+                      cachedName="InventoryTransactionDate"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[InventoryTransactionDate]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[InventoryTransactionDate]" />
+                    <inputColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].Columns[Cause]"
+                      cachedDataType="nText"
+                      cachedName="Cause"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[Cause]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cause]" />
+                    <inputColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].Columns[Confirmed]"
+                      cachedDataType="i4"
+                      cachedName="Confirmed"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[Confirmed]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[Confirmed]" />
+                    <inputColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].Columns[DateAdded]"
+                      cachedDataType="nText"
+                      cachedName="DateAdded"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[DateAdded]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateAdded]" />
+                    <inputColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].Columns[LastModified]"
+                      cachedDataType="nText"
+                      cachedName="LastModified"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[LastModified]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[LastModified]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[InventoryRegistrationID]"
+                      dataType="i4"
+                      name="InventoryRegistrationID" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[InventoryRegistrationNo]"
+                      dataType="i4"
+                      name="InventoryRegistrationNo" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[CreatorID]"
+                      dataType="i4"
+                      name="CreatorID" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseID]"
+                      dataType="i4"
+                      name="WarehouseID" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[StocktakingID]"
+                      dataType="i4"
+                      name="StocktakingID" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[InventoryID]"
+                      dataType="i4"
+                      name="InventoryID" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[SupplierID]"
+                      dataType="i4"
+                      name="SupplierID" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[ReasonID]"
+                      dataType="i4"
+                      name="ReasonID" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyCode]"
+                      dataType="nText"
+                      name="CurrencyCode" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyRate]"
+                      dataType="numeric"
+                      name="CurrencyRate"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      dataType="dbDate"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[InventoryTransactionDate]"
+                      dataType="dbDate"
+                      name="InventoryTransactionDate" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[Cause]"
+                      dataType="nText"
+                      name="Cause" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[Confirmed]"
+                      dataType="i4"
+                      name="Confirmed" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[DateAdded]"
+                      dataType="nText"
+                      name="DateAdded" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input].ExternalColumns[LastModified]"
+                      dataType="nText"
+                      name="LastModified" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\InventoryRegistrationHeader\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[InventoryRegistrationHeaders]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\InventoryRegistrationHeader\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{49C2AD63-BE05-4956-A5FC-A83F0639A17E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Source_ERPLY]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[InventoryRegistrationID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InventoryRegistrationID]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[InventoryRegistrationID]"
+                      name="InventoryRegistrationID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[InventoryRegistrationNo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InventoryRegistrationNo]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[InventoryRegistrationNo]"
+                      name="InventoryRegistrationNo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatorID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatorID]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatorID]"
+                      name="CreatorID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[WarehouseID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WarehouseID]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[WarehouseID]"
+                      name="WarehouseID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[StocktakingID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StocktakingID]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[StocktakingID]"
+                      name="StocktakingID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[InventoryID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InventoryID]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[InventoryID]"
+                      name="InventoryID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[SupplierID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SupplierID]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[SupplierID]"
+                      name="SupplierID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[ReasonID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ReasonID]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[ReasonID]"
+                      name="ReasonID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrencyCode]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CurrencyCode]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrencyCode]"
+                      name="CurrencyCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrencyRate]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CurrencyRate]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrencyRate]"
+                      name="CurrencyRate"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[InventoryTransactionDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InventoryTransactionDate]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[InventoryTransactionDate]"
+                      name="InventoryTransactionDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cause]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Cause]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cause]"
+                      name="Cause"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[Confirmed]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Confirmed]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[Confirmed]"
+                      name="Confirmed"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateAdded]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DateAdded]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateAdded]"
+                      name="DateAdded"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[LastModified]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LastModified]"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].Columns[LastModified]"
+                      name="LastModified"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InventoryRegistrationID]"
+                      dataType="i4"
+                      name="InventoryRegistrationID" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InventoryRegistrationNo]"
+                      dataType="i4"
+                      name="InventoryRegistrationNo" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatorID]"
+                      dataType="i4"
+                      name="CreatorID" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WarehouseID]"
+                      dataType="i4"
+                      name="WarehouseID" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StocktakingID]"
+                      dataType="i4"
+                      name="StocktakingID" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InventoryID]"
+                      dataType="i4"
+                      name="InventoryID" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SupplierID]"
+                      dataType="i4"
+                      name="SupplierID" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ReasonID]"
+                      dataType="i4"
+                      name="ReasonID" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CurrencyCode]"
+                      dataType="nText"
+                      name="CurrencyCode" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CurrencyRate]"
+                      dataType="numeric"
+                      name="CurrencyRate"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      dataType="dbDate"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InventoryTransactionDate]"
+                      dataType="dbDate"
+                      name="InventoryTransactionDate" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Cause]"
+                      dataType="nText"
+                      name="Cause" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Confirmed]"
+                      dataType="i4"
+                      name="Confirmed" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DateAdded]"
+                      dataType="nText"
+                      name="DateAdded" />
+                    <externalMetadataColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LastModified]"
+                      dataType="nText"
+                      name="LastModified" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InventoryRegistrationID]"
+                      dataType="i4"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InventoryRegistrationID]"
+                      name="InventoryRegistrationID" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InventoryRegistrationNo]"
+                      dataType="i4"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InventoryRegistrationNo]"
+                      name="InventoryRegistrationNo" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatorID]"
+                      dataType="i4"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatorID]"
+                      name="CreatorID" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WarehouseID]"
+                      dataType="i4"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WarehouseID]"
+                      name="WarehouseID" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StocktakingID]"
+                      dataType="i4"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StocktakingID]"
+                      name="StocktakingID" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InventoryID]"
+                      dataType="i4"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InventoryID]"
+                      name="InventoryID" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SupplierID]"
+                      dataType="i4"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SupplierID]"
+                      name="SupplierID" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ReasonID]"
+                      dataType="i4"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ReasonID]"
+                      name="ReasonID" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CurrencyCode]"
+                      dataType="nText"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CurrencyCode]"
+                      name="CurrencyCode" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CurrencyRate]"
+                      dataType="numeric"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CurrencyRate]"
+                      name="CurrencyRate"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      dataType="dbDate"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      name="Date" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InventoryTransactionDate]"
+                      dataType="dbDate"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InventoryTransactionDate]"
+                      name="InventoryTransactionDate" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Cause]"
+                      dataType="nText"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Cause]"
+                      name="Cause" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Confirmed]"
+                      dataType="i4"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Confirmed]"
+                      name="Confirmed" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DateAdded]"
+                      dataType="nText"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DateAdded]"
+                      name="DateAdded" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LastModified]"
+                      dataType="nText"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LastModified]"
+                      name="LastModified" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\InventoryRegistrationHeader.Paths[OLE DB Source Output]"
+              endId="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\InventoryRegistrationHeader\OLE DB Source.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -15092,7 +16180,7 @@ FROM Suppliers</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{9DE91C01-E81A-4BCE-94FD-0C83DA58AF33}"
-          SQLTask:SqlStatementSource="Truncate Table [erp].[staging_InventoryTransferHeaders];&#xA;Truncate Table [erp].[staging_InventoryTransferLines];&#xA;Truncate Table [erp].[staging_Products];&#xA;Truncate Table [erp].[staging_SaleDetails];&#xA;Truncate Table [erp].[staging_SaleHeaders];&#xA;Truncate Table [erp].[staging_StockTakingDetails];&#xA;Truncate Table [erp].[staging_Warehouses];&#xA;Truncate Table [erp].[staging_StockTakingHeaders];&#xA;Truncate Table [erp].[staging_Customers];&#xA;Truncate Table [erp].[staging_InventoryRegistration];&#xA;Truncate Table [erp].[staging_InventoryWriteOff];&#xA;Truncate Table [erp].[staging_PointsOfSale];&#xA;Truncate Table [erp].[staging_PurchaseDocuments];&#xA;Truncate Table [erp].[staging_Suppliers];&#xA;Truncate Table [erp].[staging_Employees];&#xA;Truncate Table [erp].[staging_Payments];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="Truncate Table [erp].[staging_InventoryTransferHeaders];&#xA;Truncate Table [erp].[staging_InventoryTransferLines];&#xA;Truncate Table [erp].[staging_Products];&#xA;Truncate Table [erp].[staging_SaleDetails];&#xA;Truncate Table [erp].[staging_SaleHeaders];&#xA;Truncate Table [erp].[staging_StockTakingDetails];&#xA;Truncate Table [erp].[staging_Warehouses];&#xA;Truncate Table [erp].[staging_StockTakingHeaders];&#xA;Truncate Table [erp].[staging_Customers];&#xA;Truncate Table [erp].[staging_InventoryRegistration];&#xA;Truncate Table [erp].[staging_InventoryWriteOff];&#xA;Truncate Table [erp].[staging_PointsOfSale];&#xA;Truncate Table [erp].[staging_PurchaseDocuments];&#xA;Truncate Table [erp].[staging_Suppliers];&#xA;Truncate Table [erp].[staging_Employees];&#xA;Truncate Table [erp].[staging_Payments];&#xA;Truncate Table [erp].[staging_InventoryRegistrationHeaders];&#xA;Truncate Table [erp].[staging_InventoryRegistrationDetails];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -15169,6 +16257,22 @@ FROM Suppliers</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 16"
       DTS:To="Package\Payments" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 17]"
+      DTS:CreationName=""
+      DTS:DTSID="{DD4206CE-4E07-45CB-B8AA-356A80003551}"
+      DTS:From="Package\PointsOfSale"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 17"
+      DTS:To="Package\InventoryRegistrationHeader" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 18]"
+      DTS:CreationName=""
+      DTS:DTSID="{6820EA8C-A18C-4CBD-B14B-C165179490E1}"
+      DTS:From="Package\Suppliers"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 18"
+      DTS:To="Package\InventoryRegistrationDetails" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
@@ -15251,6 +16355,14 @@ FROM Suppliers</property>
           Id="Package\InventoryRegistration"
           TopLeft="1054.66665103287,325.73333485206" />
         <NodeLayout
+          Size="213.333333333334,42.6666666666667"
+          Id="Package\InventoryRegistrationDetails"
+          TopLeft="313.833328738809,446.299993855357" />
+        <NodeLayout
+          Size="214.666666666667,42.6666666666667"
+          Id="Package\InventoryRegistrationHeader"
+          TopLeft="58.7499991245568,430.733325631221" />
+        <NodeLayout
           Size="162.666666666667,42.6666666666667"
           Id="Package\InventoryWriteoff"
           TopLeft="1076.33331737667,421.900001634955" />
@@ -15294,6 +16406,10 @@ FROM Suppliers</property>
           Size="162.666666666667,42.6666666666667"
           Id="Package\Load Warehouses"
           TopLeft="513.499999975164,210.833333333333" />
+        <NodeLayout
+          Size="125.333333333334,42.6666666666667"
+          Id="Package\Payments"
+          TopLeft="664.999990090728,428.566659003298" />
         <NodeLayout
           Size="138,42.6666666666667"
           Id="Package\PointsOfSale"
@@ -15539,6 +16655,108 @@ FROM Suppliers</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 16]"
+          TopLeft="833.333322368562,358.899999852777">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-105.666665611167,69.666659150521"
+              Start="0,0"
+              End="-105.666665611167,62.166659150521">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.8333295752605" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.8333295752605"
+                    Point2="0,34.8333295752605"
+                    Point3="-4,34.8333295752605" />
+                  <mssgle:LineSegment
+                    End="-101.666665611167,34.8333295752605" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-101.666665611167,34.8333295752605"
+                    Point2="-105.666665611167,34.8333295752605"
+                    Point3="-105.666665611167,38.8333295752605" />
+                  <mssgle:LineSegment
+                    End="-105.666665611167,62.166659150521" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 17]"
+          TopLeft="126.499999143183,346.866661227147">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="39.5833333147069,83.8666644040746"
+              Start="0,0"
+              End="39.5833333147069,76.3666644040746">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.9333322020373" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.9333322020373"
+                    Point2="0,41.9333322020373"
+                    Point3="4,41.9333322020373" />
+                  <mssgle:LineSegment
+                    End="35.5833333147069,41.9333322020373" />
+                  <mssgle:CubicBezierSegment
+                    Point1="35.5833333147069,41.9333322020373"
+                    Point2="39.5833333147069,41.9333322020373"
+                    Point3="39.5833333147069,45.9333322020373" />
+                  <mssgle:LineSegment
+                    End="39.5833333147069,76.3666644040746" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 18]"
+          TopLeft="371.416662128021,351.16666298608">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="49.083333277454,95.1333308692777"
+              Start="0,0"
+              End="49.083333277454,87.6333308692777">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5666654346389" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.5666654346389"
+                    Point2="0,47.5666654346389"
+                    Point3="4,47.5666654346389" />
+                  <mssgle:LineSegment
+                    End="45.083333277454,47.5666654346389" />
+                  <mssgle:CubicBezierSegment
+                    Point1="45.083333277454,47.5666654346389"
+                    Point2="49.083333277454,47.5666654346389"
+                    Point3="49.083333277454,51.5666654346389" />
+                  <mssgle:LineSegment
+                    End="49.083333277454,87.6333308692777" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="580.166666641831,48.1666666666666">
           <EdgeLayout.Curve>
@@ -15762,44 +16980,6 @@ FROM Suppliers</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="125.333333333334,42.6666666666667"
-          Id="Package\Payments"
-          TopLeft="664.999990090728,428.566659003298" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 16]"
-          TopLeft="833.333322368562,358.899999852777">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-105.666665611167,69.666659150521"
-              Start="0,0"
-              End="-105.666665611167,62.166659150521">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.8333295752605" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,30.8333295752605"
-                    Point2="0,34.8333295752605"
-                    Point3="-4,34.8333295752605" />
-                  <mssgle:LineSegment
-                    End="-101.666665611167,34.8333295752605" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-101.666665611167,34.8333295752605"
-                    Point2="-105.666665611167,34.8333295752605"
-                    Point3="-105.666665611167,38.8333295752605" />
-                  <mssgle:LineSegment
-                    End="-105.666665611167,62.166659150521" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -15853,6 +17033,132 @@ FROM Suppliers</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\InventoryRegistration\staging_InventoryRegistration">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\InventoryRegistrationDetails">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\InventoryRegistrationDetails\OLE DB Source"
+          TopLeft="564,46" />
+        <NodeLayout
+          Size="213.333333333334,42.6666666666667"
+          Id="Package\InventoryRegistrationDetails\InventoryRegistrationDetails"
+          TopLeft="608,436" />
+        <EdgeLayout
+          Id="Package\InventoryRegistrationDetails.Paths[OLE DB Source Output]"
+          TopLeft="639.333333333333,88.6666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="75.3333333333333,347.333333333333"
+              Start="0,0"
+              End="75.3333333333333,339.833333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,169.666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,169.666666666667"
+                    Point2="0,173.666666666667"
+                    Point3="4,173.666666666667" />
+                  <mssgle:LineSegment
+                    End="71.3333333333333,173.666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="71.3333333333333,173.666666666667"
+                    Point2="75.3333333333333,173.666666666667"
+                    Point3="75.3333333333333,177.666666666667" />
+                  <mssgle:LineSegment
+                    End="75.3333333333333,339.833333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\InventoryRegistrationHeader">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\InventoryRegistrationHeader\OLE DB Source"
+          TopLeft="531.249992083758,148.633330675562" />
+        <NodeLayout
+          Size="220,42.6666666666667"
+          Id="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders"
+          TopLeft="569.58332484588,477.966658119957" />
+        <EdgeLayout
+          Id="Package\InventoryRegistrationHeader.Paths[OLE DB Source Output]"
+          TopLeft="606.583325417091,191.299997342229">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="72.9999994287887,286.666660777728"
+              Start="0,0"
+              End="72.9999994287887,279.166660777728">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,139.333330388864" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,139.333330388864"
+                    Point2="0,143.333330388864"
+                    Point3="4,143.333330388864" />
+                  <mssgle:LineSegment
+                    End="68.9999994287887,143.333330388864" />
+                  <mssgle:CubicBezierSegment
+                    Point1="68.9999994287887,143.333330388864"
+                    Point2="72.9999994287887,143.333330388864"
+                    Point3="72.9999994287887,147.333330388864" />
+                  <mssgle:LineSegment
+                    End="72.9999994287887,279.166660777728" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\InventoryRegistrationHeader\InventoryRegistrationHeaders">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\InventoryRegistrationHeader\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -16132,7 +17438,7 @@ FROM Suppliers</property>
     design-time-name="Package\Load InventoryTransferLines">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="228,42.6666666666667"
           Id="Package\Load InventoryTransferLines\staging_InventoryTransferLines"
@@ -16160,9 +17466,7 @@ FROM Suppliers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -16611,6 +17915,65 @@ FROM Suppliers</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
+    design-time-name="Package\Payments">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="161.333333333334,42.6666666666667"
+          Id="Package\Payments\Payments Source"
+          TopLeft="7.50000000000001,5.50000000000004" />
+        <NodeLayout
+          Size="165.333333333334,42.6666666666667"
+          Id="Package\Payments\staging_Payments"
+          TopLeft="5.50000000000001,108.166666666667" />
+        <EdgeLayout
+          Id="Package\Payments.Paths[OLE DB Source Output]"
+          TopLeft="88.1666666666667,48.1666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Payments\Payments Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Payments\staging_Payments">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\PointsOfSale">
     <LayoutInfo>
       <GraphLayout
@@ -16746,7 +18109,7 @@ FROM Suppliers</property>
     design-time-name="Package\Suppliers">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="162.666666666667,42.6666666666667"
           Id="Package\Suppliers\staging_Suppliers"
@@ -16774,9 +18137,7 @@ FROM Suppliers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -16803,54 +18164,21 @@ FROM Suppliers</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Payments">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="161.333333333334,42.6666666666667"
-          Id="Package\Payments\Payments Source"
-          TopLeft="7.50000000000001,5.50000000000004" />
-        <NodeLayout
-          Size="165.333333333334,42.6666666666667"
-          Id="Package\Payments\staging_Payments"
-          TopLeft="5.50000000000001,108.166666666667" />
-        <EdgeLayout
-          Id="Package\Payments.Paths[OLE DB Source Output]"
-          TopLeft="88.1666666666667,48.1666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
-              Start="0,0"
-              End="0,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Payments\Payments Source">
+    design-time-name="Package\InventoryRegistrationDetails\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Payments\staging_Payments">
+    design-time-name="Package\InventoryRegistrationDetails\InventoryRegistrationDetails">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
