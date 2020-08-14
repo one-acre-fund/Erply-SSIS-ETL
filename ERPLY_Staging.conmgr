@@ -5,13 +5,13 @@
   DTS:CreationName="OLEDB">
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=newndizi.oneacrefund.org,6543;User ID=BOSSIS0001;Initial Catalog=ERPLY_Staging;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      DTS:ConnectionString="Data Source=mtama.oneacrefund.org,6543;User ID=BOSSIS0001;Initial Catalog=OAF_CLIENT_DATABASE_Staging;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
       <DTS:Password
         DTS:Name="Password"
         Sensitive="1"
-        p4:Salt="rk9xenSUIlI="
-        p4:IV="Wg448SGXHaaTsTk1pTK92A=="
-        p4:Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" xmlns:p4="www.microsoft.com/SqlServer/SSIS">7+YiIP4E4oLsfRG4MzERUrC9XgIMLFvv6CrvYe5sPBt6h/Q7LRN/isgupgNCxczj2Bi9rEu2hT1BddqwfPXsn3rUPgWT0Snbn3NYxb8C9ZbyD6Qyc6auoGtAiORyzkKysu+yqpjDTnhT7vtLHpofBjAye3ZSeHnaKoZ8jevHcDE=</DTS:Password>
+        p4:Salt="ZmX6zq2YIWs="
+        p4:IV="4KG9ZpfmLmOkm+axtadKWg=="
+        p4:Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" xmlns:p4="www.microsoft.com/SqlServer/SSIS">2Sq9p8WUw9AOC0VxGRDz2bbwGOQKOzankYdHe6StMQUkmszfF9gqiSlnY3qVhENyhjUeJk4dUPIn5uD1nBIesu35JlWJtQlISmEy0jDHKeIjxN0Jgz4NLUhsUMlmDtbiHJd2PkT8I1SRCgFeihP2bkDWUub2hq7kKPKWr4Ei8Cs=</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>

@@ -12,8 +12,8 @@
   DTS:ObjectName="00_01_Employees_Dim"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{A4FA3DCD-9DE8-498E-B002-8B01DAFCF0DA}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{FB0964BB-660B-4C81-B708-26004DA271B5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -256,7 +256,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Update erp.Employees_Dim
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Update dimension.Employees_Dim
 
 set
 
@@ -371,13 +371,13 @@ where EmployeeErplyID = ? and IsActive = 1</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select EmployeeErplyID, Lastmodified from erp.Employees_Dim</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select EmployeeErplyID, Lastmodified from dimension.Employees_Dim</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select EmployeeErplyID, Lastmodified from erp.Employees_Dim) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select EmployeeErplyID, Lastmodified from dimension.Employees_Dim) [refTable]
 where [refTable].[EmployeeErplyID] = ? and [refTable].[Lastmodified] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -528,13 +528,13 @@ where [refTable].[EmployeeErplyID] = ? and [refTable].[Lastmodified] = ?</proper
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select EmployeeErplyID from erp.Employees_Dim</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select EmployeeErplyID from dimension.Employees_Dim</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select EmployeeErplyID from erp.Employees_Dim) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select EmployeeErplyID from dimension.Employees_Dim) [refTable]
 where [refTable].[EmployeeErplyID] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -887,7 +887,7 @@ from Employees</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[erp].[Employees_Dim]</property>
+                  name="OpenRowset">[dimension].[Employees_Dim]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1023,8 +1023,7 @@ from Employees</property>
                       name="EmployeeGender" />
                     <externalMetadataColumn
                       refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeLocation]"
-                      dataType="wstr"
-                      length="50"
+                      dataType="nText"
                       name="EmployeeLocation" />
                     <externalMetadataColumn
                       refId="Package\DFT - Get Employees\Insert current input Record.Inputs[OLE DB Destination Input].ExternalColumns[ActiveFrom]"
@@ -1086,7 +1085,7 @@ from Employees</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[erp].[Employees_Dim]</property>
+                  name="OpenRowset">[dimension].[Employees_Dim]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1401,17 +1400,9 @@ from Employees</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="173.333333333334,42.6666666666667"
-          Id="Package\DFT - Get Employees\Does the input exist"
-          TopLeft="290.833333333333,108.166666666667" />
-        <NodeLayout
-          Size="208,42.6666666666667"
-          Id="Package\DFT - Get Employees\Insert current input Record"
-          TopLeft="17.5000000000001,518.833333333333" />
-        <NodeLayout
-          Size="176,42.6666666666667"
-          Id="Package\DFT - Get Employees\Check Modified Date"
-          TopLeft="35.5,210.833333333333" />
+          Size="210.666666666667,42.6666666666667"
+          Id="Package\DFT - Get Employees\Add Status and Active From"
+          TopLeft="272.166666666667,210.833333333333" />
         <NodeLayout
           Size="158.666666666667,42.6666666666667"
           Id="Package\DFT - Get Employees\Insert new Input"
@@ -1420,6 +1411,106 @@ from Employees</property>
           Size="232,42.6666666666667"
           Id="Package\DFT - Get Employees\Change - Update Active To Date"
           TopLeft="5.5,313.5" />
+        <NodeLayout
+          Size="176,42.6666666666667"
+          Id="Package\DFT - Get Employees\Check Modified Date"
+          TopLeft="35.5,210.833333333333" />
+        <NodeLayout
+          Size="164,42.6666666666667"
+          Id="Package\DFT - Get Employees\Employees source"
+          TopLeft="295.5,5.49999999999993" />
+        <NodeLayout
+          Size="208,42.6666666666667"
+          Id="Package\DFT - Get Employees\Insert current input Record"
+          TopLeft="17.5000000000001,518.833333333333" />
+        <NodeLayout
+          Size="232,42.6666666666667"
+          Id="Package\DFT - Get Employees\Add Active From and Active Flag"
+          TopLeft="5.50000000000006,416.166666666667" />
+        <NodeLayout
+          Size="173.333333333334,42.6666666666667"
+          Id="Package\DFT - Get Employees\Does the input exist"
+          TopLeft="290.833333333333,108.166666666667" />
+        <EdgeLayout
+          Id="Package\DFT - Get Employees.Paths[OLE DB Source Output]"
+          TopLeft="377.5,48.1666666666666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - Get Employees.Paths[OLE DB Command Output]"
+          TopLeft="121.5,356.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - Get Employees.Paths[Lookup No Match Output1]"
+          TopLeft="405.055555555556,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-27.5555555555555,60.0000000000001"
+              Start="0,0"
+              End="-27.5555555555555,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.329268292683" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.329268292683"
+                    Point2="0,24.329268292683"
+                    Point3="-4,24.329268292683" />
+                  <mssgle:LineSegment
+                    End="-23.5555555555555,24.329268292683" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-23.5555555555555,24.329268292683"
+                    Point2="-27.5555555555555,24.329268292683"
+                    Point3="-27.5555555555555,28.329268292683" />
+                  <mssgle:LineSegment
+                    End="-27.5555555555555,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-69.5841644965278,29.329268292683,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT - Get Employees.Paths[Lookup No Match Output]"
           TopLeft="122.5,253.5">
@@ -1480,44 +1571,26 @@ from Employees</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="210.666666666667,42.6666666666667"
-          Id="Package\DFT - Get Employees\Add Status and Active From"
-          TopLeft="272.166666666667,210.833333333333" />
         <EdgeLayout
-          Id="Package\DFT - Get Employees.Paths[Lookup No Match Output1]"
-          TopLeft="405.055555555556,150.833333333333">
+          Id="Package\DFT - Get Employees.Paths[Derived Column Output1]"
+          TopLeft="121.5,458.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-27.5555555555555,60.0000000000001"
+              EndConnector="0,60"
               Start="0,0"
-              End="-27.5555555555555,52.5000000000001">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.329268292683" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.329268292683"
-                    Point2="0,24.329268292683"
-                    Point3="-4,24.329268292683" />
-                  <mssgle:LineSegment
-                    End="-23.5555555555555,24.329268292683" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-23.5555555555555,24.329268292683"
-                    Point2="-27.5555555555555,24.329268292683"
-                    Point3="-27.5555555555555,28.329268292683" />
-                  <mssgle:LineSegment
-                    End="-27.5555555555555,52.5000000000001" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-69.5841644965278,29.329268292683,111.6127734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1542,108 +1615,11 @@ from Employees</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164,42.6666666666667"
-          Id="Package\DFT - Get Employees\Employees source"
-          TopLeft="295.5,5.49999999999993" />
-        <EdgeLayout
-          Id="Package\DFT - Get Employees.Paths[OLE DB Source Output]"
-          TopLeft="377.5,48.1666666666666">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="232,42.6666666666667"
-          Id="Package\DFT - Get Employees\Add Active From and Active Flag"
-          TopLeft="5.50000000000006,416.166666666667" />
-        <EdgeLayout
-          Id="Package\DFT - Get Employees.Paths[OLE DB Command Output]"
-          TopLeft="121.5,356.166666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
-              Start="0,0"
-              End="0,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - Get Employees.Paths[Derived Column Output1]"
-          TopLeft="121.5,458.833333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - Get Employees\Does the input exist">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT - Get Employees\Insert current input Record">
+    design-time-name="Package\DFT - Get Employees\Insert new Input">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1679,7 +1655,15 @@ from Employees</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - Get Employees\Insert new Input">
+    design-time-name="Package\DFT - Get Employees\Employees source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Get Employees\Insert current input Record">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1692,8 +1676,23 @@ from Employees</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - Get Employees\Employees source">
+    design-time-name="Package\DFT - Get Employees\Does the input exist">
     <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>

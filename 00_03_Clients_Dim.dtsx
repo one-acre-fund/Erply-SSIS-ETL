@@ -12,8 +12,8 @@
   DTS:ObjectName="00_03_Clients_Dim"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="29"
-  DTS:VersionGUID="{F2B9DB63-E3BE-4DFB-96F0-F190A951687C}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{8657FA87-FB56-488B-A620-9C1735E02DD6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -256,7 +256,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Update erp.Clients_Dim
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Update dimension.Clients_Dim
 
 set
 
@@ -371,13 +371,13 @@ where ClientErplyID = ? and IsActive = 1</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select ClientErplyID, LastModified from erp.Clients_Dim</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select ClientErplyID, LastModified from dimension.Clients_Dim</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (Select ClientErplyID, LastModified from erp.Clients_Dim) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (Select ClientErplyID, LastModified from dimension.Clients_Dim) [refTable]
 where [refTable].[ClientErplyID] = ? and [refTable].[LastModified] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -544,7 +544,7 @@ CustomerID as ClientErplyID,
 FullName as ClientName,
 Phone as ClientPhone,
 Gender as ClientGender,
-Null as RewardPoints,
+RewardPoints,
 CONVERT(DATETime, CONVERT(DATETIMEOFFSET, LastModified)) LastModified
 
 
@@ -742,13 +742,13 @@ from Customers</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select ClientErplyID from erp.Clients_Dim</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select ClientErplyID from dimension.Clients_Dim</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select ClientErplyID from erp.Clients_Dim) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select ClientErplyID from dimension.Clients_Dim) [refTable]
 where [refTable].[ClientErplyID] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -885,7 +885,7 @@ where [refTable].[ClientErplyID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[erp].[Clients_Dim]</property>
+                  name="OpenRowset">[dimension].[Clients_Dim]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1083,7 +1083,7 @@ where [refTable].[ClientErplyID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[erp].[Clients_Dim]</property>
+                  name="OpenRowset">[dimension].[Clients_Dim]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1621,7 +1621,7 @@ where [refTable].[ClientErplyID] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1631,7 +1631,7 @@ where [refTable].[ClientErplyID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1670,7 +1670,7 @@ where [refTable].[ClientErplyID] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1680,7 +1680,7 @@ where [refTable].[ClientErplyID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
