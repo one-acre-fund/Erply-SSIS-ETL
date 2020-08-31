@@ -12,8 +12,8 @@
   DTS:ObjectName="00_04_Warehouses_Dim"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="36"
-  DTS:VersionGUID="{0C080A47-9BA5-4CAA-B8BB-CE321D6D9DF4}">
+  DTS:VersionBuild="37"
+  DTS:VersionGUID="{629739FE-8266-439D-B057-F13240B86488}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -890,6 +890,7 @@ wh.WarehouseSapCode as WarehouseCode,
 wh.IsOffline,
 cast(pos.GeoLatitude as decimal(19,6)) Latitude,
 cast(pos.GeoLongitude as decimal(19,6)) Longitude,
+pos.PointOfSaleID,
 NULL AS RegionName,
 cast('Warehouses'  as nvarchar) AS ErplySource
 FROM Warehouses wh JOIN dbo.PointsOfSale pos
@@ -1008,6 +1009,15 @@ ON wh.WarehouseId	= pos.WarehouseID</property>
                       lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[ErplySource]"
                       name="ErplySource"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[PointOfSaleID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].ExternalColumns[PointOfSaleID]"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[PointOfSaleID]"
+                      name="PointOfSaleID"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1050,6 +1060,10 @@ ON wh.WarehouseId	= pos.WarehouseID</property>
                       dataType="wstr"
                       length="30"
                       name="ErplySource" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].ExternalColumns[PointOfSaleID]"
+                      dataType="i4"
+                      name="PointOfSaleID" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1093,6 +1107,11 @@ ON wh.WarehouseId	= pos.WarehouseID</property>
                       name="Longitude"
                       precision="19"
                       scale="6" />
+                    <outputColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[PointOfSaleID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[PointOfSaleID]"
+                      name="PointOfSaleID" />
                     <outputColumn
                       refId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Error Output].Columns[RegionName]"
                       dataType="i4"
@@ -1254,6 +1273,12 @@ ON wh.WarehouseId	= pos.WarehouseID</property>
                       cachedScale="6"
                       externalMetadataColumnId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
                       lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[Latitude]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].Columns[PointOfSaleID]"
+                      cachedDataType="i4"
+                      cachedName="PointOfSaleID"
+                      externalMetadataColumnId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[PointOfSaleID]"
+                      lineageId="Package\DFT - Get Warehouses\Warehouses Source.Outputs[OLE DB Source Output].Columns[PointOfSaleID]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1313,6 +1338,10 @@ ON wh.WarehouseId	= pos.WarehouseID</property>
                       refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
                       dataType="bool"
                       name="IsActive" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Warehouses\Warehouses_Dim.Inputs[OLE DB Destination Input].ExternalColumns[PointOfSaleID]"
+                      dataType="i4"
+                      name="PointOfSaleID" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1694,7 +1723,7 @@ ON wh.WarehouseId	= pos.WarehouseID</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1704,7 +1733,7 @@ ON wh.WarehouseId	= pos.WarehouseID</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
