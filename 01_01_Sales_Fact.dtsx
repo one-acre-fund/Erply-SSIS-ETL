@@ -12,8 +12,8 @@
   DTS:ObjectName="01_01_Sales_Fact"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="66"
-  DTS:VersionGUID="{9C953EFA-2644-4A6E-87A5-1B98BD3C869E}">
+  DTS:VersionBuild="67"
+  DTS:VersionGUID="{E8C310A3-5574-4101-BA39-2DE99FEC6C2B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -564,7 +564,7 @@ where AuditId = ?
           DTS:LocaleID="-1"
           DTS:ObjectName="Get RowsInserted"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -586,7 +586,7 @@ where AuditId = ?
           DTS:LocaleID="-1"
           DTS:ObjectName="Get RowsUpdated"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3726,7 +3726,9 @@ ON sh.SaleId = Sd.SaleId</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3760,14 +3762,16 @@ ON sh.SaleId = Sd.SaleId</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="False"
           PanelSize="444,185.333333333334"
-          Size="444,42.6666666666667"
+          Size="182,42.6666666666667"
           Id="Package\Audit Parameters"
           TopLeft="194.999999739229,217.766666542689" />
         <NodeLayout
@@ -3976,9 +3980,9 @@ ON sh.SaleId = Sd.SaleId</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="148.166667150953,66.9333332093553"
+              EndConnector="17.1666671509533,66.9333332093553"
               Start="0,0"
-              End="148.166667150953,59.4333332093553">
+              End="17.1666671509533,59.4333332093553">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -3989,13 +3993,13 @@ ON sh.SaleId = Sd.SaleId</property>
                     Point2="0,33.4666666046777"
                     Point3="4,33.4666666046777" />
                   <mssgle:LineSegment
-                    End="144.166667150953,33.4666666046777" />
+                    End="13.1666671509533,33.4666666046777" />
                   <mssgle:CubicBezierSegment
-                    Point1="144.166667150953,33.4666666046777"
-                    Point2="148.166667150953,33.4666666046777"
-                    Point3="148.166667150953,37.4666666046777" />
+                    Point1="13.1666671509533,33.4666666046777"
+                    Point2="17.1666671509533,33.4666666046777"
+                    Point3="17.1666671509533,37.4666666046777" />
                   <mssgle:LineSegment
-                    End="148.166667150953,59.4333332093553" />
+                    End="17.1666671509533,59.4333332093553" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4006,13 +4010,13 @@ ON sh.SaleId = Sd.SaleId</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="416.999999739229,260.433333209356">
+          TopLeft="285.999999739229,260.433333209356">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-156.833332948386,53.0666667906443"
+              EndConnector="-25.833332948386,53.0666667906443"
               Start="0,0"
-              End="-156.833332948386,45.5666667906443">
+              End="-25.833332948386,45.5666667906443">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -4023,13 +4027,13 @@ ON sh.SaleId = Sd.SaleId</property>
                     Point2="0,26.5333333953222"
                     Point3="-4,26.5333333953222" />
                   <mssgle:LineSegment
-                    End="-152.833332948386,26.5333333953222" />
+                    End="-21.833332948386,26.5333333953222" />
                   <mssgle:CubicBezierSegment
-                    Point1="-152.833332948386,26.5333333953222"
-                    Point2="-156.833332948386,26.5333333953222"
-                    Point3="-156.833332948386,30.5333333953222" />
+                    Point1="-21.833332948386,26.5333333953222"
+                    Point2="-25.833332948386,26.5333333953222"
+                    Point3="-25.833332948386,30.5333333953222" />
                   <mssgle:LineSegment
-                    End="-156.833332948386,45.5666667906443" />
+                    End="-25.833332948386,45.5666667906443" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

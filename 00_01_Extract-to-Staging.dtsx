@@ -12,8 +12,8 @@
   DTS:ObjectName="00_01_Extract-to-Staging"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="49"
-  DTS:VersionGUID="{D1782FEC-8E91-4F42-9B97-3310F113C1A8}">
+  DTS:VersionBuild="50"
+  DTS:VersionGUID="{7264A987-AC40-4C1E-9E6E-19A61677F4AD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -5979,7 +5979,46 @@ FROM Employees</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+
+Amount,
+AmountInPackage,
+AmountOfPackages,
+Batch,
+BillingEndDate,
+BillingStartDate,
+BillingStatementID,
+cast(replace(nullif(CampaignIDs,''), ' ', '') as nvarchar) CampaignIDs,
+Code,
+ContainerAmount,
+ContainerID,
+DeliveryDate,
+Discount,
+EmployeeID,
+FinalNetPrice,
+FinalPriceWithVAT,
+ItemName,
+OriginalPriceIsZero,
+PackageID,
+PackageTypeID,
+Price,
+ProductID,
+ReturnReasonID,
+RowId,
+RowNetTotal,
+RowTotal,
+RowVAT,
+SaleDetailId,
+SaleHeaderId,
+SaleId,
+SapErrorCode,
+SapLoadingStatus,
+SapTransactionId,
+SourceWaybillID,
+StableRowID,
+VatrateID
+
+from SaleDetails</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -5996,7 +6035,7 @@ FROM Employees</property>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -6498,7 +6537,7 @@ FROM Employees</property>
                     <externalMetadataColumn
                       refId="Package\Load SaleDetails\Sale Details.Outputs[OLE DB Source Output].ExternalColumns[CampaignIDs]"
                       dataType="wstr"
-                      length="100"
+                      length="30"
                       name="CampaignIDs" />
                     <externalMetadataColumn
                       refId="Package\Load SaleDetails\Sale Details.Outputs[OLE DB Source Output].ExternalColumns[ContainerAmount]"
@@ -6702,7 +6741,7 @@ FROM Employees</property>
                     <outputColumn
                       refId="Package\Load SaleDetails\Sale Details.Outputs[OLE DB Source Error Output].Columns[CampaignIDs]"
                       dataType="wstr"
-                      length="100"
+                      length="30"
                       lineageId="Package\Load SaleDetails\Sale Details.Outputs[OLE DB Source Error Output].Columns[CampaignIDs]"
                       name="CampaignIDs" />
                     <outputColumn
@@ -17877,7 +17916,7 @@ FROM Suppliers</property>
     design-time-name="Package\Load SaleHeaders">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="177.333333333334,42.6666666666667"
           Id="Package\Load SaleHeaders\staging_SaleHeaders"
@@ -17905,9 +17944,7 @@ FROM Suppliers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17943,7 +17980,7 @@ FROM Suppliers</property>
     design-time-name="Package\Load StockTakingDetails">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="168,42.6666666666667"
           Id="Package\Load StockTakingDetails\StockTakingDetails"
@@ -17971,9 +18008,7 @@ FROM Suppliers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -18331,6 +18366,32 @@ FROM Suppliers</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ProductStock\ProductStock Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ProductStock\Staging_ProductStock">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\PurchaseDocumentHeaders">
     <LayoutInfo>
@@ -18527,32 +18588,6 @@ FROM Suppliers</property>
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\ProductStock\ProductStock Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\ProductStock\Staging_ProductStock">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
