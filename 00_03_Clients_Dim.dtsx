@@ -12,8 +12,8 @@
   DTS:ObjectName="00_03_Clients_Dim"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="31"
-  DTS:VersionGUID="{8657FA87-FB56-488B-A620-9C1735E02DD6}">
+  DTS:VersionBuild="32"
+  DTS:VersionGUID="{1F64F6C9-80C4-4B83-B197-592BF8D122E3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -542,6 +542,8 @@ where [refTable].[ClientErplyID] = ? and [refTable].[LastModified] = ?</property
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
 CustomerID as ClientErplyID,
 FullName as ClientName,
+FirstName,
+LastName,
 Phone as ClientPhone,
 Gender as ClientGender,
 RewardPoints,
@@ -641,6 +643,26 @@ from Customers</property>
                       lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[LastModified]"
                       name="LastModified"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      length="50"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      length="50"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -671,6 +693,16 @@ from Customers</property>
                       refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].ExternalColumns[LastModified]"
                       dataType="dbTimeStamp"
                       name="LastModified" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="50"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="50"
+                      name="LastName" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -689,6 +721,18 @@ from Customers</property>
                       length="100"
                       lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[ClientName]"
                       name="ClientName" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      name="LastName" />
                     <outputColumn
                       refId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Error Output].Columns[ClientPhone]"
                       dataType="wstr"
@@ -993,6 +1037,20 @@ where [refTable].[ClientErplyID] = ?</property>
                       cachedName="RewardPoints"
                       externalMetadataColumnId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[RewardPoints]"
                       lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[RewardPoints]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[LastName]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1039,6 +1097,16 @@ where [refTable].[ClientErplyID] = ?</property>
                       refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientID]"
                       dataType="i4"
                       name="ClientID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="50"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert Current Client.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="50"
+                      name="LastName" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1190,6 +1258,20 @@ where [refTable].[ClientErplyID] = ?</property>
                       cachedName="IsActive"
                       externalMetadataColumnId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
                       lineageId="Package\DFT - Get Clients\Add Status and Active From.Outputs[Derived Column Output].Columns[IsActive]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      lineageId="Package\DFT - Get Clients\Clients Source.Outputs[OLE DB Source Output].Columns[LastName]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1236,6 +1318,16 @@ where [refTable].[ClientErplyID] = ?</property>
                       refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[LastModified]"
                       dataType="dbTimeStamp"
                       name="LastModified" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="50"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Clients\Insert new Client.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="50"
+                      name="LastName" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1621,7 +1713,7 @@ where [refTable].[ClientErplyID] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1631,7 +1723,7 @@ where [refTable].[ClientErplyID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1670,7 +1762,7 @@ where [refTable].[ClientErplyID] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1680,7 +1772,7 @@ where [refTable].[ClientErplyID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

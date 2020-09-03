@@ -12,8 +12,8 @@
   DTS:ObjectName="01_03_InventoryMovements_Fact"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="29"
-  DTS:VersionGUID="{CDABD625-273A-4A5E-AC26-F20F759BB680}">
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{2B8F6E1E-8567-45E5-BFDF-1CE37E77ADF5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -570,7 +570,7 @@ where AuditId = ?
           DTS:LocaleID="-1"
           DTS:ObjectName="Get RowsUpdated"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2382,7 +2382,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get AuditID"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2404,7 +2404,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get ETL Start Time"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2426,7 +2426,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get Latest ETL Time"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2454,7 +2454,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Update AuditDimension"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2522,7 +2522,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Load Production"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2546,7 +2546,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate Fact Table"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3545,7 +3545,7 @@ WITH RESULT SETS
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate Staging"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3737,7 +3737,7 @@ ON ith.InventoryRegistrationID = itl.InventoryRegistrationID</property>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Load Staging Table\Load Staging\InventoryRegistration.Outputs[OLE DB Source Output].ExternalColumns[DocumentType]"
-                          length="20"
+                          length="50"
                           lineageId="Package\Load Staging Table\Load Staging\InventoryRegistration.Outputs[OLE DB Source Output].Columns[DocumentType]"
                           name="DocumentType"
                           truncationRowDisposition="FailComponent" />
@@ -4126,7 +4126,7 @@ ON ith.InventoryTransferID = itl.InventoryTransferID</property>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Load Staging Table\Load Staging\InventoryTransfers.Outputs[OLE DB Source Output].ExternalColumns[DocumentType]"
-                          length="20"
+                          length="50"
                           lineageId="Package\Load Staging Table\Load Staging\InventoryTransfers.Outputs[OLE DB Source Output].Columns[DocumentType]"
                           name="DocumentType"
                           truncationRowDisposition="FailComponent" />
@@ -4507,7 +4507,7 @@ FROM dbo.InventoryWriteOff ith</property>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Load Staging Table\Load Staging\InventoryWriteOff.Outputs[OLE DB Source Output].ExternalColumns[DocumentType]"
-                          length="20"
+                          length="50"
                           lineageId="Package\Load Staging Table\Load Staging\InventoryWriteOff.Outputs[OLE DB Source Output].Columns[DocumentType]"
                           name="DocumentType"
                           truncationRowDisposition="FailComponent" />
@@ -4709,7 +4709,7 @@ pd.CurrencyCode,
 pd.CurrencyRate,
 pl.Amount AS Quantity
 
-FROM erp.staging_PurchaseDocumentHeaders  pd JOIN erp.staging_PurchaseDocumentLines pl
+FROM PurchaseDocumentHeaders  pd JOIN PurchaseDocumentLines pl
 ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                     <property
                       dataType="System.String"
@@ -4736,8 +4736,8 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                   <connections>
                     <connection
                       refId="Package\Load Staging Table\Load Staging\PurchaseDocuments.Connections[OleDbConnection]"
-                      connectionManagerID="{9DE91C01-E81A-4BCE-94FD-0C83DA58AF33}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[ERPLY_Staging]"
+                      connectionManagerID="{49C2AD63-BE05-4956-A5FC-A83F0639A17E}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Source_ERPLY]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -4797,7 +4797,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Load Staging Table\Load Staging\PurchaseDocuments.Outputs[OLE DB Source Output].ExternalColumns[DocumentType]"
-                          length="20"
+                          length="50"
                           lineageId="Package\Load Staging Table\Load Staging\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[DocumentType]"
                           name="DocumentType"
                           truncationRowDisposition="FailComponent" />
@@ -5171,7 +5171,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                         <inputColumn
                           refId="Package\Load Staging Table\Load Staging\staging_InventoryMovements_Fact.Inputs[OLE DB Destination Input].Columns[DocumentType]"
                           cachedDataType="wstr"
-                          cachedLength="20"
+                          cachedLength="50"
                           cachedName="DocumentType"
                           externalMetadataColumnId="Package\Load Staging Table\Load Staging\staging_InventoryMovements_Fact.Inputs[OLE DB Destination Input].ExternalColumns[DocumentType]"
                           lineageId="Package\Load Staging Table\Load Staging\Union All.Outputs[Union All Output 1].Columns[DocumentType]" />
@@ -5447,20 +5447,6 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Load Staging Table\Load Staging\Union All.Inputs[Union All Input 1].Columns[DocumentType]"
-                          cachedDataType="wstr"
-                          cachedLength="20"
-                          cachedName="DocumentType"
-                          lineageId="Package\Load Staging Table\Load Staging\InventoryTransfers.Outputs[OLE DB Source Output].Columns[DocumentType]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Load Staging Table\Load Staging\Union All.Outputs[Union All Output 1].Columns[DocumentType]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
                           refId="Package\Load Staging Table\Load Staging\Union All.Inputs[Union All Input 1].Columns[MovementType]"
                           cachedDataType="wstr"
                           cachedLength="20"
@@ -5546,6 +5532,20 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                               dataType="System.Int32"
                               description="Output column lineage ID"
                               name="OutputColumnLineageID">#{Package\Load Staging Table\Load Staging\Union All.Outputs[Union All Output 1].Columns[TotalCost]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Load Staging Table\Load Staging\Union All.Inputs[Union All Input 1].Columns[DocumentType]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="DocumentType"
+                          lineageId="Package\Load Staging Table\Load Staging\InventoryTransfers.Outputs[OLE DB Source Output].Columns[DocumentType]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Load Staging Table\Load Staging\Union All.Outputs[Union All Output 1].Columns[DocumentType]}</property>
                           </properties>
                         </inputColumn>
                       </inputColumns>
@@ -5648,20 +5648,6 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Load Staging Table\Load Staging\Union All.Inputs[Union All Input 2].Columns[DocumentType]"
-                          cachedDataType="wstr"
-                          cachedLength="20"
-                          cachedName="DocumentType"
-                          lineageId="Package\Load Staging Table\Load Staging\InventoryRegistration.Outputs[OLE DB Source Output].Columns[DocumentType]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Load Staging Table\Load Staging\Union All.Outputs[Union All Output 1].Columns[DocumentType]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
                           refId="Package\Load Staging Table\Load Staging\Union All.Inputs[Union All Input 2].Columns[MovementType]"
                           cachedDataType="wstr"
                           cachedLength="20"
@@ -5747,6 +5733,20 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                               dataType="System.Int32"
                               description="Output column lineage ID"
                               name="OutputColumnLineageID">#{Package\Load Staging Table\Load Staging\Union All.Outputs[Union All Output 1].Columns[TotalCost]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Load Staging Table\Load Staging\Union All.Inputs[Union All Input 2].Columns[DocumentType]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="DocumentType"
+                          lineageId="Package\Load Staging Table\Load Staging\InventoryRegistration.Outputs[OLE DB Source Output].Columns[DocumentType]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Load Staging Table\Load Staging\Union All.Outputs[Union All Output 1].Columns[DocumentType]}</property>
                           </properties>
                         </inputColumn>
                       </inputColumns>
@@ -5836,20 +5836,6 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Load Staging Table\Load Staging\Union All.Inputs[Union All Input 3].Columns[DocumentType]"
-                          cachedDataType="wstr"
-                          cachedLength="20"
-                          cachedName="DocumentType"
-                          lineageId="Package\Load Staging Table\Load Staging\InventoryWriteOff.Outputs[OLE DB Source Output].Columns[DocumentType]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Load Staging Table\Load Staging\Union All.Outputs[Union All Output 1].Columns[DocumentType]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
                           refId="Package\Load Staging Table\Load Staging\Union All.Inputs[Union All Input 3].Columns[MovementType]"
                           cachedDataType="wstr"
                           cachedLength="20"
@@ -5890,6 +5876,20 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                               dataType="System.Int32"
                               description="Output column lineage ID"
                               name="OutputColumnLineageID">#{Package\Load Staging Table\Load Staging\Union All.Outputs[Union All Output 1].Columns[CurrencyCode]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Load Staging Table\Load Staging\Union All.Inputs[Union All Input 3].Columns[DocumentType]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="DocumentType"
+                          lineageId="Package\Load Staging Table\Load Staging\InventoryWriteOff.Outputs[OLE DB Source Output].Columns[DocumentType]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Load Staging Table\Load Staging\Union All.Outputs[Union All Output 1].Columns[DocumentType]}</property>
                           </properties>
                         </inputColumn>
                       </inputColumns>
@@ -5963,20 +5963,6 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                               dataType="System.Int32"
                               description="Output column lineage ID"
                               name="OutputColumnLineageID">#{Package\Load Staging Table\Load Staging\Union All.Outputs[Union All Output 1].Columns[ErplyInventoryID]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\Load Staging Table\Load Staging\Union All.Inputs[Union All Input 5].Columns[DocumentType]"
-                          cachedDataType="wstr"
-                          cachedLength="20"
-                          cachedName="DocumentType"
-                          lineageId="Package\Load Staging Table\Load Staging\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[DocumentType]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Load Staging Table\Load Staging\Union All.Outputs[Union All Output 1].Columns[DocumentType]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
@@ -6093,6 +6079,20 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                               name="OutputColumnLineageID">#{Package\Load Staging Table\Load Staging\Union All.Outputs[Union All Output 1].Columns[WarehouseFromErplyID]}</property>
                           </properties>
                         </inputColumn>
+                        <inputColumn
+                          refId="Package\Load Staging Table\Load Staging\Union All.Inputs[Union All Input 5].Columns[DocumentType]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="DocumentType"
+                          lineageId="Package\Load Staging Table\Load Staging\PurchaseDocuments.Outputs[OLE DB Source Output].Columns[DocumentType]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Load Staging Table\Load Staging\Union All.Outputs[Union All Output 1].Columns[DocumentType]}</property>
+                          </properties>
+                        </inputColumn>
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
@@ -6145,12 +6145,6 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                           lineageId="Package\Load Staging Table\Load Staging\Union All.Outputs[Union All Output 1].Columns[ErplyInventoryID]"
                           name="ErplyInventoryID" />
                         <outputColumn
-                          refId="Package\Load Staging Table\Load Staging\Union All.Outputs[Union All Output 1].Columns[DocumentType]"
-                          dataType="wstr"
-                          length="20"
-                          lineageId="Package\Load Staging Table\Load Staging\Union All.Outputs[Union All Output 1].Columns[DocumentType]"
-                          name="DocumentType" />
-                        <outputColumn
                           refId="Package\Load Staging Table\Load Staging\Union All.Outputs[Union All Output 1].Columns[MovementType]"
                           dataType="wstr"
                           length="20"
@@ -6190,6 +6184,12 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                           name="TotalCost"
                           precision="18"
                           scale="2" />
+                        <outputColumn
+                          refId="Package\Load Staging Table\Load Staging\Union All.Outputs[Union All Output 1].Columns[DocumentType]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Load Staging Table\Load Staging\Union All.Outputs[Union All Output 1].Columns[DocumentType]"
+                          name="DocumentType" />
                       </outputColumns>
                       <externalMetadataColumns />
                     </output>
@@ -6235,7 +6235,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate Staging"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -6436,7 +6436,9 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6470,7 +6472,9 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6492,7 +6496,9 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -6546,9 +6552,9 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
-          IsExpanded="False"
+          IsExpanded="True"
           PanelSize="207.333333333334,184"
-          Size="207.333333333334,42.6666666666667"
+          Size="207.333333333334,226.666666666667"
           Id="Package\Load Production Table"
           TopLeft="411.249993871897,296.83332802554" />
         <NodeLayout
@@ -6646,18 +6652,18 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
           HeaderHeight="43"
           IsExpanded="False"
           PanelSize="205.333333333334,170.666666666667"
-          Size="191.333333333334,42.6666666666667"
+          Size="205.333333333334,42.6666666666667"
           Id="Package\Load Staging Table"
           TopLeft="410.416660550982,193.699996536374" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="531.416659855594,63.0333329691489">
+          TopLeft="531.416659855594,63.033332969149">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-25.3333326379458,130.666663567225"
+              EndConnector="-18.3333326379458,130.666663567225"
               Start="0,0"
-              End="-25.3333326379458,123.166663567225">
+              End="-18.3333326379458,123.166663567225">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -6668,13 +6674,13 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                     Point2="0,65.3333317836125"
                     Point3="-4,65.3333317836125" />
                   <mssgle:LineSegment
-                    End="-21.3333326379458,65.3333317836125" />
+                    End="-14.3333326379458,65.3333317836125" />
                   <mssgle:CubicBezierSegment
-                    Point1="-21.3333326379458,65.3333317836125"
-                    Point2="-25.3333326379458,65.3333317836125"
-                    Point3="-25.3333326379458,69.3333317836125" />
+                    Point1="-14.3333326379458,65.3333317836125"
+                    Point2="-18.3333326379458,65.3333317836125"
+                    Point3="-18.3333326379458,69.3333317836125" />
                   <mssgle:LineSegment
-                    End="-25.3333326379458,123.166663567225" />
+                    End="-18.3333326379458,123.166663567225" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6685,30 +6691,18 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="506.083327217649,236.366663203041">
+          TopLeft="513.999993878106,236.366663203041">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="8.83333332091502,60.4666648224994"
+              EndConnector="0,60.4666648224994"
               Start="0,0"
-              End="8.83333332091502,52.9666648224994">
+              End="0,52.9666648224994">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.2333324112497" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.2333324112497"
-                    Point2="0,30.2333324112497"
-                    Point3="4,30.2333324112497" />
-                  <mssgle:LineSegment
-                    End="4.83333332091502,30.2333324112497" />
-                  <mssgle:CubicBezierSegment
-                    Point1="4.83333332091502,30.2333324112497"
-                    Point2="8.83333332091502,30.2333324112497"
-                    Point3="8.83333332091502,34.2333324112497" />
-                  <mssgle:LineSegment
-                    End="8.83333332091502,52.9666648224994" />
+                    End="0,52.9666648224994" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6719,18 +6713,18 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="511.083327167978,339.499994692207">
+          TopLeft="511.083327167978,523.499994692207">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,84.7333310552433"
+              EndConnector="0,-99.2666689447566"
               Start="0,0"
-              End="0,77.2333310552433">
+              End="0,-91.7666689447566">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,77.2333310552433" />
+                    End="0,-91.7666689447566" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7068,21 +7062,25 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
           Id="Package\Load Staging Table\Load Staging\InventoryTransfers"
           TopLeft="5.49999999999996,5.50000000000004" />
         <NodeLayout
-          Size="164,42.6666666666667"
-          Id="Package\Load Staging Table\Load Staging\InventoryWriteOff"
-          TopLeft="235.166666666667,5.50000000000004" />
-        <NodeLayout
-          Size="121.333333333334,42.6666666666667"
-          Id="Package\Load Staging Table\Load Staging\Union All"
-          TopLeft="489.5,108.166666666667" />
-        <NodeLayout
           Size="244,42.6666666666667"
           Id="Package\Load Staging Table\Load Staging\staging_InventoryMovements_Fact"
           TopLeft="428.166666666667,210.833333333333" />
         <NodeLayout
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\Load Staging Table\Load Staging\PurchaseDocuments"
+          TopLeft="701.833333333333,5.49999999999993" />
+        <NodeLayout
+          Size="164,42.6666666666667"
+          Id="Package\Load Staging Table\Load Staging\InventoryWriteOff"
+          TopLeft="235.166666666667,5.50000000000004" />
+        <NodeLayout
           Size="181.333333333334,42.6666666666667"
           Id="Package\Load Staging Table\Load Staging\InventoryRegistration"
           TopLeft="459.5,5.49999999999993" />
+        <NodeLayout
+          Size="121.333333333334,42.6666666666667"
+          Id="Package\Load Staging Table\Load Staging\Union All"
+          TopLeft="489.5,108.166666666667" />
         <EdgeLayout
           Id="Package\Load Staging Table\Load Staging.Paths[Union All Output 1]"
           TopLeft="550.166666666667,150.833333333333">
@@ -7097,6 +7095,40 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Staging Table\Load Staging.Paths[OLE DB Source Output3]"
+          TopLeft="789.166666666667,48.1666666666666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-205,60.0000000000001"
+              Start="0,0"
+              End="-205,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.6793893129772" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.6793893129772"
+                    Point2="0,41.6793893129772"
+                    Point3="-4,41.6793893129772" />
+                  <mssgle:LineSegment
+                    End="-201,41.6793893129772" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-201,41.6793893129772"
+                    Point2="-205,41.6793893129772"
+                    Point3="-205,45.6793893129772" />
+                  <mssgle:LineSegment
+                    End="-205,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7199,44 +7231,6 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
                     Point3="426,45.6793893129771" />
                   <mssgle:LineSegment
                     End="426,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="174.666666666667,42.6666666666667"
-          Id="Package\Load Staging Table\Load Staging\PurchaseDocuments"
-          TopLeft="701.833333333333,5.49999999999993" />
-        <EdgeLayout
-          Id="Package\Load Staging Table\Load Staging.Paths[OLE DB Source Output3]"
-          TopLeft="789.166666666667,48.1666666666666">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-205,60.0000000000001"
-              Start="0,0"
-              End="-205,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.6793893129772" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,37.6793893129772"
-                    Point2="0,41.6793893129772"
-                    Point3="-4,41.6793893129772" />
-                  <mssgle:LineSegment
-                    End="-201,41.6793893129772" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-201,41.6793893129772"
-                    Point2="-205,41.6793893129772"
-                    Point3="-205,45.6793893129772" />
-                  <mssgle:LineSegment
-                    End="-205,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

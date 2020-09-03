@@ -12,8 +12,8 @@
   DTS:ObjectName="00_01_Extract-to-Staging"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="50"
-  DTS:VersionGUID="{7264A987-AC40-4C1E-9E6E-19A61677F4AD}">
+  DTS:VersionBuild="54"
+  DTS:VersionGUID="{FC1E75D2-98AD-4DE2-97C5-EEC6A5076B72}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -7382,7 +7382,102 @@ from SaleDetails</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+
+SaleId,
+[Type],
+CurrencyCode,
+WarehouseId,
+WarehouseName,
+LastModified,
+Added,
+SaleHeaderId,
+[Address],
+AddressID,
+ClientCardNumber,
+ClientFactoringContractNumber,
+ClientId,
+ClientName,
+ClientPaysViaFactoring,
+Confirmed,
+ContactID,
+ContactName,
+Cost,
+CurrencyRate,
+CustomReferenceNumber,
+[Date],
+DeliveryDate,
+EmployeeID,
+EmployeeName,
+ExternalNetTotal,
+ExternalRounding,
+ExternalTotal,
+ExternalVatTotal,
+FulfillmentStatus,
+InternalNotes,
+InventoryTransactionDate,
+NetTotal,
+Notes,
+Number,
+PackerID,
+Paid,
+PayerAddress,
+PayerAddressID,
+PayerFactoringContractNumber,
+PayerID,
+PayerName,
+PayerPaysViaFactoring,
+PaymentDays,
+PaymentStatus,
+PaymentType,
+PaymentTypeID,
+PointOfSaleID,
+PointOfSaleName,
+PreviousReturnsExist,
+PricelistID,
+PrintDiscounts,
+ProjectID,
+ReferenceNumber,
+ReserveGoods,
+ReserveGoodsUntilDate,
+Rounding,
+SapErrorCode,
+SapLoadingStatus,
+SapTransactionId,
+ShipToAddress,
+ShipToAddressID,
+ShipToContactID,
+ShipToContactName,
+ShipToID,
+ShipToName,
+ShippingDate,
+TaxExemptCertificateNumber,
+Total,
+TrackingNumber,
+VatTotal,
+clientEmail,
+invoiceState,
+AmountAddedToStoreCredit,
+AmountPaidWithStoreCredit,
+DeliveryOnlyWhenAllItemsInStock,
+DeliveryTerms,
+DeliveryTermsLocation,
+DeliveryTypeID,
+EuInvoiceType,
+InvoiceLink,
+LastModifierUsername,
+PackingUnitsDescription,
+Penalty,
+PurchaseOrderDone,
+ReceiptLink,
+TransactionTypeID,
+TransactionTypeName,
+TransportTypeID,
+TransportTypeName,
+TriangularTransaction,
+case when PaymentStatus = 'UNPAID' then cast(1 AS int) ELSE cast(0 AS int) END AS IsCredit
+
+FROM SaleHeaders</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -7399,7 +7494,7 @@ from SaleDetails</property>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -8306,6 +8401,15 @@ from SaleDetails</property>
                       lineageId="Package\Load SaleHeaders\Sale Headers.Outputs[OLE DB Source Output].Columns[TriangularTransaction]"
                       name="TriangularTransaction"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load SaleHeaders\Sale Headers.Outputs[OLE DB Source Output].Columns[IsCredit]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load SaleHeaders\Sale Headers.Outputs[OLE DB Source Output].ExternalColumns[IsCredit]"
+                      lineageId="Package\Load SaleHeaders\Sale Headers.Outputs[OLE DB Source Output].Columns[IsCredit]"
+                      name="IsCredit"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -8742,6 +8846,10 @@ from SaleDetails</property>
                       refId="Package\Load SaleHeaders\Sale Headers.Outputs[OLE DB Source Output].ExternalColumns[TriangularTransaction]"
                       dataType="i4"
                       name="TriangularTransaction" />
+                    <externalMetadataColumn
+                      refId="Package\Load SaleHeaders\Sale Headers.Outputs[OLE DB Source Output].ExternalColumns[IsCredit]"
+                      dataType="i4"
+                      name="IsCredit" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -9273,6 +9381,11 @@ from SaleDetails</property>
                       dataType="i4"
                       lineageId="Package\Load SaleHeaders\Sale Headers.Outputs[OLE DB Source Error Output].Columns[TriangularTransaction]"
                       name="TriangularTransaction" />
+                    <outputColumn
+                      refId="Package\Load SaleHeaders\Sale Headers.Outputs[OLE DB Source Error Output].Columns[IsCredit]"
+                      dataType="i4"
+                      lineageId="Package\Load SaleHeaders\Sale Headers.Outputs[OLE DB Source Error Output].Columns[IsCredit]"
+                      name="IsCredit" />
                     <outputColumn
                       refId="Package\Load SaleHeaders\Sale Headers.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -9977,6 +10090,12 @@ from SaleDetails</property>
                       cachedName="TriangularTransaction"
                       externalMetadataColumnId="Package\Load SaleHeaders\staging_SaleHeaders.Inputs[OLE DB Destination Input].ExternalColumns[TriangularTransaction]"
                       lineageId="Package\Load SaleHeaders\Sale Headers.Outputs[OLE DB Source Output].Columns[TriangularTransaction]" />
+                    <inputColumn
+                      refId="Package\Load SaleHeaders\staging_SaleHeaders.Inputs[OLE DB Destination Input].Columns[IsCredit]"
+                      cachedDataType="i4"
+                      cachedName="IsCredit"
+                      externalMetadataColumnId="Package\Load SaleHeaders\staging_SaleHeaders.Inputs[OLE DB Destination Input].ExternalColumns[IsCredit]"
+                      lineageId="Package\Load SaleHeaders\Sale Headers.Outputs[OLE DB Source Output].Columns[IsCredit]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -10413,6 +10532,10 @@ from SaleDetails</property>
                       refId="Package\Load SaleHeaders\staging_SaleHeaders.Inputs[OLE DB Destination Input].ExternalColumns[TriangularTransaction]"
                       dataType="i4"
                       name="TriangularTransaction" />
+                    <externalMetadataColumn
+                      refId="Package\Load SaleHeaders\staging_SaleHeaders.Inputs[OLE DB Destination Input].ExternalColumns[IsCredit]"
+                      dataType="i4"
+                      name="IsCredit" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
