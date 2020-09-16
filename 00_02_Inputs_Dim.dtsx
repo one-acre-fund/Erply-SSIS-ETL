@@ -12,8 +12,8 @@
   DTS:ObjectName="00_02_Inputs_Dim"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="36"
-  DTS:VersionGUID="{A6E1ABF2-B5ED-46BF-862A-704C147DB503}">
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{5DBFE2BF-DF91-48F2-9D4C-0339E58B413E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -319,6 +319,20 @@
                       cachedName="LastModified"
                       externalMetadataColumnId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].ExternalColumns[LastModified]"
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[LastModified]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].Columns[IsVATApplicable]"
+                      cachedDataType="bool"
+                      cachedName="IsVATApplicable"
+                      externalMetadataColumnId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].ExternalColumns[IsVATApplicable]"
+                      lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[IsVATApplicable]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].Columns[VATApplicableAmount]"
+                      cachedDataType="numeric"
+                      cachedName="VATApplicableAmount"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].ExternalColumns[VATApplicableAmount]"
+                      lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[VATApplicableAmount]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1002,7 +1016,8 @@ where [refTable].[InputErplyID] = ?</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">WITH CTE as (
+SELECT 
 
 ProductID as InputErplyID,
 ProductName as InputName,
@@ -1019,14 +1034,38 @@ Cost,
 --Shrink,
 --Margin,
 --CurrencyCode,
---IsVATApplicable,
---VATApplicableAmount,
+case when VatRate &gt; 0 then cast(1 as bit) else cast (0 as bit) end as IsVATApplicable,
+PriceWithVAT-Price AS VATApplicableAmount,
 VATRate,
 dateadd(S, cast(replace(nullif(LastModified,''), ' ', '') as bigint), '1970-01-01') LastModified
 
 
 
-from Products</property>
+from Products
+)
+
+select
+
+InputErplyID,
+InputName,
+InputCode,
+InputGroup,
+InputCategory,
+InputDescription,
+InputStatus,
+InputWeight,
+ UoM,
+Price,
+PriceWithVAT,
+Cost,
+--Shrink,
+--Margin,
+--CurrencyCode,
+IsVATApplicable,
+VATApplicableAmount,
+VATRate,
+Case when LastModified &lt; '2020-08-01 00:00:00.000' then '2020-08-01 00:00:00.000' ELSE LastModified END AS LastModified
+FROM CTE</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1204,6 +1243,26 @@ from Products</property>
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[LastModified]"
                       name="LastModified"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[IsVATApplicable]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].ExternalColumns[IsVATApplicable]"
+                      lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[IsVATApplicable]"
+                      name="IsVATApplicable"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[VATApplicableAmount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].ExternalColumns[VATApplicableAmount]"
+                      lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[VATApplicableAmount]"
+                      name="VATApplicableAmount"
+                      precision="19"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1278,6 +1337,16 @@ from Products</property>
                       refId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].ExternalColumns[LastModified]"
                       dataType="dbTimeStamp"
                       name="LastModified" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].ExternalColumns[IsVATApplicable]"
+                      dataType="bool"
+                      name="IsVATApplicable" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].ExternalColumns[VATApplicableAmount]"
+                      dataType="numeric"
+                      name="VATApplicableAmount"
+                      precision="19"
+                      scale="2" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1357,6 +1426,18 @@ from Products</property>
                       lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Error Output].Columns[Cost]"
                       name="Cost"
                       precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Error Output].Columns[IsVATApplicable]"
+                      dataType="bool"
+                      lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Error Output].Columns[IsVATApplicable]"
+                      name="IsVATApplicable" />
+                    <outputColumn
+                      refId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Error Output].Columns[VATApplicableAmount]"
+                      dataType="numeric"
+                      lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Error Output].Columns[VATApplicableAmount]"
+                      name="VATApplicableAmount"
+                      precision="19"
                       scale="2" />
                     <outputColumn
                       refId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Error Output].Columns[VATRate]"
@@ -1572,6 +1653,20 @@ from Products</property>
                       cachedName="IsActive"
                       externalMetadataColumnId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
                       lineageId="Package\DFT - Get Inputs\Add Active From and Active Flag.Outputs[Derived Column Output].Columns[IsActive]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].Columns[IsVATApplicable]"
+                      cachedDataType="bool"
+                      cachedName="IsVATApplicable"
+                      externalMetadataColumnId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].ExternalColumns[IsVATApplicable]"
+                      lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[IsVATApplicable]" />
+                    <inputColumn
+                      refId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].Columns[VATApplicableAmount]"
+                      cachedDataType="numeric"
+                      cachedName="VATApplicableAmount"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].ExternalColumns[VATApplicableAmount]"
+                      lineageId="Package\DFT - Get Inputs\Inputs Source.Outputs[OLE DB Source Output].Columns[VATApplicableAmount]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">

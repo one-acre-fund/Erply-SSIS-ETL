@@ -12,8 +12,8 @@
   DTS:ObjectName="00_03_Clients_Dim"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="32"
-  DTS:VersionGUID="{1F64F6C9-80C4-4B83-B197-592BF8D122E3}">
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{BF71B1D6-9B3C-476F-B663-C2DF88AFDAC3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
