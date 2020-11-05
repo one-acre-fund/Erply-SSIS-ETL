@@ -12,8 +12,8 @@
   DTS:ObjectName="00_01_Extract-to-Staging"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="59"
-  DTS:VersionGUID="{F838DB5A-EDCF-4C36-90FC-85505306585A}">
+  DTS:VersionBuild="62"
+  DTS:VersionGUID="{43FF2D7F-6F6C-4EDB-9C4A-ED8E60A978EA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -14064,8 +14064,8 @@ from ProductStockCSV</property>
               <connections>
                 <connection
                   refId="Package\ProductStockCSV\Source.Connections[OleDbConnection]"
-                  connectionManagerID="{43E20154-6A81-4C05-8137-E740CAA6A214}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Source_ERPLY_Staging]"
+                  connectionManagerID="{49C2AD63-BE05-4956-A5FC-A83F0639A17E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Source_ERPLY]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -16933,7 +16933,7 @@ FROM Suppliers</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{9DE91C01-E81A-4BCE-94FD-0C83DA58AF33}"
-          SQLTask:SqlStatementSource="Truncate Table [erp].[staging_InventoryTransferHeaders];&#xA;Truncate Table [erp].[staging_InventoryTransferLines];&#xA;Truncate Table [erp].[staging_Products];&#xA;Truncate Table [erp].[staging_SaleDetails];&#xA;Truncate Table [erp].[staging_SaleHeaders];&#xA;Truncate Table [erp].[staging_StockTakingDetails];&#xA;Truncate Table [erp].[staging_Warehouses];&#xA;Truncate Table [erp].[staging_StockTakingHeaders];&#xA;Truncate Table [erp].[staging_Customers];&#xA;Truncate Table [erp].[staging_InventoryRegistration];&#xA;Truncate Table [erp].[staging_InventoryWriteOff];&#xA;Truncate Table [erp].[staging_PointsOfSale];&#xA;Truncate Table [erp].[staging_PurchaseDocuments];&#xA;Truncate Table [erp].[staging_Suppliers];&#xA;Truncate Table [erp].[staging_Employees];&#xA;Truncate Table [erp].[staging_Payments];&#xA;Truncate Table [erp].[staging_InventoryRegistrationHeaders];&#xA;Truncate Table [erp].[staging_ProductStockCSV];&#xA;Truncate Table [erp].[staging_InventoryRegistrationDetails];&#xA;Truncate Table [erp].[staging_PurchaseDocumentHeaders];&#xA;Truncate Table [erp].[staging_PurchaseDocumentLines];&#xA;Truncate Table [integration].[staging_ProductStock];&#xA;Truncate Table [erp].[staging_UserOperationLogs];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="Truncate Table [erp].[staging_InventoryTransferHeaders];&#xA;Truncate Table [erp].[staging_InventoryTransferLines];&#xA;Truncate Table [erp].[staging_Products];&#xA;Truncate Table [erp].[staging_SaleDetails];&#xA;Truncate Table [erp].[staging_SaleHeaders];&#xA;Truncate Table [erp].[staging_StockTakingDetails];&#xA;Truncate Table [erp].[staging_Warehouses];&#xA;Truncate Table [erp].[staging_StockTakingHeaders];&#xA;Truncate Table [erp].[staging_Customers];&#xA;Truncate Table [erp].[staging_InventoryRegistration];&#xA;Truncate Table [erp].[staging_InventoryWriteOff];&#xA;Truncate Table [erp].[staging_PointsOfSale];&#xA;Truncate Table [erp].[staging_PurchaseDocuments];&#xA;Truncate Table [erp].[staging_Suppliers];&#xA;Truncate Table [erp].[staging_Employees];&#xA;Truncate Table [erp].[staging_Payments];&#xA;Truncate Table [erp].[staging_InventoryRegistrationHeaders];&#xA;Truncate Table [erp].[staging_ProductStockCSV];&#xA;Truncate Table [erp].[staging_InventoryRegistrationDetails];&#xA;Truncate Table [erp].[staging_PurchaseDocumentHeaders];&#xA;Truncate Table [erp].[staging_PurchaseDocumentLines];&#xA;Truncate Table [integration].[staging_ProductStock];&#xA;Truncate Table [erp].[staging_UserOperationLogs];&#xA;Truncate Table [erp].[staging_ProductStockCSV];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -16950,6 +16950,199 @@ FROM Suppliers</property>
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\UserOperationLogs\source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+LogID,
+cast(UserName AS nvarchar(100)) AS UserName,
+[TimeStamp],
+cast(TableName AS nvarchar(100)) AS TableName,
+ItemID 
+FROM dbo.UserOperationLogs</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UserOperationLogs\source.Connections[OleDbConnection]"
+                  connectionManagerID="{49C2AD63-BE05-4956-A5FC-A83F0639A17E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Source_ERPLY]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].Columns[LogID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].ExternalColumns[LogID]"
+                      lineageId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].Columns[LogID]"
+                      name="LogID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].Columns[UserName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].ExternalColumns[UserName]"
+                      length="100"
+                      lineageId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].Columns[UserName]"
+                      name="UserName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].Columns[TimeStamp]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].ExternalColumns[TimeStamp]"
+                      length="100"
+                      lineageId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].Columns[TimeStamp]"
+                      name="TimeStamp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].Columns[TableName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].ExternalColumns[TableName]"
+                      length="100"
+                      lineageId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].Columns[TableName]"
+                      name="TableName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].Columns[ItemID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].ExternalColumns[ItemID]"
+                      lineageId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].Columns[ItemID]"
+                      name="ItemID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].ExternalColumns[LogID]"
+                      dataType="i4"
+                      name="LogID" />
+                    <externalMetadataColumn
+                      refId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].ExternalColumns[UserName]"
+                      dataType="wstr"
+                      length="100"
+                      name="UserName" />
+                    <externalMetadataColumn
+                      refId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].ExternalColumns[TimeStamp]"
+                      dataType="wstr"
+                      length="100"
+                      name="TimeStamp" />
+                    <externalMetadataColumn
+                      refId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].ExternalColumns[TableName]"
+                      dataType="wstr"
+                      length="100"
+                      name="TableName" />
+                    <externalMetadataColumn
+                      refId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].ExternalColumns[ItemID]"
+                      dataType="i4"
+                      name="ItemID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\UserOperationLogs\source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserOperationLogs\source.Outputs[OLE DB Source Error Output].Columns[LogID]"
+                      dataType="i4"
+                      lineageId="Package\UserOperationLogs\source.Outputs[OLE DB Source Error Output].Columns[LogID]"
+                      name="LogID" />
+                    <outputColumn
+                      refId="Package\UserOperationLogs\source.Outputs[OLE DB Source Error Output].Columns[UserName]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\UserOperationLogs\source.Outputs[OLE DB Source Error Output].Columns[UserName]"
+                      name="UserName" />
+                    <outputColumn
+                      refId="Package\UserOperationLogs\source.Outputs[OLE DB Source Error Output].Columns[TimeStamp]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\UserOperationLogs\source.Outputs[OLE DB Source Error Output].Columns[TimeStamp]"
+                      name="TimeStamp" />
+                    <outputColumn
+                      refId="Package\UserOperationLogs\source.Outputs[OLE DB Source Error Output].Columns[TableName]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\UserOperationLogs\source.Outputs[OLE DB Source Error Output].Columns[TableName]"
+                      name="TableName" />
+                    <outputColumn
+                      refId="Package\UserOperationLogs\source.Outputs[OLE DB Source Error Output].Columns[ItemID]"
+                      dataType="i4"
+                      lineageId="Package\UserOperationLogs\source.Outputs[OLE DB Source Error Output].Columns[ItemID]"
+                      name="ItemID" />
+                    <outputColumn
+                      refId="Package\UserOperationLogs\source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UserOperationLogs\source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UserOperationLogs\source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UserOperationLogs\source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\UserOperationLogs\UserOperationLogs"
               componentClassID="Microsoft.OLEDBDestination"
@@ -17027,32 +17220,34 @@ FROM Suppliers</property>
                       cachedDataType="i4"
                       cachedName="LogID"
                       externalMetadataColumnId="Package\UserOperationLogs\UserOperationLogs.Inputs[OLE DB Destination Input].ExternalColumns[LogID]"
-                      lineageId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].Columns[LogID]" />
+                      lineageId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].Columns[LogID]" />
                     <inputColumn
                       refId="Package\UserOperationLogs\UserOperationLogs.Inputs[OLE DB Destination Input].Columns[UserName]"
-                      cachedDataType="nText"
-                      cachedName="UserName"
-                      externalMetadataColumnId="Package\UserOperationLogs\UserOperationLogs.Inputs[OLE DB Destination Input].ExternalColumns[UserName]"
-                      lineageId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].Columns[UserName]" />
-                    <inputColumn
-                      refId="Package\UserOperationLogs\UserOperationLogs.Inputs[OLE DB Destination Input].Columns[Timestamp]"
                       cachedDataType="wstr"
                       cachedLength="100"
-                      cachedName="Timestamp"
+                      cachedName="UserName"
+                      externalMetadataColumnId="Package\UserOperationLogs\UserOperationLogs.Inputs[OLE DB Destination Input].ExternalColumns[UserName]"
+                      lineageId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].Columns[UserName]" />
+                    <inputColumn
+                      refId="Package\UserOperationLogs\UserOperationLogs.Inputs[OLE DB Destination Input].Columns[TimeStamp]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="TimeStamp"
                       externalMetadataColumnId="Package\UserOperationLogs\UserOperationLogs.Inputs[OLE DB Destination Input].ExternalColumns[Timestamp]"
-                      lineageId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].Columns[Timestamp]" />
+                      lineageId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].Columns[TimeStamp]" />
                     <inputColumn
                       refId="Package\UserOperationLogs\UserOperationLogs.Inputs[OLE DB Destination Input].Columns[TableName]"
-                      cachedDataType="nText"
+                      cachedDataType="wstr"
+                      cachedLength="100"
                       cachedName="TableName"
                       externalMetadataColumnId="Package\UserOperationLogs\UserOperationLogs.Inputs[OLE DB Destination Input].ExternalColumns[TableName]"
-                      lineageId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].Columns[TableName]" />
+                      lineageId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].Columns[TableName]" />
                     <inputColumn
                       refId="Package\UserOperationLogs\UserOperationLogs.Inputs[OLE DB Destination Input].Columns[ItemID]"
                       cachedDataType="i4"
                       cachedName="ItemID"
                       externalMetadataColumnId="Package\UserOperationLogs\UserOperationLogs.Inputs[OLE DB Destination Input].ExternalColumns[ItemID]"
-                      lineageId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].Columns[ItemID]" />
+                      lineageId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output].Columns[ItemID]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -17107,194 +17302,13 @@ FROM Suppliers</property>
                 </output>
               </outputs>
             </component>
-            <component
-              refId="Package\UserOperationLogs\UserOperationLogs source"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="UserOperationLogs source"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[UserOperationLogs]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\UserOperationLogs\UserOperationLogs source.Connections[OleDbConnection]"
-                  connectionManagerID="{49C2AD63-BE05-4956-A5FC-A83F0639A17E}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Source_ERPLY]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].Columns[LogID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].ExternalColumns[LogID]"
-                      lineageId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].Columns[LogID]"
-                      name="LogID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].Columns[UserName]"
-                      dataType="nText"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].ExternalColumns[UserName]"
-                      lineageId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].Columns[UserName]"
-                      name="UserName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].Columns[Timestamp]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].ExternalColumns[Timestamp]"
-                      length="100"
-                      lineageId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].Columns[Timestamp]"
-                      name="Timestamp"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].Columns[TableName]"
-                      dataType="nText"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].ExternalColumns[TableName]"
-                      lineageId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].Columns[TableName]"
-                      name="TableName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].Columns[ItemID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].ExternalColumns[ItemID]"
-                      lineageId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].Columns[ItemID]"
-                      name="ItemID"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].ExternalColumns[LogID]"
-                      dataType="i4"
-                      name="LogID" />
-                    <externalMetadataColumn
-                      refId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].ExternalColumns[UserName]"
-                      dataType="nText"
-                      name="UserName" />
-                    <externalMetadataColumn
-                      refId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].ExternalColumns[Timestamp]"
-                      dataType="wstr"
-                      length="100"
-                      name="Timestamp" />
-                    <externalMetadataColumn
-                      refId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].ExternalColumns[TableName]"
-                      dataType="nText"
-                      name="TableName" />
-                    <externalMetadataColumn
-                      refId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output].ExternalColumns[ItemID]"
-                      dataType="i4"
-                      name="ItemID" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Error Output]"
-                  isErrorOut="true"
-                  name="OLE DB Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Error Output].Columns[LogID]"
-                      dataType="i4"
-                      lineageId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Error Output].Columns[LogID]"
-                      name="LogID" />
-                    <outputColumn
-                      refId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Error Output].Columns[UserName]"
-                      dataType="nText"
-                      lineageId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Error Output].Columns[UserName]"
-                      name="UserName" />
-                    <outputColumn
-                      refId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Error Output].Columns[Timestamp]"
-                      dataType="wstr"
-                      length="100"
-                      lineageId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Error Output].Columns[Timestamp]"
-                      name="Timestamp" />
-                    <outputColumn
-                      refId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Error Output].Columns[TableName]"
-                      dataType="nText"
-                      lineageId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Error Output].Columns[TableName]"
-                      name="TableName" />
-                    <outputColumn
-                      refId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Error Output].Columns[ItemID]"
-                      dataType="i4"
-                      lineageId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Error Output].Columns[ItemID]"
-                      name="ItemID" />
-                    <outputColumn
-                      refId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
           </components>
           <paths>
             <path
               refId="Package\UserOperationLogs.Paths[OLE DB Source Output]"
               endId="Package\UserOperationLogs\UserOperationLogs.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
-              startId="Package\UserOperationLogs\UserOperationLogs source.Outputs[OLE DB Source Output]" />
+              startId="Package\UserOperationLogs\source.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -18183,7 +18197,7 @@ FROM Suppliers</property>
     design-time-name="Package\InventoryRegistrationDetails">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="150.666666666667,42.6666666666667"
           Id="Package\InventoryRegistrationDetails\OLE DB Source"
@@ -18223,7 +18237,9 @@ FROM Suppliers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -18259,7 +18275,7 @@ FROM Suppliers</property>
     design-time-name="Package\InventoryRegistrationHeader">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="150.666666666667,42.6666666666667"
           Id="Package\InventoryRegistrationHeader\OLE DB Source"
@@ -18299,7 +18315,9 @@ FROM Suppliers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -18474,7 +18492,7 @@ FROM Suppliers</property>
     design-time-name="Package\Load Employees">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="130.666666666667,42.6666666666667"
           Id="Package\Load Employees\Employees"
@@ -18502,7 +18520,9 @@ FROM Suppliers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -18599,7 +18619,7 @@ FROM Suppliers</property>
     design-time-name="Package\Load InventoryTransferLines">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="228,42.6666666666667"
           Id="Package\Load InventoryTransferLines\staging_InventoryTransferLines"
@@ -18627,7 +18647,9 @@ FROM Suppliers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -18663,7 +18685,7 @@ FROM Suppliers</property>
     design-time-name="Package\Load Products">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="161.333333333334,42.6666666666667"
           Id="Package\Load Products\Staging_Products"
@@ -18691,7 +18713,9 @@ FROM Suppliers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -18727,7 +18751,7 @@ FROM Suppliers</property>
     design-time-name="Package\Load SaleDetails">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="170.666666666667,42.6666666666667"
           Id="Package\Load SaleDetails\staging_SaleDetails"
@@ -18767,7 +18791,9 @@ FROM Suppliers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -18803,7 +18829,7 @@ FROM Suppliers</property>
     design-time-name="Package\Load SaleHeaders">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="177.333333333334,42.6666666666667"
           Id="Package\Load SaleHeaders\staging_SaleHeaders"
@@ -18831,7 +18857,9 @@ FROM Suppliers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -18867,7 +18895,7 @@ FROM Suppliers</property>
     design-time-name="Package\Load StockTakingDetails">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="168,42.6666666666667"
           Id="Package\Load StockTakingDetails\StockTakingDetails"
@@ -18895,7 +18923,9 @@ FROM Suppliers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -19075,7 +19105,7 @@ FROM Suppliers</property>
     design-time-name="Package\Payments">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="165.333333333334,42.6666666666667"
           Id="Package\Payments\staging_Payments"
@@ -19103,7 +19133,9 @@ FROM Suppliers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -19207,7 +19239,7 @@ FROM Suppliers</property>
     design-time-name="Package\ProductStock">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="176,42.6666666666667"
           Id="Package\ProductStock\ProductStock Source"
@@ -19247,7 +19279,9 @@ FROM Suppliers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -19283,15 +19317,15 @@ FROM Suppliers</property>
     design-time-name="Package\PurchaseDocumentHeaders">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="209.333333333334,42.6666666666667"
-          Id="Package\PurchaseDocumentHeaders\PurchaseDocumentHeaders"
-          TopLeft="492.08332600072,318.499994304776" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="110.666666666667,42.6666666666667"
           Id="Package\PurchaseDocumentHeaders\source"
           TopLeft="522.916658874601,119.599997861385" />
+        <NodeLayout
+          Size="209.333333333334,42.6666666666667"
+          Id="Package\PurchaseDocumentHeaders\PurchaseDocumentHeaders"
+          TopLeft="492.08332600072,318.499994304776" />
         <EdgeLayout
           Id="Package\PurchaseDocumentHeaders.Paths[OLE DB Source Output]"
           TopLeft="578.249992207935,162.266664528052">
@@ -19323,7 +19357,9 @@ FROM Suppliers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -19359,7 +19395,7 @@ FROM Suppliers</property>
     design-time-name="Package\PurchaseDocumentLines">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="234.666666666667,42.6666666666667"
           Id="Package\PurchaseDocumentLines\staging_PurchaseDocumentLines"
@@ -19387,7 +19423,9 @@ FROM Suppliers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -19423,7 +19461,7 @@ FROM Suppliers</property>
     design-time-name="Package\Suppliers">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="162.666666666667,42.6666666666667"
           Id="Package\Suppliers\staging_Suppliers"
@@ -19451,7 +19489,9 @@ FROM Suppliers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -19488,23 +19528,35 @@ FROM Suppliers</property>
           Id="Package\UserOperationLogs\UserOperationLogs"
           TopLeft="479.999992847443,284.699994909167" />
         <NodeLayout
-          Size="202.666666666667,42.6666666666667"
-          Id="Package\UserOperationLogs\UserOperationLogs source"
-          TopLeft="470.416659656912,47.2333324887355" />
+          Size="110.666666666667,42.6666666666667"
+          Id="Package\UserOperationLogs\source"
+          TopLeft="537.333333333333,81.3333333333333" />
         <EdgeLayout
           Id="Package\UserOperationLogs.Paths[OLE DB Source Output]"
-          TopLeft="568.208326252177,89.8999991554022">
+          TopLeft="592.666666666667,124">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,194.799995753765"
+              EndConnector="-28.0000071525569,160.699994909167"
               Start="0,0"
-              End="0,187.299995753765">
+              End="-28.0000071525569,153.199994909167">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,187.299995753765" />
+                    End="0,76.3499974545835" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,76.3499974545835"
+                    Point2="0,80.3499974545835"
+                    Point3="-4,80.3499974545835" />
+                  <mssgle:LineSegment
+                    End="-24.0000071525569,80.3499974545835" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-24.0000071525569,80.3499974545835"
+                    Point2="-28.0000071525569,80.3499974545835"
+                    Point3="-28.0000071525569,84.3499974545835" />
+                  <mssgle:LineSegment
+                    End="-28.0000071525569,153.199994909167" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -19518,19 +19570,6 @@ FROM Suppliers</property>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\UserOperationLogs\UserOperationLogs">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\UserOperationLogs\UserOperationLogs source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -19610,6 +19649,14 @@ FROM Suppliers</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\UserOperationLogs\source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
