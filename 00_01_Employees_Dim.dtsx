@@ -12,8 +12,8 @@
   DTS:ObjectName="00_01_Employees_Dim"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{FB0964BB-660B-4C81-B708-26004DA271B5}">
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{E1A17044-38C6-4FC4-B169-22D99A0C5925}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -256,7 +256,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Update dimension.Employees_Dim
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Update dimension.Employees
 
 set
 
@@ -371,13 +371,13 @@ where EmployeeErplyID = ? and IsActive = 1</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select EmployeeErplyID, Lastmodified from dimension.Employees_Dim</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select EmployeeErplyID, Lastmodified from dimension.Employees</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select EmployeeErplyID, Lastmodified from dimension.Employees_Dim) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select EmployeeErplyID, Lastmodified from dimension.Employees) [refTable]
 where [refTable].[EmployeeErplyID] = ? and [refTable].[Lastmodified] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -528,13 +528,13 @@ where [refTable].[EmployeeErplyID] = ? and [refTable].[Lastmodified] = ?</proper
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select EmployeeErplyID from dimension.Employees_Dim</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select EmployeeErplyID from dimension.Employees</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select EmployeeErplyID from dimension.Employees_Dim) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select EmployeeErplyID from dimension.Employees) [refTable]
 where [refTable].[EmployeeErplyID] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -887,7 +887,7 @@ from Employees</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dimension].[Employees_Dim]</property>
+                  name="OpenRowset">[dimension].[Employees]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1085,7 +1085,7 @@ from Employees</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dimension].[Employees_Dim]</property>
+                  name="OpenRowset">[dimension].[Employees]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."

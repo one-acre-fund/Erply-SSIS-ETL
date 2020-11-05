@@ -12,8 +12,8 @@
   DTS:ObjectName="01_03_InventoryMovements_Fact"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{2B8F6E1E-8567-45E5-BFDF-1CE37E77ADF5}">
+  DTS:VersionBuild="37"
+  DTS:VersionGUID="{9926FD29-950A-4AA2-A3FA-CC28A8F9C3D3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -547,12 +547,12 @@ where AuditId = ?
           DTS:LocaleID="-1"
           DTS:ObjectName="Get RowsInserted"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4026D486-A9A6-460B-87D2-56079C6B1F69}"
-              SQLTask:SqlStatementSource="SELECT count(*) AS RowsInserted FROM [OAF_CLIENT_DATABASE_Staging].Integration.staging_SalesFact s&#xA;WHERE s.[ErplyInvoiceID] Not IN (SELECT [ErplyInvoiceID] FROM fact.Sales_Fact sf )"
+              SQLTask:SqlStatementSource="SELECT count(*) AS RowsInserted FROM [OAF_CLIENT_DATABASE_Staging].Integration.staging_SalesFact s&#xA;WHERE s.[ErplyInvoiceID] Not IN (SELECT [ErplyInvoiceID] FROM fact.Sales sf )"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -570,7 +570,7 @@ where AuditId = ?
           DTS:LocaleID="-1"
           DTS:ObjectName="Get RowsUpdated"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -675,7 +675,7 @@ where [refTable].[Date] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task 1\399:invalid};</property>
+                  name="ParameterMap">#{Package\Data Flow Task 1\523:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -702,7 +702,7 @@ where [refTable].[Date] = ?</property>
                       refId="Package\Data Flow Task 1\Get DateID.Inputs[Lookup Input].Columns[Date]"
                       cachedDataType="dbDate"
                       cachedName="Date"
-                      lineageId="Package\Data Flow Task 1\399:invalid">
+                      lineageId="Package\Data Flow Task 1\523:invalid">
                       <properties>
                         <property
                           dataType="System.String"
@@ -832,7 +832,7 @@ where [refTable].[EmployeeErplyID] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task 1\400:invalid};</property>
+                  name="ParameterMap">#{Package\Data Flow Task 1\524:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -859,7 +859,7 @@ where [refTable].[EmployeeErplyID] = ?</property>
                       refId="Package\Data Flow Task 1\Get EmployeeID.Inputs[Lookup Input].Columns[EmployeeErplyID]"
                       cachedDataType="i4"
                       cachedName="EmployeeErplyID"
-                      lineageId="Package\Data Flow Task 1\400:invalid">
+                      lineageId="Package\Data Flow Task 1\524:invalid">
                       <properties>
                         <property
                           dataType="System.String"
@@ -989,7 +989,7 @@ where [refTable].[InputErplyID] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task 1\401:invalid};</property>
+                  name="ParameterMap">#{Package\Data Flow Task 1\525:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1016,7 +1016,7 @@ where [refTable].[InputErplyID] = ?</property>
                       refId="Package\Data Flow Task 1\Get InputID.Inputs[Lookup Input].Columns[InputErplyID]"
                       cachedDataType="i4"
                       cachedName="InputErplyID"
-                      lineageId="Package\Data Flow Task 1\401:invalid">
+                      lineageId="Package\Data Flow Task 1\525:invalid">
                       <properties>
                         <property
                           dataType="System.String"
@@ -1146,7 +1146,7 @@ where [refTable].[Date] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task 1\402:invalid};</property>
+                  name="ParameterMap">#{Package\Data Flow Task 1\526:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1173,7 +1173,7 @@ where [refTable].[Date] = ?</property>
                       refId="Package\Data Flow Task 1\Get inventoryTransactionDateID.Inputs[Lookup Input].Columns[InventoryTransactionDate]"
                       cachedDataType="dbDate"
                       cachedName="InventoryTransactionDate"
-                      lineageId="Package\Data Flow Task 1\402:invalid">
+                      lineageId="Package\Data Flow Task 1\526:invalid">
                       <properties>
                         <property
                           dataType="System.String"
@@ -1303,7 +1303,7 @@ where [refTable].[WarehouseERplyID] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task 1\403:invalid};</property>
+                  name="ParameterMap">#{Package\Data Flow Task 1\527:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1330,7 +1330,7 @@ where [refTable].[WarehouseERplyID] = ?</property>
                       refId="Package\Data Flow Task 1\Get WarehouseFromID.Inputs[Lookup Input].Columns[WarehouseFromErplyID]"
                       cachedDataType="i4"
                       cachedName="WarehouseFromErplyID"
-                      lineageId="Package\Data Flow Task 1\403:invalid">
+                      lineageId="Package\Data Flow Task 1\527:invalid">
                       <properties>
                         <property
                           dataType="System.String"
@@ -1460,7 +1460,7 @@ where [refTable].[WarehouseERplyID] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task 1\404:invalid};</property>
+                  name="ParameterMap">#{Package\Data Flow Task 1\528:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1487,7 +1487,7 @@ where [refTable].[WarehouseERplyID] = ?</property>
                       refId="Package\Data Flow Task 1\Get WarehouseToID.Inputs[Lookup Input].Columns[ErplyWarehouseToID]"
                       cachedDataType="i4"
                       cachedName="ErplyWarehouseToID"
-                      lineageId="Package\Data Flow Task 1\404:invalid">
+                      lineageId="Package\Data Flow Task 1\528:invalid">
                       <properties>
                         <property
                           dataType="System.String"
@@ -2382,7 +2382,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get AuditID"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2404,7 +2404,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get ETL Start Time"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2426,7 +2426,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get Latest ETL Time"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2454,7 +2454,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Update AuditDimension"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2522,7 +2522,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Load Production"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2546,12 +2546,12 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate Fact Table"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4026D486-A9A6-460B-87D2-56079C6B1F69}"
-              SQLTask:SqlStatementSource="TRUNCATE TABLE fact.InventoryMovements_Fact;&#xA;GO&#xA;DBCC CHECKIDENT ('fact.InventoryMovements_Fact', RESEED, 1);&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="TRUNCATE TABLE fact.InventoryMovements;&#xA;GO&#xA;DBCC CHECKIDENT ('fact.InventoryMovements', RESEED, 1);&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -3545,7 +3545,7 @@ WITH RESULT SETS
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate Staging"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -6235,7 +6235,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate Staging"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -6337,9 +6337,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6373,9 +6371,7 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -6552,9 +6548,9 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
-          IsExpanded="True"
+          IsExpanded="False"
           PanelSize="207.333333333334,184"
-          Size="207.333333333334,226.666666666667"
+          Size="207.333333333334,42.6666666666667"
           Id="Package\Load Production Table"
           TopLeft="411.249993871897,296.83332802554" />
         <NodeLayout
@@ -6645,7 +6641,9 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -6713,18 +6711,18 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="511.083327167978,523.499994692207">
+          TopLeft="511.083327167978,339.499994692207">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,-99.2666689447566"
+              EndConnector="0,84.7333310552432"
               Start="0,0"
-              End="0,-91.7666689447566">
+              End="0,77.2333310552432">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-91.7666689447566" />
+                    End="0,77.2333310552432" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6758,6 +6756,28 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
           Id="Package\Audit Parameters\Get Audit Parameters\DC - AuditID"
           TopLeft="32.5,210.833333333334" />
         <EdgeLayout
+          Id="Package\Audit Parameters\Get Audit Parameters.Paths[Audit Output 1]"
+          TopLeft="102.166666666667,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Audit Parameters\Get Audit Parameters.Paths[OLE DB Source Output]"
           TopLeft="102.166666666667,48.1666666666667">
           <EdgeLayout.Curve>
@@ -6782,28 +6802,6 @@ ON pd.PurchaseDocumentID = pl.PurchaseDocumentID</property>
         <EdgeLayout
           Id="Package\Audit Parameters\Get Audit Parameters.Paths[Derived Column Output]"
           TopLeft="102.166666666667,253.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
-              Start="0,0"
-              End="0,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Audit Parameters\Get Audit Parameters.Paths[Audit Output 1]"
-          TopLeft="102.166666666667,150.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"

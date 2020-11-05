@@ -12,8 +12,8 @@
   DTS:ObjectName="01_01_Sales_Fact"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="71"
-  DTS:VersionGUID="{89140EC9-D451-45A1-9F41-1248D37D5372}">
+  DTS:VersionBuild="83"
+  DTS:VersionGUID="{F184E134-1F8C-41D2-B241-E6A445B80E4A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -564,12 +564,12 @@ where AuditId = ?
           DTS:LocaleID="-1"
           DTS:ObjectName="Get RowsInserted"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4026D486-A9A6-460B-87D2-56079C6B1F69}"
-              SQLTask:SqlStatementSource="SELECT count(*) AS RowsInserted FROM [OAF_CLIENT_DATABASE_Staging].Integration.staging_SalesFact s&#xA;WHERE s.[ErplyInvoiceID] Not IN (SELECT [ErplyInvoiceID] FROM fact.Sales_Fact sf&#x9;)"
+              SQLTask:SqlStatementSource="SELECT count(*) AS RowsInserted FROM [OAF_CLIENT_DATABASE_Staging].Integration.staging_SalesFact s&#xA;WHERE s.[ErplyInvoiceID] Not IN (SELECT [ErplyInvoiceID] FROM fact.Sales sf&#x9;)"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -586,12 +586,12 @@ where AuditId = ?
           DTS:LocaleID="-1"
           DTS:ObjectName="Get RowsUpdated"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4026D486-A9A6-460B-87D2-56079C6B1F69}"
-              SQLTask:SqlStatementSource="SELECT count(*) AS RowsUpdated FROM [OAF_CLIENT_DATABASE_Staging].Integration.staging_SalesFact s&#xA;WHERE s.[ErplyInvoiceID] IN (SELECT [ErplyInvoiceID] FROM fact.Sales_Fact sf&#x9;)"
+              SQLTask:SqlStatementSource="SELECT count(*) AS RowsUpdated FROM [OAF_CLIENT_DATABASE_Staging].Integration.staging_SalesFact s&#xA;WHERE s.[ErplyInvoiceID] IN (SELECT [ErplyInvoiceID] FROM fact.Sales sf&#x9;)"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -769,19 +769,19 @@ where AuditId = ?
         <DTS:PrecedenceConstraint
           DTS:refId="Package\ETL Begin.PrecedenceConstraints[Constraint 2]"
           DTS:CreationName=""
-          DTS:DTSID="{AFEF2C22-EF31-4283-892E-FE6C55B5687D}"
+          DTS:DTSID="{F09348BD-38F1-4357-A5E5-502324F5CA4F}"
           DTS:From="Package\ETL Begin\Update AuditDimension"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
-          DTS:To="Package\ETL Begin\Get Latest ETL Time" />
+          DTS:To="Package\ETL Begin\Execute SQL Task" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\ETL Begin.PrecedenceConstraints[Constraint 3]"
           DTS:CreationName=""
-          DTS:DTSID="{0E2753F2-6E91-4B7B-9C69-3D5B855074B8}"
-          DTS:From="Package\ETL Begin\Get Latest ETL Time"
+          DTS:DTSID="{1FBF46FA-17AF-4151-A193-2C70B53F5B7E}"
+          DTS:From="Package\ETL Begin\Execute SQL Task"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 3"
-          DTS:To="Package\ETL Begin\Execute SQL Task" />
+          DTS:To="Package\ETL Begin\Get Latest ETL Time" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -869,7 +869,7 @@ WITH RESULT SETS
 	[ErplyInvoiceRowID] [int] NULL,
 	[CampaignNames] [nvarchar](100) NULL,
 	[Status] [nvarchar](50) NULL,
-                [DocumentNumber][BIGINT] NULL,
+                [DocumentNumber] [nvarchar](50) NULL,
 	[Price] [decimal](19, 2) NULL,
 	[Date] [datetime] NULL,
 	[Discount] [decimal](19, 2) NULL,
@@ -1142,10 +1142,11 @@ WITH RESULT SETS
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[DocumentNumber]"
-                          dataType="i8"
+                          dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[DocumentNumber]"
+                          length="50"
                           lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[DocumentNumber]"
                           name="DocumentNumber"
                           truncationRowDisposition="FailComponent" />
@@ -1263,7 +1264,8 @@ WITH RESULT SETS
                           name="IsCredit" />
                         <externalMetadataColumn
                           refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].ExternalColumns[DocumentNumber]"
-                          dataType="i8"
+                          dataType="wstr"
+                          length="50"
                           name="DocumentNumber" />
                       </externalMetadataColumns>
                     </output>
@@ -1316,7 +1318,8 @@ WITH RESULT SETS
                           name="Status" />
                         <outputColumn
                           refId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[DocumentNumber]"
-                          dataType="i8"
+                          dataType="wstr"
+                          length="50"
                           lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Error Output].Columns[DocumentNumber]"
                           name="DocumentNumber" />
                         <outputColumn
@@ -1652,7 +1655,8 @@ WITH RESULT SETS
                           lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[IsCredit]" />
                         <inputColumn
                           refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].Columns[DocumentNumber]"
-                          cachedDataType="i8"
+                          cachedDataType="wstr"
+                          cachedLength="50"
                           cachedName="DocumentNumber"
                           externalMetadataColumnId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[DocumentNumber]"
                           lineageId="Package\Load Staging\Load staging\integration GetSalesUpdates.Outputs[OLE DB Source Output].Columns[DocumentNumber]" />
@@ -1798,7 +1802,8 @@ WITH RESULT SETS
                           name="IsCredit" />
                         <externalMetadataColumn
                           refId="Package\Load Staging\Load staging\Integration SalesFact.Inputs[OLE DB Destination Input].ExternalColumns[DocumentNumber]"
-                          dataType="i8"
+                          dataType="wstr"
+                          length="50"
                           name="DocumentNumber" />
                       </externalMetadataColumns>
                     </input>
@@ -3769,7 +3774,7 @@ ON sh.SaleId = Sd.SaleId</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="180,42.6666666666667"
           Id="Package\Audit Parameters\Get Audit Parameters"
@@ -3813,9 +3818,7 @@ ON sh.SaleId = Sd.SaleId</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3849,9 +3852,7 @@ ON sh.SaleId = Sd.SaleId</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -3861,6 +3862,10 @@ ON sh.SaleId = Sd.SaleId</property>
           Size="182,42.6666666666667"
           Id="Package\Audit Parameters"
           TopLeft="194.999999739229,217.766666542689" />
+        <NodeLayout
+          Size="164,42.6666666666667"
+          Id="Package\ETL Begin\Execute SQL Task"
+          TopLeft="235.583326932043,163.033329559763" />
         <NodeLayout
           Size="135.333333333334,42.6666666666667"
           Id="Package\ETL Begin\Get AuditID"
@@ -3872,7 +3877,7 @@ ON sh.SaleId = Sd.SaleId</property>
         <NodeLayout
           Size="174.666666666667,42.6666666666667"
           Id="Package\ETL Begin\Get Latest ETL Time"
-          TopLeft="98.1666614885132,192.76666193227" />
+          TopLeft="95.6666615257661,240.866661072175" />
         <NodeLayout
           Size="189.333333333334,42.6666666666667"
           Id="Package\ETL Begin\Update AuditDimension"
@@ -3947,18 +3952,24 @@ ON sh.SaleId = Sd.SaleId</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\ETL Begin.PrecedenceConstraints[Constraint 2]"
-          TopLeft="186.708328301087,156.899996598363">
+          TopLeft="282.583328446994,135.566663265029">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,35.8666653339067"
+              EndConnector="34.9999984850487,27.4666662947335"
               Start="0,0"
-              End="0,28.3666653339067">
+              End="34.9999984850487,19.9666662947335">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.3666653339067" />
+                    End="30.9999984850487,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="30.9999984850487,0"
+                    Point2="34.9999984850487,0"
+                    Point3="34.9999984850487,4" />
+                  <mssgle:LineSegment
+                    End="34.9999984850487,19.9666662947335" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3967,36 +3978,32 @@ ON sh.SaleId = Sd.SaleId</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164,42.6666666666667"
-          Id="Package\ETL Begin\Execute SQL Task"
-          TopLeft="193.4999942258,260.533327816327" />
         <EdgeLayout
           Id="Package\ETL Begin.PrecedenceConstraints[Constraint 3]"
-          TopLeft="185.499994821847,235.433328598937">
+          TopLeft="317.583326932043,205.69999622643">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="89.9999994039536,25.0999992173908"
+              EndConnector="-134.583332072943,35.1666648457455"
               Start="0,0"
-              End="89.9999994039536,17.5999992173908">
+              End="-134.583332072943,27.6666648457455">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,8.5499996086954" />
+                    End="0,13.5833324228727" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,8.5499996086954"
-                    Point2="0,12.5499996086954"
-                    Point3="4,12.5499996086954" />
+                    Point1="0,13.5833324228727"
+                    Point2="0,17.5833324228727"
+                    Point3="-4,17.5833324228727" />
                   <mssgle:LineSegment
-                    End="85.9999994039536,12.5499996086954" />
+                    End="-130.583332072943,17.5833324228727" />
                   <mssgle:CubicBezierSegment
-                    Point1="85.9999994039536,12.5499996086954"
-                    Point2="89.9999994039536,12.5499996086954"
-                    Point3="89.9999994039536,16.5499996086954" />
+                    Point1="-130.583332072943,17.5833324228727"
+                    Point2="-134.583332072943,17.5833324228727"
+                    Point3="-134.583332072943,21.5833324228727" />
                   <mssgle:LineSegment
-                    End="89.9999994039536,17.5999992173908" />
+                    End="-134.583332072943,27.6666648457455" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4008,7 +4015,7 @@ ON sh.SaleId = Sd.SaleId</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="False"
-          PanelSize="369.333333333334,358"
+          PanelSize="404.666666666667,358"
           Size="148.666666666667,42.6666666666667"
           Id="Package\ETL Begin"
           TopLeft="194.166666666667,5.50000000000003" />
@@ -4061,8 +4068,8 @@ ON sh.SaleId = Sd.SaleId</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="262.666666666667,204.666666666667"
-          Size="262.666666666667,248"
+          PanelSize="262.666666666667,205.333333333334"
+          Size="262.666666666667,248.666666666667"
           Id="Package\Load Staging"
           TopLeft="187.166665921609,108.166666666667" />
         <NodeLayout
@@ -4105,30 +4112,30 @@ ON sh.SaleId = Sd.SaleId</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="318.499999254942,356.166666666667">
+          TopLeft="318.499999254942,356.833333333334">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-32.4999995157133,-138.400000123978"
+              EndConnector="-32.4999995157133,-139.066666790645"
               Start="0,0"
-              End="-32.4999995157133,-130.900000123978">
+              End="-32.4999995157133,-131.566666790645">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-65.200000061989" />
+                    End="0,-65.5333333953224" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,-65.200000061989"
-                    Point2="0,-69.200000061989"
-                    Point3="-4,-69.200000061989" />
+                    Point1="0,-65.5333333953224"
+                    Point2="0,-69.5333333953224"
+                    Point3="-4,-69.5333333953224" />
                   <mssgle:LineSegment
-                    End="-28.4999995157133,-69.200000061989" />
+                    End="-28.4999995157133,-69.5333333953224" />
                   <mssgle:CubicBezierSegment
-                    Point1="-28.4999995157133,-69.200000061989"
-                    Point2="-32.4999995157133,-69.200000061989"
-                    Point3="-32.4999995157133,-73.200000061989" />
+                    Point1="-28.4999995157133,-69.5333333953224"
+                    Point2="-32.4999995157133,-69.5333333953224"
+                    Point3="-32.4999995157133,-73.5333333953224" />
                   <mssgle:LineSegment
-                    End="-32.4999995157133,-130.900000123978" />
+                    End="-32.4999995157133,-131.566666790645" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

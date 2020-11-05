@@ -12,8 +12,8 @@
   DTS:ObjectName="01-02_StockTakings_Fact"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="43"
-  DTS:VersionGUID="{A56963CE-3BE5-4919-A8A6-06C7E9D5ED8D}">
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{A06F2804-5B7A-4186-903F-B7B6D811FCC3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -569,7 +569,7 @@ where AuditId = ?
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4026D486-A9A6-460B-87D2-56079C6B1F69}"
-              SQLTask:SqlStatementSource="SELECT count(*) AS RowsInserted FROM [OAF_CLIENT_DATABASE_Staging].Integration.staging_StockTakingsFact s&#xA;WHERE s.[ErplyStockTakingID] Not IN (SELECT [ErplyStockTakingID] FROM fact.StockTakings_Fact sf )"
+              SQLTask:SqlStatementSource="SELECT count(*) AS RowsInserted FROM [OAF_CLIENT_DATABASE_Staging].Integration.staging_StockTakingsFact s&#xA;WHERE s.[ErplyStockTakingID] Not IN (SELECT [ErplyStockTakingID] FROM fact.StockTakings sf )"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -591,7 +591,7 @@ where AuditId = ?
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4026D486-A9A6-460B-87D2-56079C6B1F69}"
-              SQLTask:SqlStatementSource="SELECT count(*) AS RowsUpdated FROM [OAF_CLIENT_DATABASE_Staging].Integration.staging_StockTakingsFact s&#xA;WHERE s.[ErplyStockTakingID] IN (SELECT [ErplyStockTakingID] FROM fact.StockTakings_Fact sf )"
+              SQLTask:SqlStatementSource="SELECT count(*) AS RowsUpdated FROM [OAF_CLIENT_DATABASE_Staging].Integration.staging_StockTakingsFact s&#xA;WHERE s.[ErplyStockTakingID] IN (SELECT [ErplyStockTakingID] FROM fact.StockTakings sf )"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -691,7 +691,7 @@ where [refTable].[EmployeeErplyID] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task 1\490:invalid};</property>
+                  name="ParameterMap">#{Package\Data Flow Task 1\501:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -718,7 +718,7 @@ where [refTable].[EmployeeErplyID] = ?</property>
                       refId="Package\Data Flow Task 1\Get Confirmed by EmployeeID.Inputs[Lookup Input].Columns[EmployeeConfirmedID]"
                       cachedDataType="i4"
                       cachedName="EmployeeConfirmedID"
-                      lineageId="Package\Data Flow Task 1\490:invalid">
+                      lineageId="Package\Data Flow Task 1\501:invalid">
                       <properties>
                         <property
                           dataType="System.String"
@@ -814,7 +814,7 @@ where [refTable].[EmployeeErplyID] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get AuditID"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -836,7 +836,7 @@ where [refTable].[EmployeeErplyID] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get ETL Start Time"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -957,6 +957,461 @@ where [refTable].[EmployeeErplyID] = ?</property>
             SQLTask:DataType="20"
             SQLTask:ParameterSize="-1" />
         </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load ProductStock"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F8A2B0D8-3879-4F40-980A-DDBCB65BAE00}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load ProductStock"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load ProductStock\Get InputID"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Get InputID"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select InputID, InputErplyID from dimension.Inputs where IsActive = 1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (Select InputID, InputErplyID from dimension.Inputs where IsActive = 1) [refTable]
+where [refTable].[InputErplyID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="InputID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InputErplyID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load ProductStock\getStock.Outputs[OLE DB Source Output].Columns[InputErplyID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load ProductStock\Get InputID.Connections[OleDbConnection]"
+                  connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load ProductStock\Get InputID.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load ProductStock\Get InputID.Inputs[Lookup Input].Columns[InputErplyID]"
+                      cachedDataType="i4"
+                      cachedName="InputErplyID"
+                      lineageId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Output].Columns[InputErplyID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">InputErplyID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load ProductStock\Get InputID.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load ProductStock\Get InputID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ProductStock\Get InputID.Outputs[Lookup Match Output].Columns[InputID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load ProductStock\Get InputID.Outputs[Lookup Match Output].Columns[InputID]"
+                      name="InputID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">InputID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load ProductStock\Get InputID.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load ProductStock\Get InputID.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load ProductStock\Get InputID.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load ProductStock\Get InputID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ProductStock\Get InputID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load ProductStock\Get InputID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load ProductStock\Get InputID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load ProductStock\Get InputID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load ProductStock\getStock"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="getStock"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[integration].[staging_ProductStock]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select ProductID as InputErplyID, AmountInStock from integration.staging_ProductStock</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load ProductStock\getStock.Connections[OleDbConnection]"
+                  connectionManagerID="{9DE91C01-E81A-4BCE-94FD-0C83DA58AF33}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Output].Columns[AmountInStock]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Output].ExternalColumns[AmountInStock]"
+                      lineageId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Output].Columns[AmountInStock]"
+                      name="AmountInStock"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Output].Columns[InputErplyID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Output].ExternalColumns[InputErplyID]"
+                      lineageId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Output].Columns[InputErplyID]"
+                      name="InputErplyID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Output].ExternalColumns[AmountInStock]"
+                      dataType="numeric"
+                      name="AmountInStock"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Output].ExternalColumns[InputErplyID]"
+                      dataType="i4"
+                      name="InputErplyID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Error Output].Columns[InputErplyID]"
+                      dataType="i4"
+                      lineageId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Error Output].Columns[InputErplyID]"
+                      name="InputErplyID" />
+                    <outputColumn
+                      refId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Error Output].Columns[AmountInStock]"
+                      dataType="numeric"
+                      lineageId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Error Output].Columns[AmountInStock]"
+                      name="AmountInStock"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load ProductStock\ProductStock"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ProductStock"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dimension].[ProductStock]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load ProductStock\ProductStock.Connections[OleDbConnection]"
+                  connectionManagerID="{4026D486-A9A6-460B-87D2-56079C6B1F69}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERPLY_Production]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load ProductStock\ProductStock.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load ProductStock\ProductStock.Inputs[OLE DB Destination Input].Columns[AmountInStock]"
+                      cachedDataType="numeric"
+                      cachedName="AmountInStock"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Load ProductStock\ProductStock.Inputs[OLE DB Destination Input].ExternalColumns[AmountInStock]"
+                      lineageId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Output].Columns[AmountInStock]" />
+                    <inputColumn
+                      refId="Package\Load ProductStock\ProductStock.Inputs[OLE DB Destination Input].Columns[InputErplyID]"
+                      cachedDataType="i4"
+                      cachedName="InputErplyID"
+                      externalMetadataColumnId="Package\Load ProductStock\ProductStock.Inputs[OLE DB Destination Input].ExternalColumns[InputErplyID]"
+                      lineageId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Output].Columns[InputErplyID]" />
+                    <inputColumn
+                      refId="Package\Load ProductStock\ProductStock.Inputs[OLE DB Destination Input].Columns[InputID]"
+                      cachedDataType="i4"
+                      cachedName="InputID"
+                      externalMetadataColumnId="Package\Load ProductStock\ProductStock.Inputs[OLE DB Destination Input].ExternalColumns[InputID]"
+                      lineageId="Package\Load ProductStock\Get InputID.Outputs[Lookup Match Output].Columns[InputID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load ProductStock\ProductStock.Inputs[OLE DB Destination Input].ExternalColumns[InputID]"
+                      dataType="i4"
+                      name="InputID" />
+                    <externalMetadataColumn
+                      refId="Package\Load ProductStock\ProductStock.Inputs[OLE DB Destination Input].ExternalColumns[InputErplyID]"
+                      dataType="i4"
+                      name="InputErplyID" />
+                    <externalMetadataColumn
+                      refId="Package\Load ProductStock\ProductStock.Inputs[OLE DB Destination Input].ExternalColumns[AmountInStock]"
+                      dataType="numeric"
+                      name="AmountInStock"
+                      precision="18"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load ProductStock\ProductStock.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load ProductStock\ProductStock.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ProductStock\ProductStock.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load ProductStock\ProductStock.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load ProductStock\ProductStock.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load ProductStock\ProductStock.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load ProductStock.Paths[Lookup Match Output]"
+              endId="Package\Load ProductStock\ProductStock.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Load ProductStock\Get InputID.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load ProductStock.Paths[OLE DB Source Output]"
+              endId="Package\Load ProductStock\Get InputID.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load ProductStock\getStock.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1727,7 +2182,7 @@ where [refTable].[Date] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\StockTakings\491:invalid};</property>
+                  name="ParameterMap">#{Package\StockTakings\502:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1884,7 +2339,7 @@ where [refTable].[EmployeeErplyID] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\StockTakings\492:invalid};</property>
+                  name="ParameterMap">#{Package\StockTakings\503:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2041,7 +2496,7 @@ where [refTable].[InputErplyID] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\StockTakings\493:invalid};</property>
+                  name="ParameterMap">#{Package\StockTakings\504:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2198,7 +2653,7 @@ where [refTable].[WarehouseERplyID] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\StockTakings\494:invalid};</property>
+                  name="ParameterMap">#{Package\StockTakings\505:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2929,6 +3384,23 @@ ON sh.stocktakingid = sd.StockTakingId</property>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Table ProductStock"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6D155F95-F2B5-48A1-A044-43DFCAF6A7D2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Table ProductStock"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4026D486-A9A6-460B-87D2-56079C6B1F69}"
+          SQLTask:SqlStatementSource="Truncate table dimension.ProductStock;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -2955,6 +3427,14 @@ ON sh.stocktakingid = sd.StockTakingId</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\Load Production" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{43A12098-4680-440F-BF64-24B47E9F9729}"
+      DTS:From="Package\Truncate Table ProductStock"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Load ProductStock" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -3011,9 +3491,7 @@ ON sh.stocktakingid = sd.StockTakingId</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3041,9 +3519,7 @@ ON sh.stocktakingid = sd.StockTakingId</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -3181,6 +3657,10 @@ ON sh.stocktakingid = sd.StockTakingId</property>
           Id="Package\Load Production"
           TopLeft="380.833327658474,399.533326189121" />
         <NodeLayout
+          Size="166.666666666667,42.6666666666667"
+          Id="Package\Load ProductStock"
+          TopLeft="892.499986700714,207.566662955086" />
+        <NodeLayout
           Size="140,42.6666666666667"
           Id="Package\Load Staging\Load staging"
           TopLeft="57.249995858719,107.033327700098" />
@@ -3219,46 +3699,40 @@ ON sh.stocktakingid = sd.StockTakingId</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
-          IsExpanded="True"
+          IsExpanded="False"
           PanelSize="262.666666666667,204"
-          Size="262.666666666667,246.666666666667"
+          Size="163.333333333334,42.6666666666667"
           Id="Package\Load Staging"
           TopLeft="371.249994467944,141.699997466207" />
         <NodeLayout
           Size="141.333333333334,42.6666666666667"
           Id="Package\StockTakings"
           TopLeft="33.3333328366277,135.63333090802" />
+        <NodeLayout
+          Size="214.666666666667,42.6666666666667"
+          Id="Package\Truncate Table ProductStock"
+          TopLeft="857.916653882712,29.8999994653464" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="452.66666102906,72.1000013095137">
+          TopLeft="452.791661081836,72.1000013095137">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="49.9166667722171,69.5999961566934"
+              EndConnector="0,69.5999961566934"
               Start="0,0"
-              End="49.9166667722171,62.0999961566934">
+              End="0,62.0999961566934">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.7999980783467" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,30.7999980783467"
-                    Point2="0,34.7999980783467"
-                    Point3="4,34.7999980783467" />
-                  <mssgle:LineSegment
-                    End="45.9166667722171,34.7999980783467" />
-                  <mssgle:CubicBezierSegment
-                    Point1="45.9166667722171,34.7999980783467"
-                    Point2="49.9166667722171,34.7999980783467"
-                    Point3="49.9166667722171,38.7999980783467" />
-                  <mssgle:LineSegment
-                    End="49.9166667722171,62.0999961566934" />
+                    End="0,62.0999961566934" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3269,30 +3743,18 @@ ON sh.stocktakingid = sd.StockTakingId</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="502.583327801277,388.366664132874">
+          TopLeft="454.458327847843,184.366664132874">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-46.5833332402014,-123.633333697518"
+              EndConnector="0,80.3666663024823"
               Start="0,0"
-              End="-46.5833332402014,-116.133333697518">
+              End="0,72.8666663024823">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-57.8166668487588" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-57.8166668487588"
-                    Point2="0,-61.8166668487588"
-                    Point3="-4,-61.8166668487588" />
-                  <mssgle:LineSegment
-                    End="-42.5833332402014,-61.8166668487588" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-42.5833332402014,-61.8166668487588"
-                    Point2="-46.5833332402014,-61.8166668487588"
-                    Point3="-46.5833332402014,-65.8166668487588" />
-                  <mssgle:LineSegment
-                    End="-46.5833332402014,-116.133333697518" />
+                    End="0,72.8666663024823" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3315,6 +3777,40 @@ ON sh.stocktakingid = sd.StockTakingId</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,84.6333290870983" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="965.249987216046,72.566666132013">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10.5833328180015,134.999996823073"
+              Start="0,0"
+              End="10.5833328180015,127.499996823073">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.4999984115363" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,63.4999984115363"
+                    Point2="0,67.4999984115363"
+                    Point3="4,67.4999984115363" />
+                  <mssgle:LineSegment
+                    End="6.58333281800151,67.4999984115363" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6.58333281800151,67.4999984115363"
+                    Point2="10.5833328180015,67.4999984115363"
+                    Point3="10.5833328180015,71.4999984115363" />
+                  <mssgle:LineSegment
+                    End="10.5833328180015,127.499996823073" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3436,6 +3932,121 @@ ON sh.stocktakingid = sd.StockTakingId</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <TaskHost
+    design-time-name="Package\Load ProductStock">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="120,42.6666666666667"
+          Id="Package\Load ProductStock\getStock"
+          TopLeft="16.1666666666667,5.50000000000004" />
+        <NodeLayout
+          Size="136,42.6666666666667"
+          Id="Package\Load ProductStock\Get InputID"
+          TopLeft="8.1666666666667,108.166666666667" />
+        <NodeLayout
+          Size="141.333333333334,42.6666666666667"
+          Id="Package\Load ProductStock\ProductStock"
+          TopLeft="5.50000000000003,210.833333333334" />
+        <EdgeLayout
+          Id="Package\Load ProductStock.Paths[OLE DB Source Output]"
+          TopLeft="76.1666666666667,48.1666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load ProductStock.Paths[Lookup Match Output]"
+          TopLeft="76.1666666666667,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load ProductStock\getStock">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load ProductStock\Get InputID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load ProductStock\ProductStock">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Load Staging\Load staging">
     <LayoutInfo>

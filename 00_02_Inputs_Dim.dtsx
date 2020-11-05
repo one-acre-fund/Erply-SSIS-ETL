@@ -12,8 +12,8 @@
   DTS:ObjectName="00_02_Inputs_Dim"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="39"
-  DTS:VersionGUID="{5DBFE2BF-DF91-48F2-9D4C-0339E58B413E}">
+  DTS:VersionBuild="40"
+  DTS:VersionGUID="{B07D9FF5-A5F1-47D0-B7CF-1E497C3B3878}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -151,7 +151,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dimension].[Inputs_Dim]</property>
+                  name="OpenRowset">[dimension].[Inputs]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -415,7 +415,7 @@
                       name="CurrencyCode" />
                     <externalMetadataColumn
                       refId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].ExternalColumns[IsVATApplicable]"
-                      dataType="bool"
+                      dataType="r8"
                       name="IsVATApplicable" />
                     <externalMetadataColumn
                       refId="Package\DFT - Get Inputs\add new input.Inputs[OLE DB Destination Input].ExternalColumns[VATApplicableAmount]"
@@ -592,7 +592,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Update dimension.Inputs_Dim
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Update dimension.Inputs
 
 set
 
@@ -707,13 +707,13 @@ where InputErplyID = ? and IsActive = 1</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select InputErplyID, LastModified from dimension.Inputs_Dim</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select InputErplyID, LastModified from dimension.Inputs</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select InputErplyID, LastModified from dimension.Inputs_Dim) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select InputErplyID, LastModified from dimension.Inputs) [refTable]
 where [refTable].[InputErplyID] = ? and [refTable].[LastModified] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -864,13 +864,13 @@ where [refTable].[InputErplyID] = ? and [refTable].[LastModified] = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select InputErplyID from dimension.Inputs_Dim where IsActive = 1</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select InputErplyID from dimension.Inputs where IsActive = 1</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (Select InputErplyID from dimension.Inputs_Dim where IsActive = 1) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (Select InputErplyID from dimension.Inputs where IsActive = 1) [refTable]
 where [refTable].[InputErplyID] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -1484,7 +1484,7 @@ FROM CTE</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dimension].[Inputs_Dim]</property>
+                  name="OpenRowset">[dimension].[Inputs]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1749,7 +1749,7 @@ FROM CTE</property>
                       name="CurrencyCode" />
                     <externalMetadataColumn
                       refId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].ExternalColumns[IsVATApplicable]"
-                      dataType="bool"
+                      dataType="r8"
                       name="IsVATApplicable" />
                     <externalMetadataColumn
                       refId="Package\DFT - Get Inputs\Insert Current Input.Inputs[OLE DB Destination Input].ExternalColumns[VATApplicableAmount]"
@@ -1938,29 +1938,21 @@ FROM CTE</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="232,42.6666666666667"
-          Id="Package\DFT - Get Inputs\Change - Update Active To Date"
-          TopLeft="5.50000000000009,416.166666666667" />
-        <NodeLayout
           Size="146.666666666667,42.6666666666667"
           Id="Package\DFT - Get Inputs\add new input"
           TopLeft="301.166666666667,416.166666666667" />
-        <NodeLayout
-          Size="145.333333333334,42.6666666666667"
-          Id="Package\DFT - Get Inputs\Inputs Source"
-          TopLeft="301.833333333333,5.49999999999993" />
         <NodeLayout
           Size="174.666666666667,42.6666666666667"
           Id="Package\DFT - Get Inputs\Insert Current Input"
           TopLeft="34.1666666666668,621.5" />
         <NodeLayout
-          Size="174.666666666667,42.6666666666667"
-          Id="Package\DFT - Get Inputs\check modified date"
-          TopLeft="34.1666666666667,313.5" />
-        <NodeLayout
           Size="178.666666666667,42.6666666666667"
           Id="Package\DFT - Get Inputs\Does the input Exist?"
           TopLeft="285.166666666667,210.833333333333" />
+        <NodeLayout
+          Size="145.333333333334,42.6666666666667"
+          Id="Package\DFT - Get Inputs\Inputs Source"
+          TopLeft="301.833333333333,5.49999999999993" />
         <NodeLayout
           Size="210.666666666667,42.6666666666667"
           Id="Package\DFT - Get Inputs\Add Status and Active From"
@@ -1969,6 +1961,14 @@ FROM CTE</property>
           Size="232,42.6666666666667"
           Id="Package\DFT - Get Inputs\Add Active From and Active Flag"
           TopLeft="5.50000000000009,518.833333333333" />
+        <NodeLayout
+          Size="232,42.6666666666667"
+          Id="Package\DFT - Get Inputs\Change - Update Active To Date"
+          TopLeft="5.50000000000009,416.166666666667" />
+        <NodeLayout
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\DFT - Get Inputs\check modified date"
+          TopLeft="34.1666666666667,313.5" />
         <EdgeLayout
           Id="Package\DFT - Get Inputs.Paths[OLE DB Source Output]"
           TopLeft="374.5,48.1666666666666">
@@ -2170,14 +2170,6 @@ FROM CTE</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - Get Inputs\Inputs Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\DFT - Get Inputs\Insert Current Input">
     <Properties>
       <Property>
@@ -2191,12 +2183,12 @@ FROM CTE</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - Get Inputs\check modified date">
+    design-time-name="Package\DFT - Get Inputs\Does the input Exist?">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2206,7 +2198,7 @@ FROM CTE</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2214,12 +2206,20 @@ FROM CTE</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - Get Inputs\Does the input Exist?">
+    design-time-name="Package\DFT - Get Inputs\Inputs Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Get Inputs\check modified date">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2229,7 +2229,7 @@ FROM CTE</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

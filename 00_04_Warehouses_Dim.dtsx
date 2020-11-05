@@ -12,8 +12,8 @@
   DTS:ObjectName="00_04_Warehouses_Dim"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="37"
-  DTS:VersionGUID="{629739FE-8266-439D-B057-F13240B86488}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{2D6E0AEB-5AFC-489B-B1A6-4184B9037738}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -731,13 +731,13 @@ FROM Suppliers</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select WarehouseErplyID from dimension.Warehouses_Dim</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select WarehouseErplyID from dimension.Warehouses</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select WarehouseErplyID from dimension.Warehouses_Dim) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select WarehouseErplyID from dimension.Warehouses) [refTable]
 where [refTable].[WarehouseErplyID] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -1156,7 +1156,7 @@ ON wh.WarehouseId	= pos.WarehouseID</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dimension].[Warehouses_Dim]</property>
+                  name="OpenRowset">[dimension].[Warehouses]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1627,39 +1627,17 @@ ON wh.WarehouseId	= pos.WarehouseID</property>
           Id="Package\DFT - Get Warehouses\Warehouses Source"
           TopLeft="24.8333333333333,5.50000000000004" />
         <NodeLayout
-          Size="208,42.6666666666667"
-          Id="Package\DFT - Get Warehouses\Does the Warehouse Exist?"
-          TopLeft="6.83333333333334,108.166666666667" />
-        <NodeLayout
           Size="161.333333333334,42.6666666666667"
           Id="Package\DFT - Get Warehouses\Warehouses_Dim"
           TopLeft="30.1666666666667,313.5" />
         <NodeLayout
+          Size="208,42.6666666666667"
+          Id="Package\DFT - Get Warehouses\Does the Warehouse Exist?"
+          TopLeft="6.83333333333334,108.166666666667" />
+        <NodeLayout
           Size="210.666666666667,42.6666666666667"
           Id="Package\DFT - Get Warehouses\Add Status and Active From"
           TopLeft="5.50000000000003,210.833333333334" />
-        <EdgeLayout
-          Id="Package\DFT - Get Warehouses.Paths[Derived Column Output]"
-          TopLeft="110.833333333333,253.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
-              Start="0,0"
-              End="0,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT - Get Warehouses.Paths[OLE DB Source Output]"
           TopLeft="110.833333333333,48.1666666666667">
@@ -1706,35 +1684,34 @@ ON wh.WarehouseId	= pos.WarehouseID</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - Get Warehouses.Paths[Derived Column Output]"
+          TopLeft="110.833333333333,253.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\DFT - Get Warehouses\Warehouses Source">
     <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT - Get Warehouses\Does the Warehouse Exist?">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -1750,6 +1727,29 @@ ON wh.WarehouseId	= pos.WarehouseID</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Get Warehouses\Does the Warehouse Exist?">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
