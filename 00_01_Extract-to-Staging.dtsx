@@ -12,8 +12,8 @@
   DTS:ObjectName="00_01_Extract-to-Staging"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="62"
-  DTS:VersionGUID="{43FF2D7F-6F6C-4EDB-9C4A-ED8E60A978EA}">
+  DTS:VersionBuild="63"
+  DTS:VersionGUID="{70A20A1B-6E95-4039-B6A7-CDA6073346E8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -13257,6 +13257,7 @@ FROM PointsOfSale</property>
       DTS:refId="Package\ProductStock"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
       DTS:DTSID="{7fe4a28f-195b-4f69-85b6-512ebb1bf3d7}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
